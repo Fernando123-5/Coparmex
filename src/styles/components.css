@@ -1,0 +1,114 @@
+/* ===================================
+   SPONSORS CAROUSEL ANIMATION
+   =================================== */
+
+.sponsors-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: white;
+}
+
+.sponsors-carousel {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+    will-change: transform;
+}
+
+.sponsors-carousel:hover {
+    animation-play-state: paused;
+}
+
+.sponsor-item {
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===================================
+   TARJETAS DE NOTICIAS
+   =================================== */
+
+.news-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ===================================
+   ACORDEON/MENU MOBILE
+   =================================== */
+
+#mobile-menu {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+/* ===================================
+   ANIMACIONES Y TRANSICIONES
+   =================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===================================
+   SCROLLBAR PERSONALIZADA
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0066ff;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0052cc;
+}

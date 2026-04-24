@@ -1,0 +1,79 @@
+{
+  "app": {
+    "name": "COPARMEX",
+    "version": "1.0.0",
+    "description": "Confederación Patronal de la República Mexicana",
+    "url": "https://coparmex.com"
+  },
+  "site": {
+    "title": "COPARMEX - Confederación Patronal de la República Mexicana",
+    "description": "Una página web moderna, responsiva y de alto rendimiento para la Confederación Patronal de la República Mexicana",
+    "keywords": [
+      "coparmex",
+      "confederación",
+      "empresarial",
+      "méxico",
+      "patronal"
+    ],
+    "author": "COPARMEX",
+    "language": "es",
+    "charset": "UTF-8"
+  },
+  "organization": {
+    "name": "COPARMEX",
+    "legalName": "Confederación Patronal de la República Mexicana",
+    "url": "https://coparmex.com",
+    "email": "contacto@coparmex.com",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "addressCountry": "MX"
+    },
+    "sameAs": [
+      "https://www.facebook.com/coparmex",
+      "https://twitter.com/coparmex",
+      "https://www.linkedin.com/company/coparmex"
+    ]
+  },
+  "features": {
+    "carousel": {
+      "enabled": true,
+      "autoPlayDelay": 5000,
+      "transitionDuration": 1000
+    },
+    "sponsorsCarousel": {
+      "enabled": true,
+      "autoScrollDuration": 30
+    },
+    "darkMode": {
+      "enabled": true,
+      "auto": true
+    },
+    "analytics": {
+      "enabled": false,
+      "trackingId": ""
+    }
+  },
+  "deployment": {
+    "environment": "production",
+    "buildTools": "Manual (HTML/CSS/JS)",
+    "serverRequirements": "Static file server (Nginx, Apache, or similar)",
+    "minimumBrowserVersion": {
+      "chrome": "90",
+      "firefox": "88",
+      "safari": "14",
+      "edge": "90"
+    }
+  },
+  "seo": {
+    "enabled": true,
+    "sitemap": "/sitemap.xml",
+    "robotsTxt": "/robots.txt",
+    "openGraph": {
+      "enabled": true,
+      "image": "https://coparmex.com/og-image.png"
+    }
+  }
+}

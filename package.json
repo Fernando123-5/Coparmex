@@ -1,0 +1,30 @@
+{
+  "name": "coparmex-website",
+  "version": "1.0.0",
+  "description": "Página web moderna y responsiva para la Confederación Patronal de la República Mexicana",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "python -m http.server 8000 || php -S localhost:8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Build script placeholder'",
+    "test": "echo 'Test script placeholder'",
+    "lint": "echo 'Lint script placeholder'"
+  },
+  "keywords": [
+    "coparmex",
+    "website",
+    "responsive",
+    "html",
+    "css",
+    "javascript",
+    "tailwind"
+  ],
+  "author": "COPARMEX",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coparmex/website.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

@@ -1,0 +1,276 @@
+/* ===================================
+   ESTILOS GLOBALES
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+}
+
+/* ===================================
+   HERO CAROUSEL
+   =================================== */
+
+.carousel-hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===================================
+   CAROUSEL INDICATORS
+   =================================== */
+
+.carousel-indicator {
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    width: 48px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* ===================================
+   SPONSORS CAROUSEL ANIMATION
+   =================================== */
+
+.sponsors-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: white;
+}
+
+.sponsors-carousel {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+    will-change: transform;
+}
+
+.sponsors-carousel:hover {
+    animation-play-state: paused;
+}
+
+.sponsor-item {
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===================================
+   TARJETAS DE NOTICIAS
+   =================================== */
+
+.news-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ===================================
+   ACORDEON/MENU MOBILE
+   =================================== */
+
+#mobile-menu {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+/* ===================================
+   ANIMACIONES Y TRANSICIONES
+   =================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===================================
+   BOTONES
+   =================================== */
+
+button {
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+    border: none;
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ===================================
+   ENLACES
+   =================================== */
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* ===================================
+   SCROLLBAR PERSONALIZADA
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0066ff;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0052cc;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    .sponsors-carousel {
+        animation: scroll-left 20s linear infinite;
+    }
+
+    .carousel-slide h1 {
+        font-size: 2rem !important;
+    }
+
+    .carousel-slide p {
+        font-size: 1rem !important;
+    }
+}
+
+/* ===================================
+   ACCESIBILIDAD
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===================================
+   TEMA OSCURO
+   =================================== */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0f172a;
+        color: #e2e8f0;
+    }
+
+    .bg-white {
+        background-color: #1e293b;
+    }
+
+    .text-gray-900 {
+        color: #e2e8f0;
+    }
+
+    .text-gray-600 {
+        color: #cbd5e1;
+    }
+
+    .border-gray-200 {
+        border-color: #334155;
+    }
+
+    .bg-gray-50 {
+        background-color: #0f172a;
+    }
+}
+
+/* ===================================
+   IMPRESIÓN
+   =================================== */
+
+@media print {
+    header, .sponsors-wrapper, button {
+        display: none !important;
+    }
+}

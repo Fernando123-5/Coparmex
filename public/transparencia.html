@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transparencia - COPARMEX - Confederación Patronal de la República Mexicana">
+    <meta name="theme-color" content="#0066ff">
+    <title>Transparencia - COPARMEX</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../src/assets/images/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <img src="../src/assets/images/iconnav.png" alt="COPARMEX Logo" class="h-12 w-auto">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Nosotros</a>
+                    <a href="agenda.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Agenda</a>
+                    <a href="socios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Socios</a>
+                    <a href="eventos.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Eventos</a>
+                    <a href="data.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Data COPARMEX</a>
+                    <a href="transparencia.html" class="text-blue-700 font-bold border-b-2 border-blue-700 pb-1 text-sm">Transparencia</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:inline-flex text-gray-600 hover:text-blue-700 transition-colors" aria-label="Buscar">
+                        <span class="material-icons">search</span>
+                    </button>
+                    <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
+                        Afíliate
+                    </button>
+                    <button id="menu-toggle" class="md:hidden text-gray-600">
+                        <span class="material-icons">menu</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
+                <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
+                <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
+                <a href="eventos.html" class="block text-gray-600 hover:text-blue-700 py-2">Eventos</a>
+                <a href="data.html" class="block text-gray-600 hover:text-blue-700 py-2">Data COPARMEX</a>
+                <a href="transparencia.html" class="block text-blue-700 font-bold py-2">Transparencia</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="bg-blue-700 text-white py-16 md:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl md:text-5xl font-black mb-4">Transparencia y Gobernanza</h1>
+                <p class="text-blue-100 text-lg">Comprometidos con la rendición de cuentas y la operación transparente de la organización.</p>
+            </div>
+        </section>
+
+
