@@ -1,0 +1,185 @@
+/* =====================================================
+   ANIMACIONES Y TRANSICIONES
+   ===================================================== */
+
+/* ===== KEYFRAMES ===== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== TRANSICIONES DE COMPONENTES ===== */
+
+/* Botones con optimización de rendimiento */
+.btn {
+    will-change: background-color, box-shadow, transform;
+}
+
+.btn:hover {
+    will-change: auto;
+}
+
+/* Tarjetas con optimización */
+.news-card,
+.data-card,
+.partner-card,
+.sponsor-item {
+    will-change: transform, box-shadow, border-color;
+}
+
+.news-card:hover,
+.data-card:hover,
+.partner-card:hover,
+.sponsor-item:hover {
+    will-change: auto;
+}
+
+/* Imágenes con optimización */
+.news-card-image img,
+.alternate-section-image img,
+.partner-image-container img,
+.sponsor-item img {
+    will-change: transform;
+}
+
+.news-card:hover .news-card-image img,
+.alternate-section-image:hover img,
+.partner-card:hover .partner-image-container img,
+.sponsor-item:hover img {
+    will-change: auto;
+}
+
+/* ===== ANIMACIONES DE ENTRADA ===== */
+
+.partner-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Delays escalonados para tarjetas de partners */
+.partner-card:nth-child(1) { animation-delay: 0.1s; }
+.partner-card:nth-child(2) { animation-delay: 0.2s; }
+.partner-card:nth-child(3) { animation-delay: 0.3s; }
+.partner-card:nth-child(4) { animation-delay: 0.4s; }
+.partner-card:nth-child(5) { animation-delay: 0.5s; }
+.partner-card:nth-child(6) { animation-delay: 0.6s; }
+.partner-card:nth-child(7) { animation-delay: 0.7s; }
+.partner-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* ===== CAROUSEL SLIDE ===== */
+
+.carousel-slide {
+    animation: fadeIn var(--transition-slow) ease-in-out;
+}
+
+/* ===== OPTIMIZE PARA REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .partner-card {
+        animation: none;
+        opacity: 1;
+    }
+
+    .carousel-slide {
+        animation: none;
+    }
+
+    .btn,
+    .news-card,
+    .data-card,
+    .partner-card,
+    .sponsor-item,
+    .news-card-image img,
+    .alternate-section-image img {
+        will-change: auto;
+    }
+}
+
+/* ===== TRANSICIONES SUAVES DE COLOR ===== */
+
+a,
+button,
+.btn,
+.news-card,
+.data-card,
+.partner-card,
+.sponsor-item {
+    transition: color var(--transition-default), 
+                background-color var(--transition-default),
+                border-color var(--transition-default),
+                box-shadow var(--transition-default);
+}
+
+/* ===== SCROLL SMOOTH ===== */
+
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}

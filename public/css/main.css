@@ -1,0 +1,55 @@
+/* =====================================================
+   COPARMEX - SISTEMA DE ESTILOS PRINCIPAL
+   ===================================================== */
+
+/* Orden de importación critical para garantizar la cascada correcta */
+
+/* 1. VARIABLES Y TOKENS */
+@import url('./variables.css');
+
+/* 2. ESTILOS BASE Y RESET */
+@import url('./base.css');
+
+/* 3. LAYOUT Y ESTRUCTURA PRINCIPAL */
+@import url('./layout.css');
+
+/* 4. COMPONENTES REUTILIZABLES */
+@import url('./components.css');
+
+/* 5. ESTILOS DE SECCIONES ESPECÍFICAS */
+@import url('./sections.css');
+
+/* 6. ANIMACIONES Y TRANSICIONES */
+@import url('./animations.css');
+
+/* 7. RESPONSIVE DESIGN Y MEDIA QUERIES */
+@import url('./responsive.css');
+
+/* 8. UTILIDADES Y CLASES AUXILIARES */
+@import url('./utilities.css');
+
+/* =====================================================
+   NOTA: Este archivo actúa como punto de entrada
+   para todos los estilos CSS modularizados.
+   
+   ESTRUCTURA DE ARCHIVOS:
+   - variables.css: Tokens de diseño, variables CSS
+   - base.css: Estilos globales, tipografía base
+   - layout.css: Header, footer, estructura principal
+   - components.css: Componentes reutilizables
+   - sections.css: Estilos de secciones específicas
+   - animations.css: Animaciones y transiciones
+   - responsive.css: Media queries optimizadas
+   - utilities.css: Clases auxiliares y utilitarias
+   
+   PRINCIPIOS DE MANTENIMIENTO:
+   1. Mantener archivos pequeños y enfocados
+   2. Evitar dependencias circulares
+   3. Usar variables CSS para valores reutilizables
+   4. Seguir la cascada de especificidad
+   5. Documentar cambios importantes
+   6. Validar responsive design en todos los breakpoints
+   7. Testear accesibilidad (focus, contraste, navegación)
+   8. Optimizar animaciones para rendimiento
+   
+   ===================================================== */

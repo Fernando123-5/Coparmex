@@ -19,8 +19,35 @@
     
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 16px; }
+        .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 32px; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
     
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
@@ -51,14 +78,14 @@
                     <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
                         Afíliate
                     </button>
-                    <button id="menu-toggle" class="md:hidden text-gray-600">
+                    <button id="menu-toggle" style="display: block; background: none; border: none; color: #4b5563; cursor: pointer;">
                         <span class="material-icons">menu</span>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+            <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 0; padding: 12px 0; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0;" class="pb-4 space-y-2">
                 <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
                 <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
                 <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
@@ -77,5 +104,8 @@
                 <p class="text-blue-100 text-lg">Comprometidos con la rendición de cuentas y la operación transparente de la organización.</p>
             </div>
         </section>
+    </main>
 
-
+    <script src="js/script.js"></script>
+</body>
+</html>

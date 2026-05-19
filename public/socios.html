@@ -19,6 +19,198 @@
     
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Responsive Styles -->
+    <style>
+        /* Override de estilos responsivos para socios.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Public Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            font-size: clamp(28px, 8vw, 48px) !important;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: clamp(24px, 6vw, 32px) !important;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        
+        p {
+            font-size: clamp(14px, 2.5vw, 16px);
+            line-height: 1.6;
+        }
+        
+        button {
+            min-height: 44px;
+            font-size: clamp(12px, 2vw, 14px);
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+        }
+
+        /* HEADER RESPONSIVO */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        header .max-w-7xl {
+            max-width: 100%;
+            padding: 0 16px;
+        }
+
+        .flex.justify-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* NAVEGACIÓN DESKTOP */
+        nav.hidden {
+            display: none !important;
+        }
+
+        @media (min-width: 768px) {
+            nav.hidden.md\:flex {
+                display: flex !important;
+                gap: 32px;
+                align-items: center;
+            }
+        }
+
+        nav a {
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #1e40af;
+        }
+
+        nav a.text-blue-700 {
+            color: #1e40af;
+            font-weight: 700;
+            border-bottom: 2px solid #1e40af;
+            padding-bottom: 8px;
+        }
+
+        /* BOTÓN MENÚ MÓVIL */
+        #menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: #4b5563;
+            font-size: 24px;
+        }
+
+        @media (min-width: 768px) {
+            #menu-toggle {
+                display: none !important;
+            }
+        }
+
+        /* MENÚ MÓVIL */
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            padding: 12px 0 !important;
+            background-color: white;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        #mobile-menu.active {
+            display: flex !important;
+        }
+
+        @media (min-width: 768px) {
+            #mobile-menu {
+                display: none !important;
+            }
+        }
+
+        #mobile-menu a {
+            color: #4b5563;
+            padding: 12px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        #mobile-menu a:hover,
+        #mobile-menu a.text-blue-700 {
+            background-color: #f5f5f5;
+            color: #1e40af;
+        }
+
+        #mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* BOTÓN AFÍLIATE */
+        button.bg-blue-700 {
+            background-color: #1e40af;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button.bg-blue-700:hover {
+            background-color: #1e3a8a;
+        }
+
+        /* Touch-friendly */
+        @media (max-width: 768px) {
+            a, button, [role="button"] {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* Hero responsive */
+        @media (max-width: 768px) {
+            section[style*="background-image"] {
+                min-height: 400px !important;
+                background-attachment: scroll !important;
+            }
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
     
@@ -51,14 +243,14 @@
                     <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
                         Afíliate
                     </button>
-                    <button id="menu-toggle" class="md:hidden text-gray-600">
+                    <button id="menu-toggle" style="display: block; background: none; border: none; color: #4b5563; cursor: pointer;">
                         <span class="material-icons">menu</span>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+            <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 0; padding: 12px 0; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0;" class="pb-4 space-y-2">
                 <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
                 <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
                 <a href="socios.html" class="block text-blue-700 font-bold py-2">Socios</a>
@@ -71,144 +263,138 @@
 
     <main>
         <!-- Page Header -->
-        <section class="bg-blue-700 text-white py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl md:text-5xl font-black mb-4">Nuestros Socios</h1>
-                <p class="text-blue-100 text-lg">Alianzas estratégicas que fortalecen nuestro movimiento empresarial.</p>
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/socios.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
+                <div class="max-w-3xl">
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Nuestro Ecosistema</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Nuestros Aliados Estratégicos</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Empresas líderes que conforman nuestra red de socios colaboradores, fortaleciendo juntos el movimiento empresarial mexicano.</p>
+                </div>
             </div>
         </section>
 
         <!-- Partners Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Partner 1 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">corporate_fare</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 1</h3>
-                    <p class="text-gray-600 text-sm mb-4">Socio estratégico en el sector manufacturero con presencia nacional.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 md:py-28">
+            <div class="mb-8 sm:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3">Aliados que Impulsan el Cambio</h2>
+                <p class="text-gray-600 text-base sm:text-lg max-w-2xl">Conoce a las empresas líderes que se unen a COPARMEX para transformar el sector empresarial mexicano.</p>
+            </div>
 
-                <!-- Partner 2 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">domain</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 2</h3>
-                    <p class="text-gray-600 text-sm mb-4">Innovadora en soluciones tecnológicas para la industria.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
-
-                <!-- Partner 3 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">apartment</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 3</h3>
-                    <p class="text-gray-600 text-sm mb-4">Experta en consultoría empresarial y transformación digital.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
-
-                <!-- Partner 4 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">location_city</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 4</h3>
-                    <p class="text-gray-600 text-sm mb-4">Líder en infraestructura y desarrollo inmobiliario.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
-
-                <!-- Partner 5 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">factory</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 5</h3>
-                    <p class="text-gray-600 text-sm mb-4">Referente en producción sostenible y responsable.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
-
-                <!-- Partner 6 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-8 text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                        <span class="material-icons text-5xl text-gray-400">account_balance</span>
-                    </div>
-                    <h3 class="text-xl font-black mb-2">Empresa Líder 6</h3>
-                    <p class="text-gray-600 text-sm mb-4">Especialista en servicios financieros y asesoría.</p>
-                    <button class="text-blue-700 font-bold text-sm hover:text-blue-800">Conocer más →</button>
-                </div>
+            <div id="partnersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-20">
+                <!-- Partners cards will be generated dynamically here -->
             </div>
 
             <!-- Benefits Section -->
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-8 md:p-12">
-                <h2 class="text-3xl font-black mb-8 text-center">Beneficios de ser Socio COPARMEX</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex gap-4">
-                        <span class="material-icons text-blue-700 text-3xl">check_circle</span>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Acceso Exclusivo</h4>
-                            <p class="text-gray-600">Accede a eventos y capacitaciones exclusivas para socios.</p>
-                        </div>
+            <div class="py-8 sm:py-12 md:py-16">
+                <div class="text-center mb-8 sm:mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3">Beneficios de Ser Socio COPARMEX</h2>
+                    <div class="w-20 h-1 bg-blue-700 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="flex flex-col items-center text-center">
+                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">business</span>
+                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Representación</h4>
+                        <p class="text-gray-600 text-sm sm:text-base">Voz activa ante los tres niveles de gobierno para defender los intereses empresariales.</p>
                     </div>
-                    <div class="flex gap-4">
-                        <span class="material-icons text-blue-700 text-3xl">check_circle</span>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Networking</h4>
-                            <p class="text-gray-600">Conecta con empresarios y líderes del sector.</p>
-                        </div>
+
+                    <div class="flex flex-col items-center text-center">
+                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">public</span>
+                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Conexiones</h4>
+                        <p class="text-gray-600 text-sm sm:text-base">Acceso a una red nacional de más de 36,000 empresas para generar alianzas estratégicas.</p>
                     </div>
-                    <div class="flex gap-4">
-                        <span class="material-icons text-blue-700 text-3xl">check_circle</span>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Representación</h4>
-                            <p class="text-gray-600">Voz en las decisiones ante organismos importantes.</p>
-                        </div>
+
+                    <div class="flex flex-col items-center text-center">
+                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">group</span>
+                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Participación</h4>
+                        <p class="text-gray-600 text-sm sm:text-base">Involucramiento en comisiones de trabajo especializadas que enfocan en política empresarial.</p>
                     </div>
-                    <div class="flex gap-4">
-                        <span class="material-icons text-blue-700 text-3xl">check_circle</span>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Información Estratégica</h4>
-                            <p class="text-gray-600">Acceso a reportes y análisis del sector.</p>
-                        </div>
+
+                    <div class="flex flex-col items-center text-center">
+                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">trending_up</span>
+                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Información</h4>
+                        <p class="text-gray-600 text-sm sm:text-base">Análisis económicos exclusivos y reportes de coyuntura para la toma de decisiones.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="bg-blue-700 text-white py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-black mb-4">¿Interesado en ser Socio?</h2>
-                <p class="text-blue-100 text-lg mb-8">Contacta con nuestro equipo para conocer todos los beneficios.</p>
-                <button class="bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">
-                    Solicitar Información
-                </button>
+        <section class="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-800 text-white py-12 sm:py-20 md:py-28">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+            </div>
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-4 sm:mb-6 rounded-full">únete a nosotros</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">¿Interesado en ser Socio COPARMEX?</h2>
+                <p class="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-10 max-w-2xl mx-auto">Sé parte de la red empresarial más influyente de México y accede a oportunidades exclusivas de crecimiento y colaboración.</p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                    <button class="bg-white text-blue-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-black text-sm sm:text-lg hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95">
+                        Solicitar Información
+                    </button>
+                    <button class="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-black text-sm sm:text-lg hover:bg-white/10 transition-colors transform hover:scale-105 active:scale-95">
+                        Descargar Beneficios
+                    </button>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Partner Details Modal -->
+    <div id="partnerModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md my-8">
+            <!-- Modal Header with Image -->
+            <div class="relative h-64 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center overflow-hidden">
+                <button id="closePartnerModal" class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2 transition-all shadow-md z-10">
+                    <span class="material-icons">close</span>
+                </button>
+                <img id="partnerModalImage" src="" alt="Partner Logo" class="max-h-48 max-w-xs object-contain p-4">
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-8">
+                <!-- Partner Name -->
+                <h2 id="partnerModalTitle" class="text-3xl font-bold text-gray-900 mb-4">Nombre del Socio</h2>
+
+                <!-- Partner Description -->
+                <p id="partnerModalDescription" class="text-gray-600 leading-relaxed mb-8">Descripción del socio...</p>
+
+                <!-- Action Button -->
+                <div class="flex gap-3 flex-col sm:flex-row">
+                    <a id="partnerWebsiteBtn" href="#" target="_blank" class="flex-1 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
+                        <span class="material-icons">open_in_new</span>
+                        Visitar Sitio Web
+                    </a>
+                    <button id="closePartnerModalBtn" class="flex-1 bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2">
+                        <span class="material-icons">close</span>
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
                 <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                    <div class="text-xl font-black text-gray-900 mb-3">COPARMEX</div>
+                    <div class="text-lg sm:text-xl font-black text-gray-900 mb-3">COPARMEX</div>
                     <p class="text-gray-500 text-xs uppercase tracking-widest max-w-sm">
                         © 2026 Confederación Patronal de la República Mexicana. Todos los derechos reservados.
                     </p>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs uppercase tracking-widest">
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-xs uppercase tracking-widest">
                     <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Aviso de Privacidad</a>
                     <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Contacto</a>
                     <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Directorio</a>
                     <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Prensa</a>
                 </div>
 
-                <div class="flex gap-6">
+                <div class="flex gap-4 sm:gap-6">
                     <a href="#" class="text-gray-400 hover:text-blue-700 transition-colors" aria-label="Compartir">
                         <span class="material-icons">share</span>
                     </a>
@@ -222,22 +408,84 @@
             </div>
         </div>
     </footer>
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    <script src="js/script.js"></script>
 
-    <!-- Scripts -->
+    <!-- Generar tarjetas de socios dinámicamente -->
     <script>
-        let CONFIG = {};
-        const loadConfig = async () => {
-            try {
-                const response = await fetch('./config.json');
-                CONFIG = await response.json();
-                console.log('✓ CONFIG cargada correctamente');
-                window.dispatchEvent(new Event('configLoaded'));
-            } catch (error) {
-                console.error('❌ Error cargando config.json:', error);
-                CONFIG = { carousel: { autoPlayDelay: 5000, transitionDuration: 1000 } };
+        // Esta función se ejecutará después de que script.js cargue PARTNERS_DATA
+        function renderPartnerCards() {
+            const grid = document.getElementById('partnersGrid');
+            if (!grid) return;
+
+            // Esperar a que PARTNERS_DATA esté disponible
+            if (typeof PARTNERS_DATA === 'undefined') {
+                setTimeout(renderPartnerCards, 100);
+                return;
             }
-        };
-        loadConfig();
+
+            grid.innerHTML = '';
+
+            PARTNERS_DATA.forEach((partner, index) => {
+                const card = document.createElement('div');
+                card.className = 'partner-card';
+                card.style.animationDelay = `${index * 100}ms`;
+
+                // Crear contenedor de imagen
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'partner-image-container';
+
+                const img = document.createElement('img');
+                img.src = partner.logo;
+                img.alt = partner.name;
+
+                imageContainer.appendChild(img);
+
+                // Crear contenedor de contenido
+                const content = document.createElement('div');
+                content.className = 'partner-content';
+
+                const title = document.createElement('h3');
+                title.className = 'partner-name';
+                title.textContent = partner.name;
+
+                const description = document.createElement('p');
+                description.className = 'partner-description';
+                description.textContent = partner.description;
+
+                const button = document.createElement('button');
+                button.className = 'partner-card-btn';
+                button.dataset.partnerId = partner.id;
+                button.textContent = 'Conocer más';
+
+                content.appendChild(title);
+                content.appendChild(description);
+                content.appendChild(button);
+
+                card.appendChild(imageContainer);
+                card.appendChild(content);
+
+                grid.appendChild(card);
+            });
+
+            console.log('✅ Tarjetas de socios renderizadas');
+
+            // Re-inicializar PartnerModal después de agregar botones
+            if (document.querySelector('.partner-card-btn')) {
+                new PartnerModal();
+            }
+        }
+
+        // Renderizar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(renderPartnerCards, 200);
+        });
+    </script>
+    
+    <!-- Prevenir errores de extensiones del navegador -->
+    <script>
+        window.addEventListener('beforeunload', () => {}, false);
     </script>
     
     <script src="js/script.js"></script>

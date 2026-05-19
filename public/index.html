@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="COPARMEX - Confederación Patronal de la República Mexicana">
-    <meta name="theme-color" content="#0066ff">
+    <meta name="theme-color" content="#00346f">
     <title>COPARMEX - Confederación Patronal de la República Mexicana</title>
     
     <!-- Favicon -->
@@ -14,83 +14,74 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- Tailwind CDN (Development only - Remove in production) -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
-<body class="bg-white text-gray-900">
+<body>
     
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="index.html">
-                        <img src="assets/images/iconnav.png" alt="COPARMEX Logo" class="h-12 w-auto">
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-blue-700 font-bold border-b-2 border-blue-700 pb-1 text-sm">Nosotros</a>
-                    <a href="agenda.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Agenda</a>
-                    <a href="socios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Socios</a>
-                    <a href="eventos.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Eventos</a>
-                    <a href="data.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Data COPARMEX</a>
-                    <a href="transparencia.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Transparencia</a>
-                </nav>
-
-                <!-- Right Actions -->
-                <div class="flex items-center space-x-4">
-                    <button class="hidden md:inline-flex text-gray-600 hover:text-blue-700 transition-colors" aria-label="Buscar">
-                        <span class="material-icons">search</span>
-                    </button>
-                    <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
-                        Afíliate
-                    </button>
-                    <button id="menu-toggle" class="md:hidden text-gray-600">
-                        <span class="material-icons">menu</span>
-                    </button>
-                </div>
+    <header>
+        <div class="max-w-7xl" style="height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; margin: 0 auto;">
+            <!-- Logo -->
+            <div>
+                <a href="index.html">
+                    <img src="assets/images/iconnav.png" alt="COPARMEX Logo" style="height: 48px; width: auto;">
+                </a>
             </div>
 
-            <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-                <a href="index.html" class="block text-blue-700 font-bold py-2">Nosotros</a>
-                <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
-                <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
-                <a href="eventos.html" class="block text-gray-600 hover:text-blue-700 py-2">Eventos</a>
-                <a href="data.html" class="block text-gray-600 hover:text-blue-700 py-2">Data COPARMEX</a>
-                <a href="transparencia.html" class="block text-gray-600 hover:text-blue-700 py-2">Transparencia</a>
+            <!-- Desktop Navigation -->
+            <nav style="display: none; gap: 32px; align-items: center;" class="md-nav">
+                <a href="index.html" style="color: var(--color-primary); font-weight: 600; border-bottom: 2px solid var(--color-primary); padding-bottom: 8px; font-size: 14px;">Nosotros</a>
+                <a href="agenda.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Agenda</a>
+                <a href="socios.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Socios</a>
+                <a href="eventos.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Eventos</a>
+                <a href="data.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Data COPARMEX</a>
+                <a href="transparencia.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Transparencia</a>
             </nav>
+
+            <!-- Right Actions -->
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button style="display: none; background: none; border: none; color: var(--color-on-surface-variant); cursor: pointer;" aria-label="Buscar" class="md-search">
+                    <span class="material-icons">search</span>
+                </button>
+                <button style="background-color: var(--color-primary); color: white; padding: 12px 24px; border-radius: 4px; font-weight: 600; font-size: 14px; border: none; cursor: pointer;">
+                    Afíliate
+                </button>
+                <button id="menu-toggle" style="display: block; background: none; border: none; color: var(--color-on-surface-variant); cursor: pointer;">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
         </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 8px; padding-bottom: 16px; background-color: var(--color-surface-container-lowest);">
+            <a href="index.html" style="color: var(--color-primary); font-weight: 600; padding: 8px 24px; font-size: 14px;">Nosotros</a>
+            <a href="agenda.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Agenda</a>
+            <a href="socios.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Socios</a>
+            <a href="eventos.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Eventos</a>
+            <a href="data.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Data COPARMEX</a>
+            <a href="transparencia.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Transparencia</a>
+        </nav>
     </header>
 
     <main>
         <!-- Hero Carousel Section -->
-        <section id="hero" class="relative w-full h-screen max-h-[640px] overflow-hidden bg-gray-900">
-            <div class="carousel-hero relative w-full h-full" id="heroCarousel">
+        <section id="hero" style="position: relative; width: 100%; height: 700px; overflow: hidden; background-color: #2d2d2d;">
+            <div class="carousel-hero" id="heroCarousel" style="position: relative; width: 100%; height: 100%;">
                 <!-- Slide 1 -->
-                <div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0" data-index="0">
-                    <div class="relative w-full h-full">
-                        <img src="assets/images/hero1.jpg" alt="Foro de Impacto Social" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                                <div class="max-w-2xl text-white">
-                                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded">Próximo Evento</span>
-                                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">Foro de Impacto Social 2026</h1>
-                                    <p class="text-lg md:text-xl mb-10 text-gray-100">Liderando la transformación del sector empresarial para construir un México más justo y sostenible.</p>
-                                    <div class="flex flex-col sm:flex-row gap-4">
-                                        <button class="bg-white text-blue-700 px-8 py-4 rounded font-bold hover:bg-gray-100 transition-colors">
-                                            Registrarme Ahora
-                                        </button>
-                                        <button class="border-2 border-white text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-colors">
-                                            Ver Agenda
-                                        </button>
+                <div class="carousel-slide" data-index="0" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; transition: opacity 1s ease-in-out;">
+                    <div style="position: relative; width: 100%; height: 100%;">
+                        <img src="assets/images/hero1.jpg" alt="Foro de Impacto Social" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
+                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
+                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
+                                <div style="max-width: 600px; color: white;">
+                                    <span style="display: inline-block; background-color: rgb(255, 255, 255); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;"></span>
+                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Foro de Impacto Social 2026</h1>
+                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Liderando la transformación del sector empresarial para construir un México más justo y sostenible.</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                                        <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Registrarme Ahora</button>
+                                        <button style="border: 2px solid white; background-color: transparent; color: white; padding: 16px 32px; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Ver Agenda</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,19 +90,17 @@
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0" data-index="1">
-                    <div class="relative w-full h-full">
-                        <img src="assets/images/hero22.png" alt="Encuentro Empresarial" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                                <div class="max-w-2xl text-white">
-                                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded">Noticias</span>
-                                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">Encuentro Nacional de Jóvenes Empresarios</h1>
-                                    <p class="text-lg md:text-xl mb-10 text-gray-100">Fomentando la innovación y el emprendimiento en las nuevas generaciones de líderes mexicanos.</p>
-                                    <button class="bg-white text-blue-700 px-8 py-4 rounded font-bold hover:bg-gray-100 transition-colors">
-                                        Más Información
-                                    </button>
+                <div class="carousel-slide" data-index="1" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <div style="position: relative; width: 100%; height: 100%;">
+                        <img src="assets/images/hero22.png" alt="Encuentro Empresarial" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
+                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
+                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
+                                <div style="max-width: 600px; color: white;">
+                                    <span style="display: inline-block; background-color: rgba(171, 199, 255, 0.3); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Noticias</span>
+                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Encuentro Nacional de Jóvenes Empresarios</h1>
+                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Fomentando la innovación y el emprendimiento en las nuevas generaciones de líderes mexicanos.</p>
+                                    <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Más Información</button>
                                 </div>
                             </div>
                         </div>
@@ -119,19 +108,17 @@
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0" data-index="2">
-                    <div class="relative w-full h-full">
-                        <img src="assets/images/hero3.png" alt="Alianzas Estratégicas" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                                <div class="max-w-2xl text-white">
-                                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded">Alianzas</span>
-                                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">Forjando Alianzas Estratégicas</h1>
-                                    <p class="text-lg md:text-xl mb-10 text-gray-100">Conectando empresas y creando oportunidades de colaboración en el ecosistema mexicano.</p>
-                                    <button class="bg-white text-blue-700 px-8 py-4 rounded font-bold hover:bg-gray-100 transition-colors">
-                                        Explorar Oportunidades
-                                    </button>
+                <div class="carousel-slide" data-index="2" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <div style="position: relative; width: 100%; height: 100%;">
+                        <img src="assets/images/hero3.png" alt="Alianzas Estratégicas" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
+                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
+                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
+                                <div style="max-width: 600px; color: white;">
+                                    <span style="display: inline-block; background-color: rgba(171, 199, 255, 0.3); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Alianzas</span>
+                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Forjando Alianzas Estratégicas</h1>
+                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Conectando empresas y creando oportunidades de colaboración en el ecosistema mexicano.</p>
+                                    <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Explorar Oportunidades</button>
                                 </div>
                             </div>
                         </div>
@@ -140,266 +127,301 @@
             </div>
 
             <!-- Carousel Controls -->
-            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 md:opacity-100" aria-label="Anterior">
-                <span class="material-icons">chevron_left</span>
+            <button id="prevBtn" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 30; background-color: rgba(255, 255, 255, 0.3); color: white; padding: 12px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s ease;" aria-label="Anterior">
+                <span class="material-icons" style="display: block; font-size: 24px;">chevron_left</span>
             </button>
-            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 md:opacity-100" aria-label="Siguiente">
-                <span class="material-icons">chevron_right</span>
+            <button id="nextBtn" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 30; background-color: rgba(255, 255, 255, 0.3); color: white; padding: 12px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s ease;" aria-label="Siguiente">
+                <span class="material-icons" style="display: block; font-size: 24px;">chevron_right</span>
             </button>
 
             <!-- Indicators -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
-                <div class="carousel-indicator w-12 h-1.5 bg-white rounded-full cursor-pointer transition-all" data-index="0"></div>
-                <div class="carousel-indicator w-3 h-1.5 bg-white/40 rounded-full cursor-pointer transition-all" data-index="1"></div>
-                <div class="carousel-indicator w-3 h-1.5 bg-white/40 rounded-full cursor-pointer transition-all" data-index="2"></div>
+            <div style="position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; gap: 12px;">
+                <div class="carousel-indicator" data-index="0" style="width: 48px; height: 6px; background-color: white; border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
+                <div class="carousel-indicator" data-index="1" style="width: 12px; height: 6px; background-color: rgba(255, 255, 255, 0.4); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
+                <div class="carousel-indicator" data-index="2" style="width: 12px; height: 6px; background-color: rgba(255, 255, 255, 0.4); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
             </div>
         </section>
 
-        <!-- Actualidad COPARMEX Section -->
-        <section id="noticias" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-black text-blue-700 mb-2">Actualidad COPARMEX</h2>
-                <p class="text-gray-600 font-medium">Información estratégica para el sector patronal</p>
-            </div>
-
-            <div class="grid grid-cols-12 gap-8">
-                <!-- Featured News -->
-                <div class="col-span-12 lg:col-span-8 group">
-                    <div class="bg-white border border-gray-200 overflow-hidden flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow duration-300">
-                        <div class="md:w-1/2 overflow-hidden h-64 md:h-auto">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/info1.png" alt="Propuesta Educativa">
-                        </div>
-                        <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                            <span class="font-bold text-blue-700 uppercase text-xs tracking-widest mb-4">Educación</span>
-                            <h3 class="text-2xl font-black mb-4 group-hover:text-blue-700 transition-colors">Propuesta por una Calidad Educativa Integral 2024-2030</h3>
-                            <p class="text-gray-600 font-medium mb-6">Presentamos el nuevo eje estratégico enfocado en la formación de talento y competitividad global.</p>
-                            <div class="flex items-center text-gray-400 text-xs gap-4">
-                                <span class="flex items-center gap-1">
-                                    <span class="material-icons text-sm">calendar_today</span> 15 Oct, 2024
-                                </span>
-                                <span class="flex items-center gap-1">
-                                    <span class="material-icons text-sm">schedule</span> 5 min lectura
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Sección 1: ESTRATEGIA INSTITUCIONAL - Texto Izq + Imagen Der -->
+        <section id="estrategia" style="padding: 80px 24px; background-color: var(--color-surface);">
+            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+                <!-- Texto - Lado Izquierdo -->
+                <div>
+                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;">¿Quienes somos?</span>
+                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">¿QUÉ ES COPARMEX?</h2>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">Es un sindicato patronal que representa y fortalece al sector empresarial en México..</p>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">No es una cámara empresarial
+                        No es un partido político
+                        No es una asociación civil.</p>
+               
                 </div>
-
-                <!-- Side News Cards -->
-                <div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
-                    <div class="bg-white border border-gray-200 p-6 hover:border-blue-300 transition-colors group hover:shadow-lg">
-                        <span class="font-bold text-blue-700 uppercase text-xs tracking-widest mb-2 block">Economía</span>
-                        <h4 class="text-lg font-black mb-3 group-hover:text-blue-700 transition-colors line-clamp-2">Análisis del Paquete Económico y su impacto en PyMEs</h4>
-                        <p class="text-gray-600 text-sm mb-4">Breve resumen de las implicaciones fiscales para el próximo trimestre.</p>
-                        <span class="text-gray-400 text-xs">14 Oct, 2024</span>
-                    </div>
-                    <div class="bg-white border border-gray-200 p-6 hover:border-blue-300 transition-colors group hover:shadow-lg">
-                        <span class="font-bold text-blue-700 uppercase text-xs tracking-widest mb-2 block">Laboral</span>
-                        <h4 class="text-lg font-black mb-3 group-hover:text-blue-700 transition-colors line-clamp-2">Tendencias de Empleo y Flexibilidad en el Sector Servicios</h4>
-                        <p class="text-gray-600 text-sm mb-4">Nuevas normativas y mejores prácticas para la retención de talento.</p>
-                        <span class="text-gray-400 text-xs">12 Oct, 2024</span>
-                    </div>
-                    <div class="bg-white border border-gray-200 p-6 hover:border-blue-300 transition-colors group hover:shadow-lg">
-                        <span class="font-bold text-blue-700 uppercase text-xs tracking-widest mb-2 block">Tecnología</span>
-                        <h4 class="text-lg font-black mb-3 group-hover:text-blue-700 transition-colors line-clamp-2">Transformación Digital: Retos y Oportunidades</h4>
-                        <p class="text-gray-600 text-sm mb-4">Cómo las empresas mexicanas aceleran su digitalización.</p>
-                        <span class="text-gray-400 text-xs">10 Oct, 2024</span>
-                    </div>
+                <!-- Imagen - Lado Derecho -->
+                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
+                    <img src="assets/images/pag1.png" alt="Seguridad y Salud" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 </div>
             </div>
         </section>
 
-        <!-- Data COPARMEX Section -->
-        <section id="data" class="bg-gray-50 py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-black text-blue-700 mb-4">Data COPARMEX</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Monitoreo constante de los indicadores económicos y sociales más relevantes para la toma de decisiones empresariales.</p>
+        <!-- Sección 2: COMUNICACIÓN DIGITAL - Imagen Izq + Texto Der -->
+        <section id="comunicacion" style="padding: 80px 24px; background-color: var(--color-surface-container-low);">
+            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+                <!-- Imagen - Lado Izquierdo -->
+                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
+                    <img src="assets/images/pag2.png" alt="Comunicación Digital" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <!-- Texto - Lado Derecho -->
+                <div>
+                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;"></span>
+                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">Construyendo un Mejor Futuro para México</h2>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">El compromiso de COPARMEX con el desarrollo del país se refleja en la participación activa de sus empresarios afiliados en temas fundamentales para el bienestar social y el fortalecimiento de México:</p>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">Promovemos una educación de calidad, la libre competencia con responsabilidad social, la seguridad pública, el fortalecimiento del estado de derecho y la transparencia con rendición de cuentas, impulsando así una sociedad más justa, competitiva y con mayores oportunidades para todos. </p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: TRANSPARENCIA Y DATOS - Texto Izq + Imagen Der -->
+        <section id="transparencia" style="padding: 80px 24px; background-color: var(--color-surface);">
+            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+                <!-- Texto - Lado Izquierdo -->
+                <div>
+                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;">Impulsando desarrollo</span>
+                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">Una Visión de País con Valores y Compromiso</h2>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">Impulsamos el desarrollo de México a través de principios humanistas, democráticos y de participación ciudadana.</p>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">La Confederación trabaja por un país más libre, participativo y solidario, promoviendo valores que fortalecen la democracia, el bienestar social y la colaboración entre ciudadanos, empresas e instituciones para construir un futuro con mayores oportunidades para todos.</p>
+                   
+                </div>
+                <!-- Imagen - Lado Derecho -->
+                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
+                    <img src="assets/images/pag3.png" alt="Data COPARMEX" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Sponsors/Socios Section - Carousel Layout -->
+        <section style="background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-top: 1px solid var(--color-outline-variant); padding: 80px 24px;">
+            <div class="max-w-7xl" style="margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 64px;">
+                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 16px;">Aliados que Impulsan el Cambio</h2>
+                    <p style="font-size: 16px; color: var(--color-on-surface-variant); max-width: 600px; margin: 0 auto;">Conoce a las empresas líderes que se unen a COPARMEX para transformar el sector empresarial mexicano.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-8 rounded-lg shadow-sm text-center border-t-4 border-blue-700 hover:shadow-lg transition-shadow">
-                        <span class="material-icons text-4xl text-blue-700 mb-4 block">trending_up</span>
-                        <div class="text-3xl font-black text-gray-900 mb-2">54.2%</div>
-                        <div class="text-xs font-bold text-gray-600 uppercase tracking-widest">Confianza Empresarial</div>
-                        <p class="text-xs text-gray-400 mt-4">+2.1% respecto al mes anterior</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-lg shadow-sm text-center border-t-4 border-blue-700 hover:shadow-lg transition-shadow">
-                        <span class="material-icons text-4xl text-blue-700 mb-4 block">business_center</span>
-                        <div class="text-3xl font-black text-gray-900 mb-2">32,450</div>
-                        <div class="text-xs font-bold text-gray-600 uppercase tracking-widest">Nuevos Empleos</div>
-                        <p class="text-xs text-gray-400 mt-4">Meta alcanzada del Q3</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-lg shadow-sm text-center border-t-4 border-blue-700 hover:shadow-lg transition-shadow">
-                        <span class="material-icons text-4xl text-blue-700 mb-4 block">verified</span>
-                        <div class="text-3xl font-black text-gray-900 mb-2">82%</div>
-                        <div class="text-xs font-bold text-gray-600 uppercase tracking-widest">Socios Satisfechos</div>
-                        <p class="text-xs text-gray-400 mt-4">Encuesta anual de servicios</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-lg shadow-sm text-center border-t-4 border-blue-700 hover:shadow-lg transition-shadow">
-                        <span class="material-icons text-4xl text-blue-700 mb-4 block">public</span>
-                        <div class="text-3xl font-black text-gray-900 mb-2">68</div>
-                        <div class="text-xs font-bold text-gray-600 uppercase tracking-widest">Centros Empresariales</div>
-                        <p class="text-xs text-gray-400 mt-4">Presencia nacional en México</p>
+                <!-- Sponsors Carousel -->
+                <div class="sponsors-wrapper" style="width: 100%; overflow: hidden; background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-radius: 4px; padding: 24px 0; border: 1px solid var(--color-outline-variant); margin-bottom: 64px;">
+                    <div id="sponsorsCarousel" class="sponsors-carousel" style="display: flex; width: 100%; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 24px; padding: 0 24px;">
+                        <!-- Sponsor items will be generated dynamically here -->
                     </div>
                 </div>
-
-                <div class="mt-12 text-center">
-                    <button class="bg-blue-700 text-white px-10 py-4 rounded-lg font-black hover:bg-blue-800 transition-colors active:scale-95">
-                        Consultar Reporte Completo
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-            <div class="bg-blue-700 rounded-xl p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="max-w-xl text-center md:text-left">
-                    <h2 class="text-3xl font-black mb-4">Sé parte de la red empresarial más grande de México</h2>
-                    <p class="text-blue-100 text-lg">Accede a beneficios exclusivos, capacitación de alto nivel y representación ante los organismos más importantes.</p>
-                </div>
-                <button class="bg-white text-blue-700 px-10 py-4 rounded-lg font-black whitespace-nowrap hover:bg-gray-100 transition-colors">
-                    QUIERO AFILIARME
-                </button>
-            </div>
-        </section>
-
-        <!-- Sponsors Carousel Section -->
-        <section class="bg-white border-t border-gray-100 py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-                <h3 class="text-center text-gray-400 font-bold text-sm uppercase tracking-widest">Nuestros Aliados Estratégicos</h3>
-            </div>
-            
-            <div class="sponsors-wrapper overflow-hidden">
-                <div class="sponsors-carousel flex" id="sponsorsCarousel">
-                    <!-- Sponsor 1 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">corporate_fare</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 1</span>
-                        </div>
-                    </div>
-                    <!-- Sponsor 2 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">domain</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 2</span>
-                        </div>
-                    </div>
-                    <!-- Sponsor 3 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">apartment</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 3</span>
-                        </div>
-                    </div>
-                    <!-- Sponsor 4 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">location_city</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 4</span>
-                        </div>
-                    </div>
-                    <!-- Sponsor 5 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">factory</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 5</span>
-                        </div>
-                    </div>
-                    <!-- Sponsor 6 -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">account_balance</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 6</span>
-                        </div>
-                    </div>
-
-                    <!-- Duplicates for infinite scroll -->
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">corporate_fare</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 1</span>
-                        </div>
-                    </div>
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">domain</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 2</span>
-                        </div>
-                    </div>
-                    <div class="sponsor-item flex-shrink-0 w-48 h-24 flex items-center justify-center border border-gray-200 rounded-lg mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <div class="text-center">
-                            <span class="material-icons text-5xl text-gray-400 block">apartment</span>
-                            <span class="text-xs font-bold text-gray-600">Empresa 3</span>
-                        </div>
-                    </div>
+                
+                <div style="text-align: center;">
+                    <a href="socios.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--color-primary); color: white; font-weight: 700; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-size: 14px; transition: all 0.3s ease;">
+                        Ver todos nuestros socios
+                        <span class="material-icons" style="font-size: 18px;">arrow_forward</span>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer style="background-color: var(--color-surface-container-low); border-top: 1px solid var(--color-outline-variant);">
+        <div class="max-w-7xl" style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 32px;">
                 <!-- Left Section -->
-                <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                    <div class="text-xl font-black text-gray-900 mb-3">COPARMEX</div>
-                    <p class="text-gray-500 text-xs uppercase tracking-widest max-w-sm">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                    <div style="font-size: 20px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-on-surface); margin-bottom: 12px;">COPARMEX</div>
+                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-on-surface-variant); max-width: 300px;">
                         © 2026 Confederación Patronal de la República Mexicana. Todos los derechos reservados.
                     </p>
                 </div>
 
                 <!-- Center Navigation -->
-                <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs uppercase tracking-widest">
-                    <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Aviso de Privacidad</a>
-                    <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Contacto</a>
-                    <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Directorio</a>
-                    <a href="#" class="text-gray-500 hover:text-blue-700 transition-colors underline underline-offset-4">Prensa</a>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;">
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: underline; text-decoration-offset: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Aviso de Privacidad</a>
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: underline; text-decoration-offset: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Contacto</a>
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: underline; text-decoration-offset: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Directorio</a>
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: underline; text-decoration-offset: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Prensa</a>
                 </div>
 
                 <!-- Social Icons -->
-                <div class="flex gap-6">
-                    <a href="#" class="text-gray-400 hover:text-blue-700 transition-colors" aria-label="Compartir">
+                <div style="display: flex; gap: 24px;">
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: none;" aria-label="Compartir">
                         <span class="material-icons">share</span>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-blue-700 transition-colors" aria-label="Email">
+                    <a href="#" style="color: var(--color-on-surface-variant); text-decoration: none;" aria-label="Email">
                         <span class="material-icons">mail</span>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-blue-700 transition-colors" aria-label="Link">
-                        <span class="material-icons">link</span>
-                    </a>
+                    
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <!-- Cargar config.json globalmente -->
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+
+    <script src="js/script.js"></script>
+    
+    <!-- Legacy code (being replaced by script.js MobileMenu class) -->
     <script>
-        let CONFIG = {};
-        // Cargar config.json
-        const loadConfig = async () => {
-            try {
-                const response = await fetch('./config.json');
-                CONFIG = await response.json();
-                console.log('✓ CONFIG cargada correctamente');
-                // Disparar evento personalizado para que otros scripts sepan que CONFIG está listo
-                window.dispatchEvent(new Event('configLoaded'));
-            } catch (error) {
-                console.error('❌ Error cargando config.json:', error);
-                // Valores por defecto si falla
-                CONFIG = {
-                    carousel: { autoPlayDelay: 5000, transitionDuration: 1000 }
-                };
+        // Responsive nav
+        function handleResize() {
+            const mdNav = document.querySelector('nav.md-nav');
+            const mdSearch = document.querySelector('button.md-search');
+            const mobileBtn = document.getElementById('menu-toggle');
+            if (window.innerWidth >= 768) {
+                if (mdNav) mdNav.style.display = 'flex';
+                if (mdSearch) mdSearch.style.display = 'block';
+                if (mobileBtn) mobileBtn.style.display = 'none';
+                document.getElementById('mobile-menu').style.display = 'none';
+            } else {
+                if (mdNav) mdNav.style.display = 'none';
+                if (mdSearch) mdSearch.style.display = 'none';
+                if (mobileBtn) mobileBtn.style.display = 'block';
             }
-        };
-        loadConfig();
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        /* ===================================
+           HERO CAROUSEL - VERSIÓN SIMPLE
+           =================================== */
+        class SimpleHeroCarousel {
+            constructor() {
+                this.currentIndex = 0;
+                this.slides = document.querySelectorAll('.carousel-slide');
+                this.indicators = document.querySelectorAll('.carousel-indicator');
+                this.autoPlayInterval = null;
+                
+                if (this.slides.length === 0) {
+                    console.warn('⚠️ No carousel slides found');
+                    return;
+                }
+
+                this.init();
+                console.log('✅ Carousel inicializado con', this.slides.length, 'slides');
+            }
+
+            init() {
+                // Mostrar primer slide
+                this.showSlide(0);
+
+                // Botones
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        this.prevSlide();
+                    });
+                    prevBtn.addEventListener('mouseenter', () => this.stopAutoPlay());
+                    prevBtn.addEventListener('mouseleave', () => this.startAutoPlay());
+                }
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        this.nextSlide();
+                    });
+                    nextBtn.addEventListener('mouseenter', () => this.stopAutoPlay());
+                    nextBtn.addEventListener('mouseleave', () => this.startAutoPlay());
+                }
+
+                // Indicadores
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        this.showSlide(index);
+                        this.resetAutoPlay();
+                    });
+                });
+
+                // Auto-play
+                this.startAutoPlay();
+
+                // Pausar en hover
+                const hero = document.getElementById('hero');
+                if (hero) {
+                    hero.addEventListener('mouseenter', () => this.stopAutoPlay());
+                    hero.addEventListener('mouseleave', () => this.startAutoPlay());
+                }
+            }
+
+            showSlide(index) {
+                // Validar índice
+                if (index < 0) {
+                    this.currentIndex = this.slides.length - 1;
+                } else if (index >= this.slides.length) {
+                    this.currentIndex = 0;
+                } else {
+                    this.currentIndex = index;
+                }
+
+                // Remover active de todos
+                this.slides.forEach(slide => {
+                    slide.style.opacity = '0';
+                    slide.classList.remove('active');
+                });
+                this.indicators.forEach(ind => ind.classList.remove('active'));
+
+                // Añadir active al actual
+                this.slides[this.currentIndex].style.opacity = '1';
+                this.slides[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].style.width = '48px';
+                this.indicators[this.currentIndex].style.backgroundColor = 'white';
+
+                // Resetear otros indicadores
+                this.indicators.forEach((ind, idx) => {
+                    if (idx !== this.currentIndex) {
+                        ind.style.width = '12px';
+                        ind.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+                    }
+                });
+
+                console.log('📍 Slide:', this.currentIndex + 1);
+            }
+
+            nextSlide() {
+                this.showSlide(this.currentIndex + 1);
+                this.resetAutoPlay();
+            }
+
+            prevSlide() {
+                this.showSlide(this.currentIndex - 1);
+                this.resetAutoPlay();
+            }
+
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 5000);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                }
+            }
+
+            resetAutoPlay() {
+                this.stopAutoPlay();
+                this.startAutoPlay();
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            new SimpleHeroCarousel();
+        });
+
+        // O si ya está listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new SimpleHeroCarousel();
+            });
+        } else {
+            new SimpleHeroCarousel();
+        }
     </script>
     
     <script src="js/script.js"></script>

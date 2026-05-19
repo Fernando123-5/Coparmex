@@ -3,37 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agenda - COPARMEX - Confederación Patronal de la República Mexicana">
+    <meta name="description" content="Agenda de Eventos - COPARMEX">
     <meta name="theme-color" content="#0066ff">
-    <title>Agenda - COPARMEX</title>
+    <title>Agenda de Eventos - COPARMEX</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 16px; }
+        .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 32px; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+        
+        :root { --primary: #0066ff; --primary-dark: #0052cc; --bg-light: #f7f9fb; --border: #e5e7eb; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; }
+        .calendar-day { aspect-ratio: 1; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; min-height: 80px; }
+        .calendar-day:hover { background-color: var(--bg-light); border-color: var(--primary); }
+        .calendar-day.other-month { color: #d1d5db; background-color: #f9fafb; }
+        .calendar-day.today { background-color: var(--primary); color: white; font-weight: 700; }
+        .calendar-day.has-events::after { content: ''; display: block; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 0.25rem; }
+        .calendar-day.today.has-events::after { background: white; }
+        .event-list { display: flex; flex-direction: column; gap: 1rem; }
+        .event-item { display: grid; grid-template-columns: 120px 1fr auto; gap: 1.5rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; transition: all 0.3s; cursor: pointer; align-items: start; }
+        .event-item:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1); transform: translateY(-2px); }
+        .event-item.featured { border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.02) 100%); }
+        .event-date-box { background: var(--bg-light); border-radius: 0.5rem; padding: 0.75rem; text-align: center; border: 1px solid var(--border); min-width: 100px; }
+        .event-date-box .month { font-size: 0.75rem; font-weight: 700; color: #6b7280; text-transform: uppercase; }
+        .event-date-box .day { font-size: 1.75rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .event-date-box .year { font-size: 0.75rem; color: #9ca3af; }
+        .event-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem; }
+        .event-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .event-badge.featured { background: var(--primary); color: white; }
+        .filter-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 0.5rem; background: white; cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; white-space: nowrap; }
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .view-toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; }
+        .view-toggle button { padding: 0.5rem 1rem; background: white; border: none; cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
+        .view-toggle button.active { background: var(--primary); color: white; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 50; align-items: center; justify-content: center; padding: 1rem; animation: fadeIn 0.3s ease; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 1rem; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); animation: slideUp 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { position: relative; height: 200px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 1rem 1rem 0 0; display: flex; align-items: flex-end; padding: 2rem; color: white; }
+        .modal-header h2 { position: relative; font-size: 1.75rem; font-weight: 700; margin: 0; }
+        .modal-body { padding: 2rem; }
+        .modal-section { margin-bottom: 1.5rem; }
+        .modal-section h3 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; color: #6b7280; margin-bottom: 0.5rem; }
+        .modal-section p { color: #374151; line-height: 1.6; }
+        .modal-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 0.5rem; margin: 1rem 0; }
+        .modal-info-item { text-align: center; }
+        .modal-info-item .label { font-size: 0.75rem; font-weight: 600; color: #6b7280; text-transform: uppercase; margin-bottom: 0.25rem; }
+        .modal-info-item .value { font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .modal-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+        .modal-actions button { padding: 0.75rem 1rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.875rem; }
+        .modal-actions .primary { background: var(--primary); color: white; }
+        .modal-actions .primary:hover { background: var(--primary-dark); }
+        .modal-actions .secondary { border: 1px solid var(--border); background: white; color: #374151; }
+        .modal-actions .secondary:hover { background: var(--bg-light); }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.2); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+        .close-btn:hover { background: rgba(255, 255, 255, 0.3); }
+        .empty-state { text-align: center; padding: 3rem 1rem; color: #6b7280; }
+        .empty-state span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+        @media (max-width: 768px) {
+            .calendar-grid { gap: 0.25rem; }
+            .calendar-day { min-height: 60px; padding: 0.25rem; font-size: 0.75rem; }
+            .event-item { grid-template-columns: 1fr; gap: 1rem; }
+            .event-date-box { order: -1; width: 100%; }
+            .modal-info-grid { grid-template-columns: repeat(2, 1fr); }
+            .modal-actions { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
     
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+    <header class="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="index.html">
                         <img src="assets/images/iconnav.png" alt="COPARMEX Logo" class="h-12 w-auto">
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Nosotros</a>
                     <a href="agenda.html" class="text-blue-700 font-bold border-b-2 border-blue-700 pb-1 text-sm">Agenda</a>
@@ -43,7 +121,6 @@
                     <a href="transparencia.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Transparencia</a>
                 </nav>
 
-                <!-- Right Actions -->
                 <div class="flex items-center space-x-4">
                     <button class="hidden md:inline-flex text-gray-600 hover:text-blue-700 transition-colors" aria-label="Buscar">
                         <span class="material-icons">search</span>
@@ -51,14 +128,13 @@
                     <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
                         Afíliate
                     </button>
-                    <button id="menu-toggle" class="md:hidden text-gray-600">
+                    <button id="menu-toggle" style="display: block; background: none; border: none; color: #4b5563; cursor: pointer;">
                         <span class="material-icons">menu</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+            <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 0; padding: 12px 0; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0;" class="pb-4 space-y-2">
                 <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
                 <a href="agenda.html" class="block text-blue-700 font-bold py-2">Agenda</a>
                 <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
@@ -71,12 +147,193 @@
 
     <main>
         <!-- Page Header -->
-        <section class="bg-blue-700 text-white py-16 md:py-20">
+        <section class="bg-gradient-to-r from-blue-700 to-blue-800 text-white py-12 md:py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl md:text-5xl font-black mb-4">Agenda de Eventos</h1>
-                <p class="text-blue-100 text-lg">Conoce los próximos eventos y actividades que COPARMEX tiene preparados para ti.</p>
+                <h1 class="text-3xl md:text-4xl font-black mb-2">Agenda de Eventos</h1>
+                <p class="text-blue-100">Explora nuestros próximos eventos y mantente conectado con la comunidad empresarial.</p>
             </div>
         </section>
 
-        <!-- Agenda Events -->
-     
+        <!-- Agenda Container -->
+        <section class="bg-white py-8 md:py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Controls -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">Próximos Eventos</h2>
+                        <p class="text-gray-600 text-sm">Total: <span id="eventCount">5</span> eventos</p>
+                    </div>
+                    <div class="view-toggle">
+                        <button id="viewCalendar" class="active">
+                            <span class="material-icons" style="font-size: 1.25rem; vertical-align: middle;">calendar_month</span>
+                            <span class="hidden sm:inline">Calendario</span>
+                        </button>
+                        <button id="viewList">
+                            <span class="material-icons" style="font-size: 1.25rem; vertical-align: middle;">list</span>
+                            <span class="hidden sm:inline">Lista</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="font-semibold mb-3 text-sm">Filtros</h3>
+                    
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-600 mb-2 uppercase">Período</p>
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all">Todos</button>
+                            <button class="filter-btn" data-filter="today">Hoy</button>
+                            <button class="filter-btn" data-filter="week">Esta Semana</button>
+                            <button class="filter-btn" data-filter="month">Este Mes</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-semibold text-gray-600 mb-2 uppercase">Categoría</p>
+                        <div class="filter-group" id="categoryFilters">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar View -->
+                <div id="calendarView" class="mb-8">
+                    <div class="mb-4 flex justify-between items-center">
+                        <h3 id="monthYear" class="text-lg font-bold"></h3>
+                        <div class="space-x-2">
+                            <button id="prevMonth" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">←</button>
+                            <button id="nextMonth" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">→</button>
+                        </div>
+                    </div>
+
+                    <!-- Weekdays Header -->
+                    <div class="grid grid-cols-7 gap-0.5 mb-2">
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Dom</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Lun</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Mar</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Mié</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Jue</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Vie</div>
+                        <div class="text-center font-semibold text-xs p-2 text-gray-600">Sáb</div>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Generado dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- List View -->
+                <div id="listView" class="hidden event-list" id="eventList">
+                    <!-- Generado dinámicamente -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="hidden empty-state">
+                    <span>📅</span>
+                    <h3 class="font-semibold mb-1">No hay eventos</h3>
+                    <p>Intenta cambiar los filtros</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal()">✕</button>
+                <h2 id="modalTitle">Evento</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Detalles</h3>
+                    <div class="modal-info-grid">
+                        <div class="modal-info-item">
+                            <div class="label">Fecha</div>
+                            <div class="value" id="modalDate">--</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="label">Hora</div>
+                            <div class="value" id="modalTime">--</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="label">Categoría</div>
+                            <div class="value" id="modalCategory">--</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="label">Precio</div>
+                            <div class="value" id="modalPrice">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Ubicación</h3>
+                    <p id="modalLocation">--</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Descripción</h3>
+                    <p id="modalDescription">--</p>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="primary" onclick="addToCalendar()">
+                        <span class="material-icons" style="font-size: 1rem;">add_to_calendar</span>
+                        Agregar Calendario
+                    </button>
+                    <button class="secondary" id="googleMapsBtn" onclick="openGoogleMaps()">
+                        <span class="material-icons" style="font-size: 1rem;">location_on</span>
+                        Ver en Mapa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">COPARMEX</h3>
+                    <p class="text-gray-600 text-sm">Confederación Patronal de la República Mexicana.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Plataforma</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Dashboard</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Eventos</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Agenda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Empresa</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Acerca de</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Privacidad</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+                <p>&copy; 2024 COPARMEX. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/agenda.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

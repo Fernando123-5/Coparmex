@@ -19,8 +19,35 @@
     
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 16px; }
+        .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 32px; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
     
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
@@ -51,14 +78,14 @@
                     <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
                         Afíliate
                     </button>
-                    <button id="menu-toggle" class="md:hidden text-gray-600">
+                    <button id="menu-toggle" style="display: block; background: none; border: none; color: #4b5563; cursor: pointer;">
                         <span class="material-icons">menu</span>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+            <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 0; padding: 12px 0; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0;" class="pb-4 space-y-2">
                 <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
                 <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
                 <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
@@ -71,9 +98,356 @@
 
     <main>
         <!-- Page Header -->
-        <section class="bg-blue-700 text-white py-16 md:py-20">
+        <section class="bg-gradient-to-r from-blue-700 to-blue-800 text-white py-16 md:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl md:text-5xl font-black mb-4">Eventos COPARMEX</h1>
-                <p class="text-blue-100 text-lg">Espacios de encuentro, aprendizaje y networking para empresarios.</p>
+                <h1 class="text-4xl md:text-5xl font-black mb-4">Próximos Eventos</h1>
+                <p class="text-blue-100 text-lg">Conecta con líderes empresariales y potencia tu red profesional a través de nuestros eventos corporativos y workshops estratégicos.</p>
             </div>
         </section>
+
+        <!-- Filters Section -->
+        <section class="bg-white border-b border-gray-100 sticky top-20 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <!-- Search Bar -->
+                    <div class="flex-1 relative w-full">
+                        <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+                        <input 
+                            type="text" 
+                            placeholder="Busca por título, palabra clave o ponente..." 
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                        />
+                    </div>
+                    <!-- Filter Buttons -->
+                    <div class="flex gap-2 flex-wrap">
+                        <button class="bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors flex items-center gap-2">
+                            <span class="material-icons text-lg">filter_list</span>
+                            Categorías
+                        </button>
+                        <button class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
+                            Este Mes
+                        </button>
+                        <button class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-1">
+                            <span class="material-icons text-lg">videocam</span>
+                            Virtual
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Grid -->
+        <section class="bg-white py-12 md:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    
+                    <!-- Event Card 1 -->
+                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <div class="relative h-56 overflow-hidden">
+                            <img 
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uhIpnSnwYMhH58H-EDBv_8JVgwCXLXptalguCWXI-NxSxSm0gPSf3J6pQcV29zBWDAqt2MoinpoFRdr-itNXk0lokcnuAOixPoOwg6UWJauNatjaOmR9kQ9zzlgurJHNQd8Hb7pDxdrbN6iaShDW_6A66p1vSGasuRQqFjj02jrKij3aTh5F8yUXn2oK2Nl41HDs2Me2ubkoL21y_TIctCXul4p7w7IvAfWLnh_HExWL3dhkp2uzMzNJTtQHgb7IGns9lcTAuWb7g" 
+                                alt="Cumbre de Liderazgo Anual 2024" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                                <span class="text-blue-700 font-bold text-sm">24 OCT</span>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-blue-700 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Destacado</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Crecimiento Estratégico</span>
+                                <span class="text-gray-500 text-xs flex items-center gap-1">
+                                    <span class="material-icons text-sm">location_on</span>
+                                    Ciudad de México
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Cumbre Anual de Liderazgo 2024</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Únete a los principales CEOs de México para explorar a fondo el futuro del comercio transfronterizo.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex -space-x-2">
+                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-br from-gray-300 to-gray-400"></div>
+                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-blue-700 text-xs text-white flex items-center justify-center font-bold">+12</div>
+                                </div>
+                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Cumbre Anual de Liderazgo 2024" data-date="24 de Octubre, 2024" data-location="Ciudad de México" data-mode="Presencial" data-icon="event_note" data-category="Crecimiento Estratégico" data-price="$1,200 MXN" data-capacity="300 personas" data-duration="1 día" data-availability="50 Lugares Disponibles">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2 -->
+                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-gray-300">corporate_fare</span>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                                <span class="text-blue-700 font-bold text-sm">02 NOV</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-green-100 text-green-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Networking</span>
+                                <span class="text-gray-500 text-xs flex items-center gap-1">
+                                    <span class="material-icons text-sm">videocam</span>
+                                    Virtual
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Innovación en Cadena de Suministro</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Explorando la integración de IA en logística regional y centros de manufactura en el corredor norte.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="text-blue-700 font-bold text-sm">Gratis para Miembros</div>
+                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Innovación en Cadena de Suministro" data-date="02 de Noviembre, 2024" data-location="Virtual" data-mode="En Línea" data-icon="corporate_fare" data-category="Networking" data-price="Gratis para Miembros" data-capacity="Ilimitada" data-duration="2 horas" data-availability="Registro Abierto">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3 -->
+                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-gray-300">school</span>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                                <span class="text-blue-700 font-bold text-sm">15 NOV</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-orange-100 text-orange-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Legal y Fiscal</span>
+                                <span class="text-gray-500 text-xs flex items-center gap-1">
+                                    <span class="material-icons text-sm">location_on</span>
+                                    Guadalajara
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Taller de Política Fiscal 2025</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Sesión técnica para CFOs sobre cambios regulatorios y estrategias de optimización fiscal.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="text-gray-500 text-sm font-medium">45 Lugares Disponibles</div>
+                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Taller de Política Fiscal 2025" data-date="15 de Noviembre, 2024" data-location="Guadalajara" data-mode="Presencial" data-icon="school" data-category="Legal y Fiscal" data-price="$800 MXN" data-capacity="80 personas" data-duration="1 día" data-availability="45 Lugares Disponibles">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 4 -->
+                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-gray-300">handshake</span>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                                <span class="text-blue-700 font-bold text-sm">05 DIC</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-purple-100 text-purple-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Expo B2B</span>
+                                <span class="text-gray-500 text-xs flex items-center gap-1">
+                                    <span class="material-icons text-sm">location_on</span>
+                                    Monterrey
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Expo de Negocios: Norte</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Conectando proveedores locales con corporaciones multinacionales a través de nuestra plataforma de matchmaking.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="text-blue-700 font-bold text-sm">$450 MXN</div>
+                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Expo de Negocios: Norte" data-date="05 de Diciembre, 2024" data-location="Monterrey" data-mode="Presencial" data-icon="handshake" data-category="Expo B2B" data-price="$450 MXN" data-capacity="500 personas" data-duration="2 días" data-availability="200 Lugares Disponibles">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 5 -->
+                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-gray-300">trending_up</span>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                                <span class="text-blue-700 font-bold text-sm">18 DIC</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Conferencia</span>
+                                <span class="text-gray-500 text-xs flex items-center gap-1">
+                                    <span class="material-icons text-sm">location_on</span>
+                                    Híbrido
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Tendencias Económicas 2025</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Análisis de expertos sobre el panorama económico mexicano y oportunidades de inversión.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="text-gray-500 text-sm font-medium">120 Asistentes</div>
+                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Tendencias Económicas 2025" data-date="18 de Diciembre, 2024" data-location="Híbrido (Ciudad de México)" data-mode="Híbrido" data-icon="trending_up" data-category="Conferencia" data-price="Gratis" data-capacity="250 personas" data-duration="3 horas" data-availability="Registro Abierto">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proposal Card -->
+                    <div class="events-card bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-dashed border-blue-300 rounded-xl overflow-hidden flex flex-col items-center justify-center p-8 text-center hover:shadow-lg transition-all duration-300 group">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+                            <span class="material-icons text-3xl text-blue-700">lightbulb</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">¿Proponer un Evento?</h4>
+                        <p class="text-gray-600 text-sm mb-6 max-w-[200px]">Comparte tu idea para un taller o evento en nuestro próximo encuentro regional.</p>
+                        <button class="text-blue-700 font-bold text-sm hover:underline flex items-center gap-1">
+                            Enviar Propuesta
+                            <span class="material-icons text-lg">arrow_forward</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Event Details Modal -->
+    <div id="eventModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8">
+            <!-- Modal Header -->
+            <div class="relative h-64 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
+                <button id="closeModal" class="absolute top-4 right-4 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white rounded-full p-2 transition-all z-10">
+                    <span class="material-icons">close</span>
+                </button>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span id="modalIcon" class="material-icons text-7xl text-white/80">event</span>
+                </div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-8">
+                <!-- Event Title -->
+                <h2 id="modalTitle" class="text-3xl font-bold text-gray-900 mb-2">Título del Evento</h2>
+
+                <!-- Event Meta -->
+                <div class="flex flex-wrap gap-4 mb-6 pb-6 border-b border-gray-200">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <span class="material-icons">calendar_today</span>
+                        <span id="modalDate">Fecha</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <span class="material-icons">location_on</span>
+                        <span id="modalLocation">Ubicación</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <span class="material-icons" id="modalModeIcon">location_on</span>
+                        <span id="modalMode">Presencial</span>
+                    </div>
+                </div>
+
+                <!-- Event Category & Info -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span id="modalCategory" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold uppercase">Categoría</span>
+                        <span id="modalAvailability" class="text-gray-600 text-sm">Disponibilidad</span>
+                    </div>
+                </div>
+
+                <!-- Event Description -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Descripción</h3>
+                    <p id="modalDescription" class="text-gray-600 leading-relaxed">Descripción del evento...</p>
+                </div>
+
+                <!-- Event Details Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 p-6 bg-gray-50 rounded-xl">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Duración</p>
+                        <p id="modalDuration" class="text-gray-900 font-semibold">2 horas</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Capacidad</p>
+                        <p id="modalCapacity" class="text-gray-900 font-semibold">150 personas</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Precio</p>
+                        <p id="modalPrice" class="text-gray-900 font-semibold">Gratis</p>
+                    </div>
+                </div>
+
+                <!-- What to Expect -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">¿Qué Esperar?</h3>
+                    <ul id="modalExpectations" class="space-y-2 text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="material-icons text-blue-700 text-lg mt-0.5">check_circle</span>
+                            <span>Networking con profesionales del sector</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-4 flex-col sm:flex-row">
+                    <button class="flex-1 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
+                        <span class="material-icons">check_circle</span>
+                        Registrarse Ahora
+                    </button>
+                    <button id="closeModalBtn" class="flex-1 bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2">
+                        <span class="material-icons">close</span>
+                        Cerrar
+                    </button>
+                </div>
+
+                <!-- Note -->
+                <p class="text-center text-gray-500 text-sm mt-6">* Para completar tu registro, serás redirigido a tu panel de usuario</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">COPARMEX</h3>
+                    <p class="text-gray-600 text-sm">Confederación Patronal de la República Mexicana, conectando empresarios desde 1929.</p>
+                </div>
+                <!-- Products -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Plataforma</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Dashboard</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Eventos</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Networking</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Recursos</a></li>
+                    </ul>
+                </div>
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Empresa</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Acerca de</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Contacto</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Empleos</a></li>
+                    </ul>
+                </div>
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-sm">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Privacidad</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Términos</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Cookies</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-700 transition-colors">Transparencia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+                <p>&copy; 2024 COPARMEX. Todos los derechos reservados.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-blue-700 transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-blue-700 transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-blue-700 transition-colors">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
