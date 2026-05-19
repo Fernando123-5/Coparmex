@@ -14,55 +14,41 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
     
-    <!-- Header -->
-    <header>
-        <div class="max-w-7xl" style="height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; margin: 0 auto;">
-            <!-- Logo -->
-            <div>
-                <a href="index.html">
-                    <img src="assets/images/iconnav.png" alt="COPARMEX Logo" style="height: 48px; width: auto;">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav style="display: none; gap: 32px; align-items: center;" class="md-nav">
-                <a href="index.html" style="color: var(--color-primary); font-weight: 600; border-bottom: 2px solid var(--color-primary); padding-bottom: 8px; font-size: 14px;">Nosotros</a>
-                <a href="agenda.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Agenda</a>
-                <a href="socios.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Socios</a>
-                <a href="eventos.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Eventos</a>
-                <a href="data.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Data COPARMEX</a>
-                <a href="transparencia.html" style="color: var(--color-on-surface-variant); font-weight: 500; padding-bottom: 8px; font-size: 14px;">Transparencia</a>
-            </nav>
-
-            <!-- Right Actions -->
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <button style="display: none; background: none; border: none; color: var(--color-on-surface-variant); cursor: pointer;" aria-label="Buscar" class="md-search">
-                    <span class="material-icons">search</span>
-                </button>
-                <button style="background-color: var(--color-primary); color: white; padding: 12px 24px; border-radius: 4px; font-weight: 600; font-size: 14px; border: none; cursor: pointer;">
-                    Afíliate
-                </button>
-                <button id="menu-toggle" style="display: block; background: none; border: none; color: var(--color-on-surface-variant); cursor: pointer;">
-                    <span class="material-icons">menu</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 8px; padding-bottom: 16px; background-color: var(--color-surface-container-lowest);">
-            <a href="index.html" style="color: var(--color-primary); font-weight: 600; padding: 8px 24px; font-size: 14px;">Nosotros</a>
-            <a href="agenda.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Agenda</a>
-            <a href="socios.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Socios</a>
-            <a href="eventos.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Eventos</a>
-            <a href="data.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Data COPARMEX</a>
-            <a href="transparencia.html" style="color: var(--color-on-surface-variant); padding: 8px 24px; font-size: 14px;">Transparencia</a>
-        </nav>
-    </header>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 16px; }
+        .flex.justify-center { display: flex; justify-content: center; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 16px !important; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+    </style>
+</head>
+<body class="bg-white text-gray-900" style="font-family: 'Public Sans', sans-serif;">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    <script src="js/navbar-loader.js"></script>
 
     <main>
         <!-- Hero Carousel Section -->
@@ -263,30 +249,8 @@
 
     <script src="js/script.js"></script>
     
-    <!-- Legacy code (being replaced by script.js MobileMenu class) -->
+    <!-- Carousel Script -->
     <script>
-        // Responsive nav
-        function handleResize() {
-            const mdNav = document.querySelector('nav.md-nav');
-            const mdSearch = document.querySelector('button.md-search');
-            const mobileBtn = document.getElementById('menu-toggle');
-            if (window.innerWidth >= 768) {
-                if (mdNav) mdNav.style.display = 'flex';
-                if (mdSearch) mdSearch.style.display = 'block';
-                if (mobileBtn) mobileBtn.style.display = 'none';
-                document.getElementById('mobile-menu').style.display = 'none';
-            } else {
-                if (mdNav) mdNav.style.display = 'none';
-                if (mdSearch) mdSearch.style.display = 'none';
-                if (mobileBtn) mobileBtn.style.display = 'block';
-            }
-        }
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        /* ===================================
-           HERO CAROUSEL - VERSIÓN SIMPLE
-           =================================== */
         class SimpleHeroCarousel {
             constructor() {
                 this.currentIndex = 0;

@@ -25,10 +25,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Public Sans', sans-serif; }
         header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
-        header .max-w-7xl { max-width: 100%; padding: 0 16px; }
+        header .max-w-7xl { max-width: 100%; padding: 0 24px; }
         .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         nav.hidden { display: none !important; }
-        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 32px; align-items: center; } }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 16px !important; align-items: center; } }
         nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
         nav a:hover { color: #1e40af; }
         nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
@@ -49,52 +49,8 @@
     <!-- Cargar configuración primero -->
     <script src="js/config-loader.js"></script>
     
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="index.html">
-                        <img src="assets/images/iconnav.png" alt="COPARMEX Logo" class="h-12 w-auto">
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Nosotros</a>
-                    <a href="agenda.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Agenda</a>
-                    <a href="socios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Socios</a>
-                    <a href="eventos.html" class="text-blue-700 font-bold border-b-2 border-blue-700 pb-1 text-sm">Eventos</a>
-                    <a href="data.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Data COPARMEX</a>
-                    <a href="transparencia.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors">Transparencia</a>
-                </nav>
-
-                <!-- Right Actions -->
-                <div class="flex items-center space-x-4">
-                    <button class="hidden md:inline-flex text-gray-600 hover:text-blue-700 transition-colors" aria-label="Buscar">
-                        <span class="material-icons">search</span>
-                    </button>
-                    <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold text-sm hover:bg-blue-800 transition-colors active:scale-95">
-                        Afíliate
-                    </button>
-                    <button id="menu-toggle" style="display: block; background: none; border: none; color: #4b5563; cursor: pointer;">
-                        <span class="material-icons">menu</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <nav id="mobile-menu" style="display: none; flex-direction: column; gap: 0; padding: 12px 0; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0;" class="pb-4 space-y-2">
-                <a href="index.html" class="block text-gray-600 hover:text-blue-700 py-2">Nosotros</a>
-                <a href="agenda.html" class="block text-gray-600 hover:text-blue-700 py-2">Agenda</a>
-                <a href="socios.html" class="block text-gray-600 hover:text-blue-700 py-2">Socios</a>
-                <a href="eventos.html" class="block text-blue-700 font-bold py-2">Eventos</a>
-                <a href="data.html" class="block text-gray-600 hover:text-blue-700 py-2">Data COPARMEX</a>
-                <a href="transparencia.html" class="block text-gray-600 hover:text-blue-700 py-2">Transparencia</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Cargar navbar -->
+    <script src="js/navbar-loader.js"></script>
 
     <main>
         <!-- Page Header -->
