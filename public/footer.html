@@ -1,0 +1,265 @@
+<!-- Footer Section -->
+<footer class="bg-white text-gray-900" style="font-family: Calibri, sans-serif;">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" />
+    <!-- Main Footer Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="padding: 1.5rem 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+            <!-- Desktop: Grid layout, Tablet: Stack vertically with 2-column links, Mobile: Stack vertically -->
+            <style>
+                /* Desktop - Mantener igual */
+                @media (min-width: 1024px) {
+                    .footer-grid {
+                        display: grid; 
+                        grid-template-columns: 7fr 9fr;
+                        gap: 1.5rem;
+                    }
+                    .footer-columns {
+                        grid-template-columns: 1fr 1fr 1fr !important;
+                        gap: 1.5rem !important;
+                    }
+                    .footer-left {
+                        width: 140px;
+                    }
+                    .footer-left img {
+                        width: 100%;
+                    }
+                    .footer-left p {
+                        font-size: 0.85rem !important;
+                        max-width: 220px !important;
+                    }
+                    .footer-title {
+                        font-size: 1rem !important;
+                    }
+                    .footer-link {
+                        font-size: 0.9rem !important;
+                    }
+                }
+
+                /* Tablet - 768px a 1023px */
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    .footer-grid {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 1.5rem;
+                    }
+                    .footer-columns {
+                        grid-template-columns: 1fr 1fr !important;
+                        gap: 1.2rem !important;
+                    }
+                    .footer-left {
+                        width: 120px;
+                    }
+                    .footer-left img {
+                        width: 100%;
+                    }
+                    .footer-left p {
+                        font-size: 0.8rem !important;
+                        max-width: 180px !important;
+                    }
+                    .footer-title {
+                        font-size: 0.95rem !important;
+                    }
+                    .footer-link {
+                        font-size: 0.85rem !important;
+                    }
+                    .social-icon {
+                        font-size: 0.8rem !important;
+                    }
+                }
+
+                /* Mobile - Menor a 768px */
+                @media (max-width: 767px) {
+                    .footer-grid {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 1.2rem;
+                    }
+                    .footer-columns {
+                        grid-template-columns: 1fr !important;
+                        gap: 1rem !important;
+                    }
+                    .footer-left {
+                        width: 110px;
+                    }
+                    .footer-left img {
+                        width: 100%;
+                    }
+                    .footer-left p {
+                        font-size: 0.75rem !important;
+                        max-width: 160px !important;
+                        line-height: 1.3 !important;
+                    }
+                    .footer-title {
+                        font-size: 0.9rem !important;
+                    }
+                    .footer-link {
+                        font-size: 0.8rem !important;
+                    }
+                    .footer-section {
+                        gap: 0.6rem !important;
+                    }
+                    .footer-section ul {
+                        gap: 0.4rem !important;
+                    }
+                    .social-icon {
+                        font-size: 0.8rem !important;
+                    }
+                    .social-icon i {
+                        width: 32px !important;
+                        height: 32px !important;
+                        font-size: 0.95rem !important;
+                    }
+                }
+
+                /* Estilos para iconos de redes sociales */
+                .social-icons {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.4rem;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                .social-icons li {
+                    margin: 0;
+                    padding: 0;
+                }
+                .social-icon {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 0.6rem;
+                    padding: 0.2rem 0;
+                    color: #4b5563;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    font-family: Calibri, sans-serif;
+                }
+                .social-icon i {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background-color: #e0e0e0;
+                    color: #4b5563;
+                    transition: all 0.3s ease;
+                    font-size: 1.1rem;
+                    flex-shrink: 0;
+                }
+                .social-icon:hover {
+                    color: #333;
+                }
+                .social-icon:hover i {
+                    background-color: #4b5563;
+                    color: #ffffff;
+                    transform: scale(1.1);
+                }
+
+
+            </style>
+
+            <div class="footer-grid">
+                <!-- Left Section - Logo & Description (7/16) -->
+                <div class="footer-left" style="display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;">
+                    <!-- Logo -->
+                    <div style="width: 140px; flex-shrink: 0;">
+                        <img src="assets/images/iconnav.png" alt="COPARMEX Logo" style="width: 100%; height: auto;">
+                    </div>
+                    <!-- Description -->
+                    <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.4; margin: 0; font-weight: 600; width: 100%; max-width: 220px;">
+                        Transformando el sector empresarial mexicano con profesionalismo, compromiso y visión de futuro.
+                    </p>
+                </div>
+
+                <!-- Right Section - Grid with 3 columns (9/16) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;" class="footer-columns">
+                    <!-- Quiénes Somos Column -->
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;" class="footer-section">
+                        <!-- Title -->
+                        <h3 style="font-size: 1rem; font-weight: 700; text-gray-900; margin: 0; font-family: Calibri, sans-serif;" class="footer-title">Quiénes Somos</h3>
+                        
+                        <!-- Items -->
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>
+                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                    Nuestra Misión
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                    Nuestra Visión
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                    Nuestros Valores
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Redes Sociales Column -->
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;" class="footer-section">
+                        <!-- Title -->
+                        <h3 style="font-size: 1rem; font-weight: 700; text-gray-900; margin: 0; font-family: Calibri, sans-serif;" class="footer-title">Redes Sociales</h3>
+                        
+                        <!-- Social Icons List -->
+                        <ul class="social-icons">
+                            <li>
+                                <a href="https://www.facebook.com/CoparmexTehuacanOficial/?locale=es_LA" title="Facebook" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/coparmexth" title="X" class="social-icon" aria-label="X" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-x-twitter"></i>
+                                    <span>X</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/coparmexth/" title="Instagram" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto Column -->
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;" class="footer-section">
+                        <!-- Title -->
+                        <h3 style="font-size: 1rem; font-weight: 700; text-gray-900; margin: 0; font-family: Calibri, sans-serif;" class="footer-title">Contacto</h3>
+                        
+                        <!-- Contact Icons List -->
+                        <ul class="social-icons">
+                            <li>
+                                <a href="tel:+522383833997" title="Teléfono" class="social-icon" aria-label="Teléfono">
+                                    <i class="fas fa-phone"></i>
+                                    <span>238 383 3997</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/522383833997" title="WhatsApp" class="social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/maps/search/Calle+12+Pte+404,+Jacarandas,+75730+Tehuacán,+Pue." title="Dirección" class="social-icon" aria-label="Dirección" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Calle 12 Pte 404</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

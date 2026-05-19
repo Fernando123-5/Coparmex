@@ -115,6 +115,7 @@ class SponsorsCarousel {
         this.scrollSpeed = 1.5; // píxeles por frame
         this.isHovering = false;
         this.singleSetWidth = 0; // Ancho total de un conjunto de items
+        this.totalSets = 10; // Duplicar más veces para efecto infinito perfecto
 
         this.init();
     }
@@ -128,7 +129,14 @@ class SponsorsCarousel {
         // Calcular ancho de un conjunto después de renderizar
         setTimeout(() => {
             this.calculateSingleSetWidth();
-            this.startAutoScroll();
+            // Posicionar al inicio para loop infinito
+            this.carousel.scrollLeft = 0;
+            
+            if (this.singleSetWidth > 0) {
+                this.startAutoScroll();
+            } else {
+                console.warn('⚠️ SponsorsCarousel: No se pudo calcular el ancho del conjunto');
+            }
         }, 100);
 
         // Escuchar eventos de hover
@@ -142,32 +150,44 @@ class SponsorsCarousel {
             this.startAutoScroll();
         });
 
-        console.log('✅ SponsorsCarousel inicializado con', PARTNERS_DATA.length, 'socios');
+        // Agregar soporte para mobile (touch)
+        this.wrapper.addEventListener('touchstart', () => {
+            this.isHovering = true;
+            this.stopAutoScroll();
+        });
+
+        this.wrapper.addEventListener('touchend', () => {
+            this.isHovering = false;
+            setTimeout(() => this.startAutoScroll(), 500);
+        });
+
+        console.log('✅ SponsorsCarousel inicializado con', PARTNERS_DATA.length, 'socios - Infinito');
     }
 
     renderPartners() {
         // Limpiar carousel
         this.carousel.innerHTML = '';
 
-        // Triplicar items para crear efecto infinito suave
-        // Primera copia
-        PARTNERS_DATA.forEach(partner => {
-            this.carousel.appendChild(this.createPartnerItem(partner));
-        });
-        // Segunda copia (posición inicial visible)
-        PARTNERS_DATA.forEach(partner => {
-            this.carousel.appendChild(this.createPartnerItem(partner));
-        });
-        // Tercera copia
-        PARTNERS_DATA.forEach(partner => {
-            this.carousel.appendChild(this.createPartnerItem(partner));
-        });
+        // Duplicar items múltiples veces para crear efecto infinito perfecto
+        for (let i = 0; i < this.totalSets; i++) {
+            PARTNERS_DATA.forEach(partner => {
+                this.carousel.appendChild(this.createPartnerItem(partner));
+            });
+        }
     }
 
     calculateSingleSetWidth() {
         // Calcular el ancho total de UN conjunto de items
-        const itemWidth = 180 + 24; // 180px item + 24px gap
+        const firstItem = this.carousel.querySelector('.sponsor-item');
+        if (!firstItem) {
+            console.warn('⚠️ No se encontraron items en el carrusel');
+            return;
+        }
+        
+        const itemWidth = firstItem.offsetWidth + 24; // item width + gap
         this.singleSetWidth = itemWidth * PARTNERS_DATA.length;
+        
+        console.log('📏 Ancho de conjunto calculado:', this.singleSetWidth, 'px');
     }
 
     createPartnerItem(partner) {
@@ -190,20 +210,33 @@ class SponsorsCarousel {
     }
 
     startAutoScroll() {
-        if (this.autoScrollInterval) return;
+        // Evitar múltiples intervalos activos
+        if (this.autoScrollInterval !== null) {
+            return;
+        }
+
+        // Validar que el carrusel está listo
+        if (!this.carousel || !this.singleSetWidth || this.singleSetWidth <= 0) {
+            console.warn('⚠️ SponsorsCarousel no está listo para iniciar auto-scroll');
+            return;
+        }
 
         this.autoScrollInterval = setInterval(() => {
-            if (!this.isHovering && this.carousel) {
+            if (!this.isHovering && this.carousel && this.singleSetWidth > 0) {
                 this.carousel.scrollLeft += this.scrollSpeed;
 
-                // Reinicio suave: cuando llega al segundo conjunto, vuelve al primero
-                // sin que se vea el salto
-                if (this.carousel.scrollLeft >= this.singleSetWidth * 2) {
-                    // Reinicia silenciosamente al primer conjunto
-                    this.carousel.scrollLeft = this.singleSetWidth;
+                // Reinicio infinito suave
+                // Cuando se llega a la mitad del recorrido, reiniciar sin que se note
+                const midPoint = this.singleSetWidth * (this.totalSets / 2);
+                
+                if (this.carousel.scrollLeft >= midPoint) {
+                    // Saltar sin transición a un punto similar al inicio
+                    this.carousel.scrollLeft = this.singleSetWidth * 2;
                 }
             }
         }, 30);
+
+        console.log('▶️ Auto-scroll infinito iniciado');
     }
 
     stopAutoScroll() {
