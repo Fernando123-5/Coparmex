@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comisiones - COPARMEX - Confederación Patronal de la República Mexicana">
+    <meta name="theme-color" content="#00346f">
+    <title>Comisiones - COPARMEX</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 24px; }
+        .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 16px !important; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+        
+        /* Estilos específicos para Comisiones */
+        .commission-card {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 52, 111, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .commission-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 52, 111, 0.12);
+            transform: translateY(-4px);
+        }
+        
+        .commission-photo {
+            width: 100%;
+            height: 240px;
+            background: #dde5f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .commission-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .commission-photo-placeholder {
+            font-size: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d2e63;
+        }
+        
+        .commission-content {
+            padding: 24px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .commission-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00346f;
+            margin-bottom: 4px;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        .commission-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .commission-contact {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #424751;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            background: #00346f;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            flex: 1;
+            word-break: break-word;
+        }
+        
+        .contact-text a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .contact-text a:hover {
+            color: #00346f;
+        }
+        
+        .commission-action {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .commission-action button {
+            flex: 1;
+            padding: 14px 16px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #00346f;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .commission-action button:hover {
+            background: #f5f7fb;
+            border-color: #00346f;
+        }
+        
+        .commissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 64px;
+        }
+        
+        .filter-section {
+            background: white;
+            padding: 40px 24px;
+            border-radius: 0;
+            border: none;
+            margin-bottom: 40px;
+        }
+        
+        /* HERO SECTION RESPONSIVO */
+        /* Desktop - Sin cambios */
+        section.relative.overflow-hidden.text-white {
+            /* Mantiene min-height: 500px en desktop */
+        }
+        
+        /* TABLETS (640px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 640px) {
+            section.relative.overflow-hidden.text-white {
+                min-height: 420px !important;
+                background-attachment: scroll !important;
+            }
+            
+            section.relative.overflow-hidden.text-white .relative.max-w-7xl {
+                min-height: 420px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 24px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white h1 {
+                font-size: 36px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 20px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white p {
+                font-size: 16px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white span.inline-block.bg-blue-200 {
+                font-size: 11px !important;
+                padding: 8px 14px !important;
+                margin-bottom: 16px !important;
+            }
+        }
+        
+        /* MÓVILES (hasta 640px) */
+        @media (max-width: 639px) {
+            section.relative.overflow-hidden.text-white {
+                min-height: 380px !important;
+                background-attachment: scroll !important;
+                padding: 0 !important;
+            }
+            
+            section.relative.overflow-hidden.text-white .relative.max-w-7xl {
+                min-height: 380px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 32px 16px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white h1 {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 16px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white p {
+                font-size: 15px !important;
+                line-height: 1.5;
+            }
+            
+            section.relative.overflow-hidden.text-white span.inline-block.bg-blue-200 {
+                font-size: 10px !important;
+                padding: 6px 12px !important;
+                margin-bottom: 12px !important;
+            }
+        }
+        
+        /* MÓVILES PEQUEÑOS (hasta 480px) */
+        @media (max-width: 480px) {
+            section.relative.overflow-hidden.text-white {
+                min-height: 340px !important;
+                padding: 0 !important;
+            }
+            
+            section.relative.overflow-hidden.text-white .relative.max-w-7xl {
+                min-height: 340px !important;
+                padding: 28px 14px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white h1 {
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white p {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+        @media (max-width: 360px) {
+            section.relative.overflow-hidden.text-white {
+                min-height: 320px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white .relative.max-w-7xl {
+                min-height: 320px !important;
+                padding: 24px 12px !important;
+            }
+            
+            section.relative.overflow-hidden.text-white h1 {
+                font-size: 22px !important;
+                margin-bottom: 10px !important;
+            }
+        }
+        
+        /* CTA SECTION RESPONSIVO */
+        section[style*="background: linear-gradient"] {
+            padding: 60px 24px !important;
+        }
+        
+        @media (max-width: 768px) {
+            section[style*="background: linear-gradient"] {
+                padding: 40px 16px !important;
+            }
+            
+            section[style*="background: linear-gradient"] h2 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            section[style*="background: linear-gradient"] p {
+                font-size: 16px !important;
+                margin-bottom: 24px !important;
+            }
+            
+            section[style*="background: linear-gradient"] button {
+                padding: 12px 32px !important;
+                font-size: 13px !important;
+                min-height: 44px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section[style*="background: linear-gradient"] {
+                padding: 32px 12px !important;
+            }
+            
+            section[style*="background: linear-gradient"] h2 {
+                font-size: 22px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section[style*="background: linear-gradient"] p {
+                font-size: 14px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            section[style*="background: linear-gradient"] button {
+                width: 100%;
+                padding: 10px 16px !important;
+                font-size: 12px !important;
+            }
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: flex-start;
+        }
+        
+        .filter-btn {
+            padding: 12px 24px;
+            border: none;
+            background: #00346f;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .filter-btn:hover {
+            background: #002650;
+        }
+        
+        .filter-btn.active {
+            background: #00346f;
+            color: white;
+            border-color: transparent;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* TABLETS (640px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 640px) {
+            .commissions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+        
+        /* MÓVILES Y TABLETS (hasta 1023px) */
+        @media (max-width: 1023px) {
+            .commissions-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 48px;
+            }
+            
+            .commission-card {
+                border-radius: 8px;
+            }
+            
+            .commission-photo {
+                height: 240px;
+            }
+            
+            .commission-content {
+                padding: 20px 16px;
+            }
+            
+            .commission-name {
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            
+            .commission-title {
+                font-size: 12px;
+                margin-bottom: 16px;
+            }
+            
+            .commission-contact {
+                margin-bottom: 16px;
+            }
+            
+            .contact-item {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            
+            .contact-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+            }
+            
+            .commission-action {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .commission-action button {
+                padding: 12px 14px;
+                font-size: 11px;
+                min-height: 44px;
+            }
+            
+            .filter-section {
+                padding: 32px 16px;
+                margin-bottom: 32px;
+            }
+            
+            .filter-group {
+                gap: 8px;
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                font-size: 11px;
+                padding: 9px 14px;
+                white-space: normal;
+                min-height: 40px;
+            }
+        }
+        
+        /* MÓVILES PEQUEÑOS (hasta 480px) */
+        @media (max-width: 480px) {
+            .commissions-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 32px;
+            }
+            
+            .commission-photo {
+                height: 200px;
+            }
+            
+            .commission-content {
+                padding: 16px 12px;
+            }
+            
+            .commission-name {
+                font-size: 15px;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+            
+            .commission-title {
+                font-size: 11px;
+                margin-bottom: 12px;
+            }
+            
+            .commission-contact {
+                margin-bottom: 12px;
+            }
+            
+            .contact-item {
+                font-size: 12px;
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+            
+            .contact-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                min-width: 24px;
+            }
+            
+            .contact-text {
+                font-size: 12px;
+            }
+            
+            .commission-action {
+                gap: 8px;
+            }
+            
+            .commission-action button {
+                padding: 10px 12px;
+                font-size: 10px;
+                min-height: 40px;
+                border-radius: 3px;
+            }
+            
+            .content-wrapper {
+                padding: 0 16px;
+            }
+        }
+        
+        /* TABLETS Y MÁS (640px en adelante) */
+        @media (min-width: 640px) {
+            .commissions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow: auto;
+            padding: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 0;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 52, 111, 0.2);
+            position: relative;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-left {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8faff 0%, #f0f5fc 100%);
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        .modal-left .profile-photo {
+            width: 220px;
+            height: 220px;
+            background: #dde5f4;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            font-size: 100px;
+            box-shadow: 0 8px 24px rgba(0, 52, 111, 0.12);
+        }
+        
+        .modal-left-company {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .modal-left-company h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        
+        .modal-left-company p {
+            font-size: 14px;
+            color: #424751;
+            line-height: 1.6;
+        }
+        
+        .modal-right {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .modal-header {
+            margin-bottom: 40px;
+        }
+        
+        .modal-name {
+            font-size: 32px;
+            font-weight: 800;
+            color: #00346f;
+            margin-bottom: 12px;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        .modal-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .modal-info {
+            margin-bottom: 40px;
+        }
+        
+        .modal-info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            color: #424751;
+        }
+        
+        .modal-info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .modal-info-icon {
+            width: 32px;
+            height: 32px;
+            background: #00346f;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .modal-info-text {
+            flex: 1;
+        }
+        
+        .modal-info-text a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        
+        .modal-info-text a:hover {
+            color: #00346f;
+        }
+        
+        .modal-description {
+            color: #6b7280;
+            line-height: 1.8;
+            font-size: 14px;
+            background: #f9f9fc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #6b7280;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            background: #f5f7fb;
+            border-color: #00346f;
+            color: #00346f;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 1024px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+            }
+            
+            .modal-left {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 40px 30px;
+            }
+            
+            .modal-left .profile-photo {
+                width: 180px;
+                height: 180px;
+                font-size: 80px;
+                margin-bottom: 30px;
+            }
+            
+            .modal-right {
+                padding: 40px 30px;
+            }
+            
+            .modal-name {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .modal {
+                padding: 10px;
+            }
+            
+            .modal-content {
+                grid-template-columns: 1fr;
+                border-radius: 10px;
+                max-height: 85vh;
+            }
+            
+            .modal-left {
+                padding: 28px 20px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .modal-left .profile-photo {
+                width: 140px;
+                height: 140px;
+                font-size: 65px;
+                margin-bottom: 20px;
+            }
+            
+            .modal-left-company h4 {
+                font-size: 11px;
+            }
+            
+            .modal-left-company p {
+                font-size: 13px;
+            }
+            
+            .modal-right {
+                padding: 28px 20px;
+            }
+            
+            .modal-name {
+                font-size: 22px;
+                margin-bottom: 8px;
+            }
+            
+            .modal-title {
+                font-size: 11px;
+                margin-bottom: 16px;
+                padding-bottom: 10px;
+            }
+            
+            .modal-header {
+                margin-bottom: 20px;
+            }
+            
+            .modal-info {
+                margin-bottom: 20px;
+            }
+            
+            .modal-info-item {
+                gap: 10px;
+                margin-bottom: 12px;
+                font-size: 12px;
+            }
+            
+            .modal-info-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 13px;
+            }
+            
+            .modal-description {
+                font-size: 12px;
+                padding: 14px;
+                border-left-width: 3px;
+                line-height: 1.5;
+            }
+            
+            .modal-close {
+                width: 34px;
+                height: 34px;
+                font-size: 18px;
+                right: 12px;
+                top: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-left .profile-photo {
+                width: 110px;
+                height: 110px;
+                font-size: 55px;
+                margin-bottom: 14px;
+            }
+            
+            .modal-left-company h4 {
+                font-size: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .modal-left-company p {
+                font-size: 11px;
+            }
+            
+            .modal-right {
+                padding: 20px 14px;
+            }
+            
+            .modal-name {
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+            
+            .modal-title {
+                font-size: 10px;
+                margin-bottom: 12px;
+                padding-bottom: 8px;
+            }
+            
+            .modal-header {
+                margin-bottom: 16px;
+            }
+            
+            .modal-info {
+                margin-bottom: 16px;
+            }
+            
+            .modal-info-item {
+                gap: 8px;
+                margin-bottom: 10px;
+                font-size: 11px;
+            }
+            
+            .modal-info-icon {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+            
+            .modal-description {
+                font-size: 11px;
+                padding: 10px;
+                border-left-width: 2px;
+                line-height: 1.4;
+            }
+            
+            .modal-close {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+                right: 8px;
+                top: 8px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .modal-left .profile-photo {
+                width: 90px;
+                height: 90px;
+                font-size: 45px;
+                margin-bottom: 12px;
+            }
+            
+            .modal-name {
+                font-size: 16px;
+            }
+            
+            .modal-title {
+                font-size: 9px;
+                margin-bottom: 10px;
+            }
+            
+            .modal-header {
+                margin-bottom: 14px;
+            }
+        }
+        
+        /* ACCESIBILIDAD - TOUCH FRIENDLY */
+        @media (hover: none) and (pointer: coarse) {
+            /* Móviles */
+            .commission-action button,
+            .modal-close,
+            .filter-btn,
+            button.bg-blue-700 {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .contact-item {
+                padding: 8px 0;
+            }
+            
+            .modal-info-item {
+                padding: 8px 0;
+            }
+        }
+        
+        /* SCROLL SUAVE EN MOBILE */
+        @media (max-width: 768px) {
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+        
+        /* OPTIMIZACIÓN DE ESPACIOS EN MÓVILES PEQUEÑOS */
+        @media (max-width: 360px) {
+            .commission-card {
+                border-radius: 6px;
+            }
+            
+            .commission-photo {
+                height: 180px;
+            }
+            
+            .commission-content {
+                padding: 12px 10px;
+            }
+            
+            .commission-title {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+            
+            .commission-action button {
+                padding: 8px 10px;
+                font-size: 9px;
+            }
+            
+            .contact-item {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+            
+            .contact-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    
+    <!-- Cargar navbar -->
+    <script src="js/navbar-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+
+    <main>
+        <!-- Page Header -->
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/comision.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
+                <div class="max-w-3xl">
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Liderazgo Empresarial</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Comisiones COPARMEX</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Conoce a los representantes y líderes de nuestras comisiones, encargados de guiar la estrategia y los objetivos de COPARMEX.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comisiones Grid -->
+        <section style="padding: 48px 24px; background: white;">
+            <div class="content-wrapper">
+                <div class="commissions-grid" id="commissionsGrid">
+                    <!-- Commission Card 1 -->
+                    <div class="commission-card" data-commission="legal" data-name="Carlos Mendoza" data-title="Ventas Corporativas" data-phone="+52 55 1234 5678" data-email="c.mendoza@corporativo.com" data-description="Carlos lidera el área de Ventas Corporativas con más de 15 años de experiencia en el sector empresarial. Se dedica a fortalecer las relaciones comerciales y desarrollar nuevas oportunidades de negocio para COPARMEX.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Carlos Mendoza</div>
+                            <div class="commission-title">Ventas Corporativas</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 1234 5678</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:c.mendoza@corporativo.com">c.mendoza@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Card 2 -->
+                    <div class="commission-card" data-commission="economic" data-name="Elena Rodríguez" data-title="Seguros de Vida" data-phone="+52 55 8765 4321" data-email="e.rodriguez@corporativo.com" data-description="Elena es especialista en Seguros de Vida y protección financiera. Con amplia experiencia en el sector asegurador, trabaja para garantizar soluciones integrales que protejan el patrimonio de las empresas afiliadas a COPARMEX.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Elena Rodríguez</div>
+                            <div class="commission-title">Seguros de Vida</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 8765 4321</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:e.rodriguez@corporativo.com">e.rodriguez@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Card 3 -->
+                    <div class="commission-card" data-commission="social" data-name="Ricardo Silva" data-title="Inversiones Patrimoniales" data-phone="+52 55 5566 7788" data-email="r.silva@corporativo.com" data-description="Ricardo es experto en Inversiones Patrimoniales y gestión de activos. Asesora a las empresas de COPARMEX en estrategias de inversión sostenibles y rentables para el crecimiento empresarial.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Ricardo Silva</div>
+                            <div class="commission-title">Inversiones Patrimoniales</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 5566 7788</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:r.silva@corporativo.com">r.silva@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Card 4 -->
+                    <div class="commission-card" data-commission="institutional" data-name="Sofía Valdés" data-title="Consultoría Pyme" data-phone="+52 55 9900 1122" data-email="s.valdes@corporativo.com" data-description="Sofía se especializa en Consultoría para Pequeñas y Medianas Empresas. Brinda orientación estratégica y operativa para optimizar procesos y competitividad de las PyMES afiliadas a COPARMEX.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Sofía Valdés</div>
+                            <div class="commission-title">Consultoría Pyme</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 9900 1122</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:s.valdes@corporativo.com">s.valdes@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Card 5 -->
+                    <div class="commission-card" data-commission="legal" data-name="Javier Ortiz" data-title="Gestión de Riesgos" data-phone="+52 55 3344 5566" data-email="j.ortiz@corporativo.com" data-description="Javier es especialista en Gestión de Riesgos empresariales. Trabaja en identificar, evaluar y mitigar riesgos que puedan afectar a las organizaciones miembros de COPARMEX.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Javier Ortiz</div>
+                            <div class="commission-title">Gestión de Riesgos</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 3344 5566</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:j.ortiz@corporativo.com">j.ortiz@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Card 6 -->
+                    <div class="commission-card" data-commission="economic" data-name="Andrés Ruiz" data-title="Finanzas y Tesorería" data-phone="+52 55 2211 3344" data-email="a.ruiz@corporativo.com" data-description="Andrés lidera el área de Finanzas y Tesorería con expertise en gestión financiera corporativa. Asesora a las empresas en optimización de recursos y estrategias de financiamiento.">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder">👤</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">Andrés Ruiz</div>
+                            <div class="commission-title">Finanzas y Tesorería</div>
+                            <div class="commission-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">+52 55 2211 3344</div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">✉️</div>
+                                    <div class="contact-text"><a href="mailto:a.ruiz@corporativo.com">a.ruiz@corporativo.com</a></div>
+                                </div>
+                            </div>
+                            <div class="commission-action">
+                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
+            <div class="content-wrapper" style="text-align: center;">
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; font-family: Manrope, sans-serif;">¿Necesitas contactar a una comisión?</h2>
+                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Haz clic en el botón de contacto de cada representante para comunicarte directamente o envía un mensaje a través de nuestro formulario general.</p>
+                <button style="background-color: white; color: #00346f; padding: 16px 40px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease; text-decoration: none;">
+                    Contactar a COPARMEX
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-left">
+                <div class="profile-photo">👤</div>
+                <div class="modal-left-company">
+                    <h4>Comisión / Área</h4>
+                    <p id="modalCompanyInfo">Información de la comisión</p>
+                </div>
+            </div>
+            <div class="modal-right">
+                <div>
+                    <div class="modal-header">
+                        <div class="modal-name" id="modalName">Nombre</div>
+                        <div class="modal-title" id="modalTitle">Título</div>
+                    </div>
+                    <div class="modal-info">
+                        <div class="modal-info-item">
+                            <div class="modal-info-icon">📞</div>
+                            <div class="modal-info-text" id="modalPhone">+52 55 1234 5678</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="modal-info-icon">✉️</div>
+                            <div class="modal-info-text" id="modalEmail"><a href="mailto:email@example.com">email@example.com</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-description" id="modalDescription">
+                    Descripción del personaje
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config-loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        function openModal(button) {
+            const card = button.closest('.commission-card');
+            const name = card.dataset.name;
+            const title = card.dataset.title;
+            const phone = card.dataset.phone;
+            const email = card.dataset.email;
+            const description = card.dataset.description;
+            const commission = card.dataset.commission;
+
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalPhone').textContent = phone;
+            document.getElementById('modalEmail').innerHTML = `<a href="mailto:${email}">${email}</a>`;
+            document.getElementById('modalDescription').textContent = description;
+            
+            // Mapeo de comisiones
+            const commissionMap = {
+                legal: 'Comisión Legal',
+                economic: 'Comisión Económica',
+                social: 'Comisión Social',
+                institutional: 'Comisión Institucional'
+            };
+            
+            document.getElementById('modalCompanyInfo').textContent = commissionMap[commission] || 'COPARMEX';
+
+            document.getElementById('detailsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('detailsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailsModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        function filterByCommission(commission) {
+            const cards = document.querySelectorAll('.commission-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Actualizar botones activos
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filtrar tarjetas
+            cards.forEach(card => {
+                if (commission === 'all' || card.dataset.commission === commission) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beneficios - COPARMEX - Confederación Patronal de la República Mexicana">
+    <meta name="theme-color" content="#00346f">
+    <title>Beneficios - COPARMEX</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        /* Override de estilos responsivos para navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Public Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        header .max-w-7xl { max-width: 100%; padding: 0 24px; }
+        .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 16px !important; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+        #menu-toggle { display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 8px; color: #4b5563; font-size: 24px; }
+        @media (min-width: 768px) { #menu-toggle { display: none !important; } }
+        #mobile-menu { display: none; flex-direction: column; gap: 0; padding: 12px 0 !important; background-color: white; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; border-top: 1px solid #f0f0f0; }
+        #mobile-menu.active { display: flex !important; }
+        #mobile-menu a { color: #4b5563; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; transition: all 0.2s ease; display: block; }
+        #mobile-menu a:hover, #mobile-menu a.text-blue-700 { background-color: #f5f5f5; color: #1e40af; }
+        #mobile-menu a:last-child { border-bottom: none; }
+        button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
+        button.bg-blue-700:hover { background-color: #1e3a8a; }
+        @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+        
+        /* Responsive Styles para Móvil y Tablet */
+        /* HERO SECTION RESPONSIVO */
+        /* Desktop - Sin cambios */
+        section:first-of-type {
+            /* Mantiene el diseño original en desktop */
+        }
+        
+        /* TABLETS (640px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 640px) {
+            section:first-of-type {
+                padding: 60px 24px !important;
+                min-height: 380px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 36px !important;
+                margin-bottom: 20px !important;
+                line-height: 1.2 !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* MÓVILES (hasta 640px) */
+        @media (max-width: 639px) {
+            section:first-of-type {
+                padding: 48px 20px !important;
+                min-height: 340px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+                line-height: 1.2 !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 15px !important;
+                line-height: 1.5;
+            }
+        }
+        
+        /* MÓVILES PEQUEÑOS (hasta 480px) */
+        @media (max-width: 480px) {
+            section:first-of-type {
+                padding: 40px 16px !important;
+                min-height: 300px;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+        @media (max-width: 360px) {
+            section:first-of-type {
+                padding: 32px 14px !important;
+                min-height: 280px;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 22px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 13px !important;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            /* Beneficios Section */
+            section:has(.benefit-card) {
+                padding: 48px 24px !important;
+            }
+            
+            section:has(.benefit-card) h2 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            section:has(.benefit-card) span {
+                font-size: 11px !important;
+            }
+            
+            .benefit-card {
+                padding: 20px 16px !important;
+            }
+            
+            .benefit-card > div {
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+            
+            .benefit-card p {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Academic Schools Section */
+            section:has(.academic-school-card) {
+                padding: 48px 24px !important;
+            }
+            
+            section:has(.academic-school-card) h2 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            section:has(.academic-school-card) > div > div:first-child {
+                margin-bottom: 32px !important;
+            }
+            
+            section:has(.academic-school-card) p {
+                font-size: 14px !important;
+            }
+            
+            /* Grid de escuelas - cambiar a 2 columnas en tablet */
+            section:has(.academic-school-card) [style*="grid-template-columns"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+            
+            .academic-school-card {
+                padding: 16px !important;
+            }
+            
+            .school-logo {
+                width: 60px !important;
+                height: 60px !important;
+                margin: 0 auto 12px !important;
+            }
+            
+            .school-name {
+                font-size: 14px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .school-type {
+                font-size: 12px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .school-link {
+                font-size: 12px !important;
+            }
+            
+            /* Info Box */
+            section:has(.academic-school-card) > div > div:last-child {
+                padding: 24px !important;
+                margin-top: 32px !important;
+            }
+            
+            section:has(.academic-school-card) > div > div:last-child h3 {
+                font-size: 16px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section:has(.academic-school-card) > div > div:last-child p {
+                font-size: 13px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            /* CTA Section */
+            section:last-of-type {
+                padding: 48px 24px !important;
+            }
+            
+            section:last-of-type h2 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            section:last-of-type p {
+                font-size: 15px !important;
+                margin-bottom: 24px !important;
+            }
+            
+            section:last-of-type button {
+                padding: 12px 24px !important;
+                font-size: 13px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Beneficios Section */
+            section:has(.benefit-card) {
+                padding: 32px 16px !important;
+            }
+            
+            section:has(.benefit-card) h2 {
+                font-size: 22px !important;
+            }
+            
+            section:has(.benefit-card) span {
+                font-size: 10px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .benefit-card {
+                padding: 16px 12px !important;
+            }
+            
+            .benefit-card > div > div:first-child {
+                width: 48px !important;
+                height: 48px !important;
+            }
+            
+            .benefit-card p {
+                font-size: 13px !important;
+            }
+            
+            /* Academic Schools Section */
+            section:has(.academic-school-card) {
+                padding: 32px 16px !important;
+            }
+            
+            section:has(.academic-school-card) h2 {
+                font-size: 22px !important;
+            }
+            
+            /* Grid de escuelas - 1 columna en móvil pequeño */
+            section:has(.academic-school-card) [style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .academic-school-card {
+                padding: 12px !important;
+            }
+            
+            .school-logo {
+                width: 50px !important;
+                height: 50px !important;
+                margin: 0 auto 10px !important;
+            }
+            
+            .school-logo span {
+                font-size: 32px !important;
+            }
+            
+            .school-name {
+                font-size: 13px !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .school-type {
+                font-size: 11px !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .school-link {
+                font-size: 11px !important;
+            }
+            
+            /* Info Box */
+            section:has(.academic-school-card) > div > div:last-child {
+                padding: 16px !important;
+                margin-top: 24px !important;
+            }
+            
+            section:has(.academic-school-card) > div > div:last-child h3 {
+                font-size: 14px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            section:has(.academic-school-card) > div > div:last-child p {
+                font-size: 12px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            /* CTA Section */
+            section:last-of-type {
+                padding: 32px 16px !important;
+            }
+            
+            section:last-of-type h2 {
+                font-size: 22px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section:last-of-type p {
+                font-size: 13px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            section:last-of-type button {
+                padding: 10px 20px !important;
+                font-size: 12px !important;
+                width: 100% !important;
+                max-width: 280px;
+            }
+        }
+        
+        /* Estilos específicos para Beneficios */
+        .benefit-card {
+            background: white;
+            border-radius: 8px;
+            padding: 32px 24px;
+            box-shadow: 0 2px 8px rgba(0, 52, 111, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .benefit-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 52, 111, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+        
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            min-height: 180px;
+        }
+        
+        .sponsor-item:hover {
+            border-color: #00346f;
+            box-shadow: 0 4px 12px rgba(0, 52, 111, 0.1);
+        }
+        
+        .sponsor-item img {
+            max-width: 100%;
+            max-height: 100px;
+            object-fit: contain;
+        }
+        
+        .academic-school-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 52, 111, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .academic-school-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 52, 111, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .school-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .school-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #00346f;
+            margin-bottom: 8px;
+        }
+        
+        .school-type {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        
+        .school-link {
+            font-size: 13px;
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .school-link:hover {
+            color: #00346f;
+        }
+        
+        .section-divider {
+            margin: 80px 0;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .sponsor-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            
+            .benefit-card {
+                padding: 20px 16px;
+            }
+            
+            .sponsor-item {
+                padding: 20px;
+                min-height: 140px;
+            }
+            
+            .academic-school-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    
+    <!-- Cargar navbar -->
+    <script src="js/navbar-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+
+    <main>
+        <!-- Page Header -->
+        <section style="background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white; padding: 60px 24px; text-align: center;">
+            <div class="content-wrapper">
+                <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 16px; font-family: Manrope, sans-serif;">Beneficios COPARMEX</h1>
+                <p style="font-size: 18px; margin: 0; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Conoce los beneficios exclusivos para nuestros Centros Empresariales, empresas socias, empleados y familiares.</p>
+            </div>
+        </section>
+
+        <!-- Sección 1: Becas -->
+        <section style="padding: 80px 24px; background-color: #f9f9fc;">
+            <div class="content-wrapper">
+                <div style="margin-bottom: 64px; text-align: center;">
+                    <span style="color: #00346f; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 16px;">Becas Educativas</span>
+                    <h2 style="font-size: 36px; font-weight: 800; color: #00346f; margin-bottom: 24px; font-family: Manrope, sans-serif;">Programa de Becas COPARMEX</h2>
+                </div>
+                
+                <div class="benefit-card" style="max-width: 800px; margin: 0 auto;">
+                    <div style="display: flex; align-items: flex-start; gap: 24px;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px;">
+                                🎓
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <p style="font-size: 16px; line-height: 1.8; color: #424751;">Las becas Coparmex son un beneficio para nuestros Centros Empresariales, Empresas Socias, sus empleados y familiares directos, con el objetivo de mejorar la competitividad de los trabajadores.</p>
+                            <p style="font-size: 14px; margin-top: 16px; color: #6b7280; font-style: italic;">A través de este programa, promovemos la educación continua y el desarrollo de habilidades que contribuyen al crecimiento personal y profesional de nuestros afiliados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Sección 3: Convenios Académicos Locales -->
+        <section style="padding: 80px 24px; background-color: #f9f9fc;">
+            <div class="content-wrapper">
+                <div style="margin-bottom: 64px;">
+                    <div style="text-align: center; margin-bottom: 48px;">
+                        <span style="color: #00346f; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 16px;">Red Académica</span>
+                        <h2 style="font-size: 36px; font-weight: 800; color: #00346f; margin-bottom: 16px; font-family: Manrope, sans-serif;">Convenios Académicos Locales</h2>
+                        <p style="font-size: 16px; color: #6b7280; max-width: 600px; margin: 0 auto;">Acceso preferente a instituciones educativas de excelencia para nuestros afiliados, sus empleados y familias.</p>
+                    </div>
+
+                    <!-- Grid de Escuelas -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+                        <!-- School Card 1: Lolek -->
+                        <div class="academic-school-card">
+                            <div class="school-logo">
+                                <span style="font-size: 40px;">📖</span>
+                            </div>
+                            <div class="school-name">Lolek</div>
+                            <div class="school-type">Educación Integral</div>
+                            <a href="#" class="school-link">Más información →</a>
+                        </div>
+
+                        <!-- School Card 2: UVP -->
+                        <div class="academic-school-card">
+                            <div class="school-logo">
+                                <span style="font-size: 40px;">🎓</span>
+                            </div>
+                            <div class="school-name">UVP</div>
+                            <div class="school-type">Universidad del Valle de Puebla</div>
+                            <a href="#" class="school-link">Más información →</a>
+                        </div>
+
+                        <!-- School Card 3: UPAEP -->
+                        <div class="academic-school-card">
+                            <div class="school-logo">
+                                <span style="font-size: 40px;">🏛️</span>
+                            </div>
+                            <div class="school-name">UPAEP</div>
+                            <div class="school-type">Universidad Popular Autónoma</div>
+                            <a href="#" class="school-link">Más información →</a>
+                        </div>
+
+                        <!-- School Card 4: UNID -->
+                        <div class="academic-school-card">
+                            <div class="school-logo">
+                                <span style="font-size: 40px;">💼</span>
+                            </div>
+                            <div class="school-name">UNID</div>
+                            <div class="school-type">Universidad Interamericana</div>
+                            <a href="#" class="school-link">Más información →</a>
+                        </div>
+
+                        <!-- School Card 5: Planet English -->
+                        <div class="academic-school-card">
+                            <div class="school-logo">
+                                <span style="font-size: 40px;">🌐</span>
+                            </div>
+                            <div class="school-name">Planet English</div>
+                            <div class="school-type">Enseñanza de Idiomas</div>
+                            <a href="#" class="school-link">Más información →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información adicional -->
+                <div style="background: white; padding: 40px; border-radius: 8px; border: 1px solid #e5e7eb; margin-top: 48px;">
+                    <h3 style="font-size: 18px; font-weight: 700; color: #00346f; margin-bottom: 16px; font-family: Manrope, sans-serif;">¿Cómo acceder a los beneficios académicos?</h3>
+                    <p style="font-size: 15px; color: #424751; line-height: 1.8; margin-bottom: 16px;">Los afiliados de COPARMEX y sus familiares directos pueden acceder a descuentos especiales y programas exclusivos en nuestras instituciones académicas asociadas.</p>
+                    <p style="font-size: 15px; color: #424751; line-height: 1.8; margin-bottom: 0;">Contacta con tu Centro Empresarial o con nuestro equipo de servicios para conocer los detalles de cada convenio y los requisitos específicos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
+            <div class="content-wrapper" style="text-align: center;">
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; font-family: Manrope, sans-serif;">¿Eres afiliado a COPARMEX?</h2>
+                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Accede ahora mismo a todos nuestros beneficios exclusivos y aprovecha las oportunidades que tenemos para ti.</p>
+                <button style="background-color: white; color: #00346f; padding: 16px 40px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease; text-decoration: none;">
+                    Conocer más beneficios
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config-loader.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

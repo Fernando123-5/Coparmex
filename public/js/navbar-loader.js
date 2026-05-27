@@ -25,6 +25,8 @@ function getCurrentPage() {
     if (path.includes('eventos.html')) return 'eventos';
     if (path.includes('data.html')) return 'data';
     if (path.includes('transparencia.html')) return 'transparencia';
+    if (path.includes('beneficios.html')) return 'beneficios';
+    if (path.includes('comisiones.html')) return 'comisiones';
     return 'index';
 }
 
@@ -32,8 +34,12 @@ function highlightCurrentPage(page) {
     const links = document.querySelectorAll('[data-page]');
     links.forEach(link => {
         if (link.dataset.page === page) {
-            link.classList.remove('text-gray-600', 'hover:text-blue-700');
-            link.classList.add('text-blue-700', 'font-bold', 'border-b-2', 'border-blue-700', 'pb-1');
+            link.classList.add('mobile-menu-link-active');
+            link.classList.add('text-blue-700');
+            link.classList.add('font-bold');
+        } else {
+            link.classList.remove('mobile-menu-link-active');
+            link.classList.remove('text-blue-700');
         }
     });
 }
@@ -42,10 +48,19 @@ function initMobileMenu() {
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    if (!menuToggle || !mobileMenu) return;
+    if (!menuToggle || !mobileMenu) {
+        console.warn('⚠️ Elementos del menú móvil no encontrados');
+        return;
+    }
     
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+    // Toggle del menú
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = mobileMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active', isActive);
+        menuToggle.setAttribute('aria-expanded', isActive);
+        
+        console.log('📱 Menú móvil:', isActive ? 'Abierto' : 'Cerrado');
     });
     
     // Cerrar menú al hacer click en un enlace
@@ -53,8 +68,32 @@ function initMobileMenu() {
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', false);
         });
     });
+    
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', false);
+        }
+    });
+    
+    // Cerrar menú con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', false);
+        }
+    });
+    
+    console.log('✅ Mobile Menu inicializado correctamente');
 }
 
 // Cargar navbar cuando el DOM esté listo

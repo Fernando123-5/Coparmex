@@ -58,55 +58,155 @@
         font-size: 14px;
     }
 
-    /* HEADER / NAVEGACIÓN */
-    header {
+    /* ========== HEADER / NAVEGACIÓN ========== */
+    header#main-header {
         padding: 0;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-    .header-wrapper,
-    .header-container {
-        padding: 12px 16px !important;
+    header#main-header .max-w-7xl {
+        padding: 0 16px;
+    }
+
+    .flex.justify-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         height: auto;
+        gap: 12px;
     }
 
-    nav {
-        width: 100%;
+    header .flex-shrink-0 {
+        flex-shrink: 0;
     }
 
-    .header-nav {
+    header .flex-shrink-0 img {
+        height: 40px;
+        width: auto;
+    }
+
+    /* DESKTOP NAVIGATION HIDE */
+    nav.hidden.md\\:flex {
         display: none !important;
     }
 
-    .menu-toggle,
+    /* MOBILE MENU BUTTON */
+    .md\\:hidden #menu-toggle,
     #menu-toggle {
-        display: block !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
         background: none;
         border: none;
         cursor: pointer;
+        padding: 8px;
+        color: #4b5563;
+        font-size: 24px;
+        transition: all 0.3s ease;
+        height: 44px;
+        width: 44px;
+        border-radius: 8px;
     }
 
-    #mobile-menu {
+    #menu-toggle:hover {
+        background-color: #f3f4f6;
+        color: #1e40af;
+    }
+
+    #menu-toggle.active {
+        color: #1e40af;
+        background-color: #dbeafe;
+    }
+
+    /* ========== MOBILE MENU ========== */
+    .mobile-menu {
         display: none !important;
-        width: 100%;
-        padding: 12px 0 !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 2px solid #e5e7eb;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        z-index: 98;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        animation: slideDown 0.3s ease-out;
     }
 
-    #mobile-menu.active,
-    #mobile-menu.show {
-        display: flex !important;
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mobile-menu.active {
+        display: block !important;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .mobile-menu-container {
+        display: flex;
         flex-direction: column;
+        gap: 0;
+        padding: 8px 0;
+        background: white;
     }
 
-    #mobile-menu a {
-        padding: 12px 16px !important;
-        border-bottom: 1px solid #f0f0f0;
+    .mobile-menu-link {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 16px;
+        color: #4b5563;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        border-bottom: 1px solid #f3f4f6;
+        transition: all 0.2s ease;
+        position: relative;
     }
 
-    /* HERO / CARRUSEL */
+    .mobile-menu-link:hover {
+        background-color: #f9fafb;
+        color: #1e40af;
+        padding-left: 20px;
+    }
+
+    .mobile-menu-link:active {
+        background-color: #eff6ff;
+    }
+
+    .mobile-menu-link.active {
+        background-color: #dbeafe;
+        color: #1e40af;
+        font-weight: 600;
+        border-left: 4px solid #1e40af;
+        padding-left: 16px;
+    }
+
+    .mobile-menu-link .material-icons {
+        font-size: 20px;
+        color: inherit;
+    }
+
+    .mobile-menu-link span:last-child {
+        flex: 1;
+    }
+
+    /* ========== HERO / CARRUSEL ========== */
     #hero,
     .carousel-hero,
     .carousel-slide {
-        min-height: 350px !important;
+        min-height: 300px !important;
         height: auto !important;
     }
 
@@ -127,7 +227,7 @@
         margin-bottom: 16px;
     }
 
-    /* BOTONES */
+    /* ========== BOTONES ========== */
     button,
     .btn,
     input[type="button"],
@@ -137,7 +237,7 @@
         padding: 12px 16px !important;
         font-size: 14px !important;
         width: auto;
-        border-radius: 6px;
+        border-radius: 8px;
     }
 
     .btn-lg {
@@ -157,7 +257,7 @@
         width: 100% !important;
     }
 
-    /* CARRUSEL NAVEGACIÓN */
+    /* ========== CARRUSEL NAVEGACIÓN ========== */
     .carousel-nav-button,
     #prevBtn,
     #nextBtn {
@@ -184,7 +284,7 @@
         height: 8px !important;
     }
 
-    /* SECCIONES */
+    /* ========== SECCIONES ========== */
     main,
     section,
     .section-container {
@@ -197,14 +297,15 @@
         margin-bottom: 20px !important;
     }
 
-    /* TARJETAS DE NOTICIAS */
+    /* ========== TARJETAS DE NOTICIAS ========== */
     .news-card,
     .news-item {
         display: flex;
         flex-direction: column;
         margin-bottom: 16px;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .news-card-image,
@@ -234,12 +335,13 @@
         font-size: 12px;
     }
 
-    /* TARJETAS DE DATOS */
+    /* ========== TARJETAS DE DATOS ========== */
     .data-card,
     .stat-card {
         padding: 20px 16px !important;
         margin-bottom: 16px;
-        border-radius: 8px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .data-card-value,
@@ -254,11 +356,12 @@
         margin-top: 8px;
     }
 
-    /* TARJETAS DE SOCIOS */
+    /* ========== TARJETAS DE SOCIOS ========== */
     .partner-card {
         margin-bottom: 16px;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .partner-image-container {
@@ -291,7 +394,7 @@
         width: calc(100% - 24px);
     }
 
-    /* SPONSORS / CARRUSEL */
+    /* ========== SPONSORS / CARRUSEL ========== */
     .sponsor-item {
         width: 130px !important;
         min-width: 130px !important;
@@ -313,7 +416,7 @@
         padding: 0 16px !important;
     }
 
-    /* GRIDS */
+    /* ========== GRIDS ========== */
     .grid-1,
     .grid-2cols,
     .grid-3cols,
@@ -321,12 +424,13 @@
     .noticias-grid,
     .data-cards-grid,
     .partners-grid,
-    #partnersGrid {
+    #partnersGrid,
+    #federalPartnersGrid {
         grid-template-columns: 1fr !important;
         gap: 16px !important;
     }
 
-    /* CALL TO ACTION */
+    /* ========== CALL TO ACTION ========== */
     .cta-section,
     .call-to-action {
         flex-direction: column !important;
@@ -348,7 +452,7 @@
         width: 100% !important;
     }
 
-    /* SECCIONES ALTERNADAS */
+    /* ========== SECCIONES ALTERNADAS ========== */
     .alternate-section,
     .alternate-section-content {
         flex-direction: column !important;
@@ -366,7 +470,7 @@
         height: auto !important;
     }
 
-    /* FOOTER */
+    /* ========== FOOTER ========== */
     footer {
         padding: 24px 16px !important;
     }
@@ -395,7 +499,7 @@
         gap: 12px;
     }
 
-    /* MODALES */
+    /* ========== MODALES ========== */
     .modal,
     #partnerModal {
         padding: 0 12px !important;
@@ -406,29 +510,18 @@
         width: 100% !important;
     }
 
-    /* INPUTS Y FORMULARIOS */
+    /* ========== INPUTS Y FORMULARIOS ========== */
     input,
     textarea,
     select {
         font-size: 16px !important;
         padding: 12px !important;
         width: 100%;
-        border-radius: 6px;
+        border-radius: 8px;
         margin-bottom: 12px;
     }
 
-    /* ESPACIOS GENERALES */
-    padding-left,
-    padding-right {
-        padding: 0 16px;
-    }
-
-    margin-left,
-    margin-right {
-        margin: 0 !important;
-    }
-
-    /* VISIBLE SOLO EN MÓVIL */
+    /* ========== VISIBLE SOLO EN MÓVIL ========== */
     .mobile-only {
         display: block !important;
     }
@@ -438,7 +531,7 @@
         display: none !important;
     }
 
-    /* ANCHO MÁXIMO */
+    /* ========== ANCHO MÁXIMO ========== */
     .max-w-7xl,
     .max-w-6xl,
     .max-w-5xl,

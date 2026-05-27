@@ -123,6 +123,20 @@
             padding: 8px;
             color: #4b5563;
             font-size: 24px;
+            transition: all 0.3s ease;
+            height: 44px;
+            width: 44px;
+            border-radius: 8px;
+        }
+
+        #menu-toggle:hover {
+            background-color: #f3f4f6;
+            color: #1e40af;
+        }
+
+        #menu-toggle.active {
+            background-color: #dbeafe;
+            color: #1e40af;
         }
 
         @media (min-width: 768px) {
@@ -132,49 +146,89 @@
         }
 
         /* MENÚ MÓVIL */
-        #mobile-menu {
+        .mobile-menu {
             display: none;
             flex-direction: column;
             gap: 0;
-            padding: 12px 0 !important;
+            padding: 8px 0;
             background-color: white;
             position: absolute;
             top: 100%;
             left: 0;
             right: 0;
-            z-index: 99;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 98;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
             width: 100%;
+            border-bottom: 2px solid #e5e7eb;
             border-top: 1px solid #f0f0f0;
+            animation: slideDown 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
         }
 
-        #mobile-menu.active {
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu.active {
             display: flex !important;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
         @media (min-width: 768px) {
-            #mobile-menu {
+            .mobile-menu {
                 display: none !important;
             }
         }
 
-        #mobile-menu a {
-            color: #4b5563;
-            padding: 12px 16px;
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 16px;
             font-size: 14px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f3f4f6;
             text-decoration: none;
             transition: all 0.2s ease;
-            display: block;
+            display: flex;
+            color: #4b5563;
+            font-weight: 500;
         }
 
-        #mobile-menu a:hover,
-        #mobile-menu a.text-blue-700 {
-            background-color: #f5f5f5;
+        .mobile-menu-link:hover,
+        .mobile-menu-link.text-blue-700 {
+            background-color: #f9fafb;
             color: #1e40af;
+            padding-left: 20px;
         }
 
-        #mobile-menu a:last-child {
+        .mobile-menu-link:active {
+            background-color: #eff6ff;
+        }
+
+        .mobile-menu-link.mobile-menu-link-active {
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-weight: 600;
+            border-left: 4px solid #1e40af;
+            padding-left: 16px;
+        }
+
+        .mobile-menu-link .material-icons {
+            font-size: 20px;
+            color: inherit;
+        }
+
+        .mobile-menu-link:last-child {
             border-bottom: none;
         }
 
@@ -234,12 +288,26 @@
         <!-- Partners Section -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 md:py-28">
             <div class="mb-8 sm:mb-16">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3">Aliados que Impulsan el Cambio</h2>
-                <p class="text-gray-600 text-base sm:text-lg max-w-2xl">Conoce a las empresas líderes que se unen a COPARMEX para transformar el sector empresarial mexicano.</p>
+                <span class="inline-block bg-blue-100 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-4 rounded-full">Socios Locales</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-3">Socios Empresariales Locales</h2>
+                <p class="text-gray-600 text-base sm:text-lg max-w-2xl">Empresas líderes locales de Tehuacán que se unen a COPARMEX para impulsar el crecimiento y la transformación del sector empresarial mexicano.</p>
             </div>
 
             <div id="partnersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-20">
                 <!-- Partners cards will be generated dynamically here -->
+            </div>
+
+            <!-- Federal Partners Section -->
+            <div class="bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 rounded-2xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-28 mt-12 sm:mt-16 md:mt-28 border border-blue-200 shadow-lg">
+                <div class="mb-8 sm:mb-16">
+                    <span class="inline-block bg-blue-600 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest mb-4 rounded-full">Alianzas Estratégicas</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-blue-900 mb-3">Socios Federales</h2>
+                    <p class="text-blue-800 text-base sm:text-lg max-w-2xl">Instituciones federales y organismos de gobierno que colaboran con COPARMEX en la promoción del desarrollo empresarial nacional.</p>
+                </div>
+
+                <div id="federalPartnersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    <!-- Federal Partners cards will be generated dynamically here -->
+                </div>
             </div>
 
             <!-- Benefits Section -->
@@ -402,9 +470,75 @@
             }
         }
 
+        // Función para renderizar socios federales
+        function renderFederalPartnerCards() {
+            const grid = document.getElementById('federalPartnersGrid');
+            if (!grid) return;
+
+            // Esperar a que FEDERAL_PARTNERS_DATA esté disponible
+            if (typeof FEDERAL_PARTNERS_DATA === 'undefined') {
+                setTimeout(renderFederalPartnerCards, 100);
+                return;
+            }
+
+            grid.innerHTML = '';
+
+            FEDERAL_PARTNERS_DATA.forEach((partner, index) => {
+                const card = document.createElement('div');
+                card.className = 'partner-card';
+                card.style.animationDelay = `${index * 100}ms`;
+
+                // Crear contenedor de imagen
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'partner-image-container';
+
+                const img = document.createElement('img');
+                img.src = partner.logo;
+                img.alt = partner.name;
+
+                imageContainer.appendChild(img);
+
+                // Crear contenedor de contenido
+                const content = document.createElement('div');
+                content.className = 'partner-content';
+
+                const title = document.createElement('h3');
+                title.className = 'partner-name';
+                title.textContent = partner.name;
+
+                const description = document.createElement('p');
+                description.className = 'partner-description';
+                description.textContent = partner.description;
+
+                const button = document.createElement('button');
+                button.className = 'partner-card-btn';
+                button.dataset.partnerId = partner.id;
+                button.textContent = 'Conocer más';
+
+                content.appendChild(title);
+                content.appendChild(description);
+                content.appendChild(button);
+
+                card.appendChild(imageContainer);
+                card.appendChild(content);
+
+                grid.appendChild(card);
+            });
+
+            console.log('✅ Tarjetas de socios federales renderizadas');
+
+            // Re-inicializar PartnerModal después de agregar botones
+            if (document.querySelector('.partner-card-btn')) {
+                new PartnerModal();
+            }
+        }
+
         // Renderizar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(renderPartnerCards, 200);
+            setTimeout(() => {
+                renderPartnerCards();
+                renderFederalPartnerCards();
+            }, 200);
         });
     </script>
     

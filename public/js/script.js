@@ -560,12 +560,57 @@ class EventsFilter {
 
 const PARTNERS_DATA = [
     {
-        id: 'cargill',
-        name: 'Cargill',
-        logo: 'assets/img/CargillLogo.svg.png',
-        description: 'Empresa líder global en agricultura, alimentos y servicios relacionados con la gestión de riesgos.',
-        website: 'https://www.cargill.com.mx'
+        id: 'espiral',
+        name: 'Espiral',
+        logo: 'assets/img/espiral.png',
+        description: 'Soluciones empresariales innovadoras para el desarrollo y crecimiento sostenible.',
+        website: null
     },
+    {
+        id: 'farmacia',
+        name: 'Farmacias del Apoyo',
+        logo: 'assets/img/farmacia.png',
+        description: 'Empresa líder en distribución y servicios farmacéuticos de calidad.',
+        website: null
+    },
+    {
+        id: 'joa',
+        name: 'JOA',
+        logo: 'assets/img/joa.png',
+        description: 'Proveedor especializado en soluciones de negocio y consultoría empresarial.',
+        website: null
+    },
+    {
+        id: 'probox',
+        name: 'ProBox',
+        logo: 'assets/img/probox.png',
+        description: 'Soluciones logísticas y de almacenamiento para empresas.',
+        website: null
+    },
+    {
+        id: 'proicat',
+        name: 'PROICAT',
+        logo: 'assets/img/proicat.png',
+        description: 'Empresa de innovación y transferencia tecnológica para la industria.',
+        website: null
+    },
+    {
+        id: 'textuplas',
+        name: 'Textuplas',
+        logo: 'assets/img/textuplas.png',
+        description: 'Especialista en productos textiles de alta calidad y durabilidad.',
+        website: null
+    },
+    {
+        id: 'upaep',
+        name: 'UPAEP',
+        logo: 'assets/img/upaep.png',
+        description: 'Universidad Popular Autónoma del Estado de Puebla. Más de 50 años formando líderes transformadores de la sociedad mexicana con excelencia acreditada.',
+        website: 'https://www.upaep.mx'
+    }
+];
+
+const FEDERAL_PARTNERS_DATA = [
     {
         id: 'cfe',
         name: 'CFE',
@@ -574,11 +619,18 @@ const PARTNERS_DATA = [
         website: 'https://www.cfe.mx'
     },
     {
-        id: 'eucomb',
-        name: 'Eucomb',
-        logo: 'assets/img/eucomb.png',
-        description: 'Soluciones innovadoras para optimización de cadenas de suministro.',
-        website: null
+        id: 'cargill',
+        name: 'Cargill',
+        logo: 'assets/img/CargillLogo.svg.png',
+        description: 'Empresa líder global en agricultura, alimentos y servicios relacionados con la gestión de riesgos.',
+        website: 'https://www.cargill.com.mx'
+    },
+    {
+        id: 'cruzroja',
+        name: 'Cruz Roja Mexicana',
+        logo: 'assets/img/cruzroja.png',
+        description: 'Organización humanitaria dedicada a la prestación de servicios de salud, asistencia social y protección civil en México.',
+        website: 'https://www.cruzrojamaexicana.org.mx'
     },
     {
         id: 'imss',
@@ -593,34 +645,6 @@ const PARTNERS_DATA = [
         logo: 'assets/img/PEMEX.PNG',
         description: 'Petróleos Mexicanos, empresa productora de petróleo y gas natural.',
         website: 'https://www.pemex.gob.mx'
-    },
-    {
-        id: 'uvp',
-        name: 'UVP',
-        logo: 'assets/img/uvp.png',
-        description: 'Proveedor de soluciones especializadas en innovación y transformación digital.',
-        website: null
-    },
-    {
-        id: 'upaep',
-        name: 'UPAEP',
-        logo: 'assets/img/images.png',
-        description: 'Universidad Popular Autónoma del Estado de Puebla. Más de 50 años formando líderes transformadores de la sociedad mexicana con excelencia acreditada.',
-        website: 'https://www.upaep.mx'
-    },
-    {
-        id: 'prosmet',
-        name: 'Prosmet',
-        logo: 'assets/img/prosmet.png',
-        description: 'Empresa especializada en soluciones tecnológicas e innovación para transformación digital empresarial y eficiencia operacional.',
-        website: 'https://www.prosmet.com'
-    },
-    {
-        id: 'cruzroja',
-        name: 'Cruz Roja Mexicana',
-        logo: 'assets/img/cruzroja.png',
-        description: 'Organización humanitaria dedicada a la prestación de servicios de salud, asistencia social y protección civil en México.',
-        website: 'https://www.cruzrojamaexicana.org.mx'
     }
 ];
 
@@ -644,7 +668,10 @@ class PartnerModal {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const partnerId = btn.dataset.partnerId;
-                const partner = PARTNERS_DATA.find(p => p.id === partnerId);
+                let partner = PARTNERS_DATA.find(p => p.id === partnerId);
+                if (!partner && typeof FEDERAL_PARTNERS_DATA !== 'undefined') {
+                    partner = FEDERAL_PARTNERS_DATA.find(p => p.id === partnerId);
+                }
                 if (partner) {
                     this.openModal(partner);
                 }

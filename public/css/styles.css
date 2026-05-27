@@ -1134,6 +1134,22 @@ button, a {
     transform: scale(0.98);
 }
 
+/* Estilos para botones de socios federales */
+#federalPartnersGrid .partner-card-btn {
+    background-color: #1e3a8a;
+    align-self: flex-start;
+    padding: 12px 24px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border-radius: 6px;
+}
+
+#federalPartnersGrid .partner-card-btn:hover {
+    background-color: #0066ff;
+    box-shadow: 0 8px 16px rgba(30, 58, 138, 0.3);
+    transform: translateY(-3px);
+}
+
 /* Animación fade-in-up para tarjetas */
 @keyframes fadeInUp {
     from {

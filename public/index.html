@@ -16,12 +16,12 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+     
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
     <style>
-        /* Override de estilos responsivos para navbar */
+        /* Override de estilos responsivos para navbar */  
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Public Sans', sans-serif; }
         header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
@@ -42,6 +42,185 @@
         button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
         button.bg-blue-700:hover { background-color: #1e3a8a; }
         @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+        
+        /* Responsive Styles para Móvil y Tablet */
+        @media (max-width: 1024px) {
+            /* Hero Section */
+            #hero {
+                height: 500px !important;
+            }
+            
+            /* Hero Content */
+            #hero h1 {
+                font-size: 32px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            #hero p {
+                font-size: 16px !important;
+                margin-bottom: 24px !important;
+            }
+            
+            #hero button {
+                padding: 12px 24px !important;
+                font-size: 13px !important;
+            }
+            
+            /* Carousel Controls */
+            #prevBtn, #nextBtn {
+                padding: 10px !important;
+            }
+            
+            #prevBtn .material-icons, #nextBtn .material-icons {
+                font-size: 20px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Hero Section */
+            #hero {
+                height: 400px !important;
+            }
+            
+            /* Hero Content */
+            #hero h1 {
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+                line-height: 1.3 !important;
+            }
+            
+            #hero p {
+                font-size: 14px !important;
+                margin-bottom: 16px !important;
+                line-height: 1.4 !important;
+            }
+            
+            #hero button {
+                padding: 10px 20px !important;
+                font-size: 12px !important;
+            }
+            
+            /* Carousel Controls */
+            #prevBtn, #nextBtn {
+                display: none !important;
+            }
+            
+            /* Indicators */
+            #hero > div:last-child {
+                bottom: 16px !important;
+                gap: 8px !important;
+            }
+            
+            #hero .carousel-indicator {
+                width: 36px !important;
+                height: 4px !important;
+            }
+            
+            /* Grid Sections - Cambiar a single column */
+            #estrategia > div,
+            #comunicacion > div,
+            #transparencia > div {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+                padding: 0 16px !important;
+            }
+            
+            /* Section Padding */
+            #estrategia, #comunicacion, #transparencia {
+                padding: 48px 24px !important;
+            }
+            
+            /* Headings responsive */
+            #estrategia h2, #comunicacion h2, #transparencia h2 {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 16px !important;
+            }
+            
+            #estrategia p, #comunicacion p, #transparencia p {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 16px !important;
+            }
+            
+            #estrategia span, #comunicacion span, #transparencia span {
+                font-size: 11px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            /* Sponsors Section */
+            .sponsors-wrapper {
+                padding: 16px 0 !important;
+            }
+            
+            /* Sponsors Section Heading */
+            section:has(.sponsors-wrapper) h2 {
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section:has(.sponsors-wrapper) p {
+                font-size: 14px !important;
+                margin-bottom: 24px !important;
+            }
+            
+            /* Socios Button */
+            a[href="socios.html"] {
+                font-size: 12px !important;
+                padding: 12px 24px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            #hero {
+                height: 350px !important;
+            }
+            
+            #hero h1 {
+                font-size: 20px !important;
+            }
+            
+            #hero p {
+                font-size: 13px !important;
+            }
+            
+            #hero button {
+                padding: 8px 16px !important;
+                font-size: 11px !important;
+                min-width: 140px;
+            }
+            
+            /* Section Padding */
+            #estrategia, #comunicacion, #transparencia {
+                padding: 32px 16px !important;
+            }
+            
+            #estrategia > div, #comunicacion > div, #transparencia > div {
+                gap: 24px !important;
+                padding: 0 !important;
+            }
+            
+            /* Headings responsive */
+            #estrategia h2, #comunicacion h2, #transparencia h2 {
+                font-size: 20px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            #estrategia p, #comunicacion p, #transparencia p {
+                font-size: 13px !important;
+            }
+            
+            /* Flex wrap buttons */
+            #hero > div > div > div:last-child {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+            
+            #hero button {
+                width: 100% !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900" style="font-family: 'Public Sans', sans-serif;">
