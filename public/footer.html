@@ -160,6 +160,139 @@
                     transform: scale(1.1);
                 }
 
+                /* Estilos para botones del footer modal */
+                .footer-modal-btn {
+                    position: relative;
+                }
+
+                .footer-modal-btn:hover {
+                    color: #1e40af !important;
+                }
+
+                .footer-modal-btn:hover::after {
+                    opacity: 1;
+                }
+
+                .footer-modal-btn::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background-color: #1e40af;
+                    transition: width 0.3s ease;
+                    opacity: 0;
+                }
+
+                .footer-modal-btn:hover::after {
+                    width: 100%;
+                }
+
+                /* Modal */
+                #footerModal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    backdrop-filter: blur(4px);
+                    animation: fadeIn 0.3s ease;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                .footer-modal-content {
+                    background-color: white;
+                    margin: auto;
+                    padding: 40px;
+                    border-radius: 12px;
+                    width: 90%;
+                    max-width: 500px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: slideIn 0.3s ease;
+                }
+
+                @keyframes slideIn {
+                    from {
+                        transform: translate(-50%, -55%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translate(-50%, -50%);
+                        opacity: 1;
+                    }
+                }
+
+                .footer-modal-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 24px;
+                }
+
+                .footer-modal-title {
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: #00346f;
+                    margin: 0;
+                    font-family: Calibri, sans-serif;
+                }
+
+                .footer-modal-close {
+                    background: none;
+                    border: none;
+                    font-size: 28px;
+                    cursor: pointer;
+                    color: #999;
+                    transition: color 0.3s ease;
+                    padding: 0;
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .footer-modal-close:hover {
+                    color: #00346f;
+                }
+
+                .footer-modal-body {
+                    font-size: 16px;
+                    color: #424751;
+                    line-height: 1.8;
+                    margin: 0;
+                    font-family: Calibri, sans-serif;
+                }
+
+                @media (max-width: 768px) {
+                    .footer-modal-content {
+                        width: 95%;
+                        padding: 30px;
+                    }
+                    .footer-modal-title {
+                        font-size: 20px;
+                    }
+                    .footer-modal-body {
+                        font-size: 14px;
+                    }
+                }
+
 
             </style>
 
@@ -186,19 +319,19 @@
                         <!-- Items -->
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
                             <li>
-                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                <button class="footer-modal-btn" data-modal-title="Nuestra Misión" data-modal-content="Promover el bien común impulsando el emprendimiento y la innovación para lograr un desarrollo inclusivo." style="background: none; border: none; text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif; cursor: pointer; transition: all 0.3s ease; padding: 0; text-align: left;">
                                     Nuestra Misión
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                <button class="footer-modal-btn" data-modal-title="Nuestra Visión" data-modal-content="Ser la institución empresarial impulsora del Desarrollo Inclusivo de México." style="background: none; border: none; text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif; cursor: pointer; transition: all 0.3s ease; padding: 0; text-align: left;">
                                     Nuestra Visión
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href="#" style="text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif;" class="footer-link">
+                                <button class="footer-modal-btn" data-modal-title="Nuestros Valores" data-modal-content="Los valores que guían a COPARMEX son: Humanismo - Democracia - Participación Ciudadana - Solidaridad - Justicia - Libertad - Responsabilidad. Estos principios fundamentales orientan nuestras acciones y decisiones en beneficio del desarrollo inclusivo de México." style="background: none; border: none; text-decoration: none; color: #4b5563; font-size: 0.9rem; font-weight: 600; font-family: Calibri, sans-serif; cursor: pointer; transition: all 0.3s ease; padding: 0; text-align: left;">
                                     Nuestros Valores
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -239,13 +372,13 @@
                         <!-- Contact Icons List -->
                         <ul class="social-icons">
                             <li>
-                                <a href="tel:+522383833997" title="Teléfono" class="social-icon" aria-label="Teléfono">
+                                <a href="tel:+522382184334" title="Teléfono" class="social-icon" aria-label="Teléfono">
                                     <i class="fas fa-phone"></i>
-                                    <span>238 383 3997</span>
+                                    <span>238 218 4334</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/522383833997" title="WhatsApp" class="social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                                <a href="https://wa.me/522382184334" title="WhatsApp" class="social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                                     <i class="fab fa-whatsapp"></i>
                                     <span>WhatsApp</span>
                                 </a>
@@ -260,6 +393,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    
+    <!-- Footer Modal -->
+    <div id="footerModal">
+        <div class="footer-modal-content">
+            <div class="footer-modal-header">
+                <h2 class="footer-modal-title" id="footerModalTitle">Título</h2>
+                <button class="footer-modal-close" id="footerModalClose">&times;</button>
+            </div>
+            <p class="footer-modal-body" id="footerModalBody">Contenido</p>
         </div>
     </div>
 </footer>

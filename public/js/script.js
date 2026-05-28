@@ -607,6 +607,69 @@ const PARTNERS_DATA = [
         logo: 'assets/img/upaep.png',
         description: 'Universidad Popular Autónoma del Estado de Puebla. Más de 50 años formando líderes transformadores de la sociedad mexicana con excelencia acreditada.',
         website: 'https://www.upaep.mx'
+    },
+    {
+        id: 'uvp',
+        name: 'UVP',
+        logo: 'assets/img/uvp.png',
+        description: 'Universidad del Valle de Puebla. Institución educativa comprometida con la excelencia académica y la formación integral.',
+        website: null
+    },
+    {
+        id: 'unid',
+        name: 'UNID',
+        logo: 'assets/img/unid.png',
+        description: 'Universidad Interamericana para el Desarrollo. Educación superior innovadora para profesionales del futuro.',
+        website: null
+    },
+    {
+        id: 'prosmet',
+        name: 'PROSMET',
+        logo: 'assets/img/prosmet.png',
+        description: 'Soluciones metrológicas y de calidad para la industria.',
+        website: null
+    },
+    {
+        id: 'radth',
+        name: 'RADTH',
+        logo: 'assets/img/radth.png',
+        description: 'Empresa especializada en servicios radiológicos y diagnóstico.',
+        website: null
+    },
+    {
+        id: 'planet',
+        name: 'Planet',
+        logo: 'assets/img/planet.png',
+        description: 'Soluciones empresariales para el desarrollo sostenible.',
+        website: null
+    },
+    {
+        id: 'lolek',
+        name: 'LOLEK',
+        logo: 'assets/img/lolek.png',
+        description: 'Empresa líder en soluciones de consultoría y servicios empresariales.',
+        website: null
+    },
+    {
+        id: 'jym',
+        name: 'J&M',
+        logo: 'assets/img/jym.png',
+        description: 'Proveedor integral de soluciones comerciales y de distribución.',
+        website: null
+    },
+    {
+        id: 'fit',
+        name: 'FIT',
+        logo: 'assets/img/fit.png',
+        description: 'Centro de formación en innovación y tecnología para empresas.',
+        website: null
+    },
+    {
+        id: 'amaro',
+        name: 'Amaro',
+        logo: 'assets/img/amaro.png',
+        description: 'Empresa con amplia trayectoria en soluciones empresariales.',
+        website: null
     }
 ];
 

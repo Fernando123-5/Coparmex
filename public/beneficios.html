@@ -23,7 +23,42 @@
     <style>
         /* Override de estilos responsivos para navbar */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Public Sans', sans-serif; }
+        body { 
+            font-family: 'Public Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            font-size: clamp(28px, 8vw, 48px) !important;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: clamp(24px, 6vw, 32px) !important;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        
+        p {
+            font-size: clamp(14px, 2.5vw, 16px);
+            line-height: 1.6;
+        }
+        
+        button {
+            min-height: 44px;
+            font-size: clamp(12px, 2vw, 14px);
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+        }
+        
+        /* Hero responsive */
+        @media (max-width: 768px) {
+            section[style*="background-image"] {
+                min-height: 400px !important;
+                background-attachment: scroll !important;
+            }
+        }
         header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
         header .max-w-7xl { max-width: 100%; padding: 0 24px; }
         .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
@@ -190,6 +225,13 @@
                 margin: 0 auto 12px !important;
             }
             
+            .school-logo img {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 100% !important;
+                max-height: 100% !important;
+            }
+            
             .school-name {
                 font-size: 14px !important;
                 margin-bottom: 6px !important;
@@ -292,6 +334,13 @@
                 width: 50px !important;
                 height: 50px !important;
                 margin: 0 auto 10px !important;
+            }
+            
+            .school-logo img {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 100% !important;
+                max-height: 100% !important;
             }
             
             .school-logo span {
@@ -430,6 +479,8 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            width: 100%;
+            height: 100%;
         }
         
         .school-name {
@@ -499,10 +550,14 @@
 
     <main>
         <!-- Page Header -->
-        <section style="background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white; padding: 60px 24px; text-align: center;">
-            <div class="content-wrapper">
-                <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 16px; font-family: Manrope, sans-serif;">Beneficios COPARMEX</h1>
-                <p style="font-size: 18px; margin: 0; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Conoce los beneficios exclusivos para nuestros Centros Empresariales, empresas socias, empleados y familiares.</p>
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/beneficios.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
+                <div class="max-w-3xl">
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Beneficios Exclusivos</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Beneficios de Ser Socios</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Accede a beneficios exclusivos diseñados para nuestros Centros Empresariales, empresas socias, empleados y sus familias.</p>
+                </div>
             </div>
         </section>
 
@@ -547,7 +602,7 @@
                         <!-- School Card 1: Lolek -->
                         <div class="academic-school-card">
                             <div class="school-logo">
-                                <span style="font-size: 40px;">📖</span>
+                                <img src="assets/img/lolek.png" alt="Lolek">
                             </div>
                             <div class="school-name">Lolek</div>
                             <div class="school-type">Educación Integral</div>
@@ -557,7 +612,7 @@
                         <!-- School Card 2: UVP -->
                         <div class="academic-school-card">
                             <div class="school-logo">
-                                <span style="font-size: 40px;">🎓</span>
+                                <img src="assets/img/uvp.png" alt="UVP">
                             </div>
                             <div class="school-name">UVP</div>
                             <div class="school-type">Universidad del Valle de Puebla</div>
@@ -567,7 +622,7 @@
                         <!-- School Card 3: UPAEP -->
                         <div class="academic-school-card">
                             <div class="school-logo">
-                                <span style="font-size: 40px;">🏛️</span>
+                                <img src="assets/img/upaep.png" alt="UPAEP">
                             </div>
                             <div class="school-name">UPAEP</div>
                             <div class="school-type">Universidad Popular Autónoma</div>
@@ -577,7 +632,7 @@
                         <!-- School Card 4: UNID -->
                         <div class="academic-school-card">
                             <div class="school-logo">
-                                <span style="font-size: 40px;">💼</span>
+                                <img src="assets/img/unid.png" alt="UNID">
                             </div>
                             <div class="school-name">UNID</div>
                             <div class="school-type">Universidad Interamericana</div>
@@ -587,7 +642,7 @@
                         <!-- School Card 5: Planet English -->
                         <div class="academic-school-card">
                             <div class="school-logo">
-                                <span style="font-size: 40px;">🌐</span>
+                                <img src="assets/img/planet.png" alt="Planet English">
                             </div>
                             <div class="school-name">Planet English</div>
                             <div class="school-type">Enseñanza de Idiomas</div>
