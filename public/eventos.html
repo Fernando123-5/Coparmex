@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Eventos - COPARMEX - Confederación Patronal de la República Mexicana">
-    <meta name="theme-color" content="#0066ff">
+    <meta name="theme-color" content="#00346f">
     <title>Eventos - COPARMEX</title>
     
     <!-- Favicon -->
@@ -23,7 +23,145 @@
     <style>
         /* Override de estilos responsivos para navbar */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Public Sans', sans-serif; }
+        body { 
+            font-family: 'Public Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            font-size: clamp(28px, 8vw, 48px) !important;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: clamp(24px, 6vw, 32px) !important;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        
+        p {
+            font-size: clamp(14px, 2.5vw, 16px);
+            line-height: 1.6;
+        }
+        
+        button {
+            min-height: 44px;
+            font-size: clamp(12px, 2vw, 14px);
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+        }
+        
+        /* Hero responsive */
+        @media (max-width: 768px) {
+            section[style*="background-image"] {
+                min-height: 400px !important;
+                background-attachment: scroll !important;
+            }
+        }
+        
+        /* Ajustes específicos para hero en tablets y móviles */
+        @media (max-width: 1024px) {
+            .relative.overflow-hidden.text-white {
+                min-height: 450px !important;
+            }
+            
+            .relative.overflow-hidden.text-white h1 {
+                font-size: 40px !important;
+            }
+            
+            .relative.overflow-hidden.text-white p {
+                font-size: 16px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .relative.overflow-hidden.text-white {
+                min-height: 380px !important;
+                padding: 40px 20px !important;
+            }
+            
+            .relative.overflow-hidden.text-white .max-w-3xl {
+                max-width: 100% !important;
+            }
+            
+            .relative.overflow-hidden.text-white h1 {
+                font-size: 32px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .relative.overflow-hidden.text-white p {
+                font-size: 14px !important;
+                line-height: 1.5;
+            }
+            
+            .relative.overflow-hidden.text-white span {
+                font-size: 11px !important;
+                padding: 8px 16px !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .relative.overflow-hidden.text-white {
+                min-height: 350px !important;
+                padding: 32px 16px !important;
+            }
+            
+            .relative.overflow-hidden.text-white h1 {
+                font-size: 28px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .relative.overflow-hidden.text-white p {
+                font-size: 13px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .relative.overflow-hidden.text-white {
+                min-height: 320px !important;
+                padding: 24px 16px !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+            }
+            
+            .relative.max-w-7xl {
+                min-height: auto !important;
+            }
+            
+            .relative.overflow-hidden.text-white h1 {
+                font-size: 24px !important;
+                margin-bottom: 10px !important;
+                line-height: 1.2;
+            }
+            
+            .relative.overflow-hidden.text-white p {
+                font-size: 12px !important;
+                line-height: 1.4;
+            }
+            
+            .relative.overflow-hidden.text-white span {
+                font-size: 10px !important;
+                padding: 6px 12px !important;
+                margin-bottom: 4px !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .relative.overflow-hidden.text-white {
+                min-height: 300px !important;
+                padding: 20px 14px !important;
+            }
+            
+            .relative.overflow-hidden.text-white h1 {
+                font-size: 20px !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .relative.overflow-hidden.text-white p {
+                font-size: 11px !important;
+            }
+        }
         header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
         header .max-w-7xl { max-width: 100%; padding: 0 24px; }
         .flex.justify-between { display: flex; justify-content: space-between; align-items: center; height: 80px; }
@@ -42,6 +180,356 @@
         button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
         button.bg-blue-700:hover { background-color: #1e3a8a; }
         @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
+        
+        /* Responsive Styles para Móvil y Tablet */
+        /* TABLETS (640px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 640px) {
+            section:first-of-type {
+                padding: 60px 24px !important;
+                min-height: 380px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 36px !important;
+                margin-bottom: 20px !important;
+                line-height: 1.2 !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* MÓVILES (hasta 640px) */
+        @media (max-width: 639px) {
+            section:first-of-type {
+                padding: 48px 20px !important;
+                min-height: 340px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+                line-height: 1.2 !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 15px !important;
+                line-height: 1.5;
+            }
+        }
+        
+        /* MÓVILES PEQUEÑOS (hasta 480px) */
+        @media (max-width: 480px) {
+            section:first-of-type {
+                padding: 40px 16px !important;
+                min-height: 300px;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* MÓVILES MUY PEQUEÑOS (hasta 360px) */
+        @media (max-width: 360px) {
+            section:first-of-type {
+                padding: 32px 14px !important;
+                min-height: 280px;
+            }
+            
+            section:first-of-type h1 {
+                font-size: 22px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            section:first-of-type p {
+                font-size: 13px !important;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            /* Eventos Section */
+            section:has(.event-card) {
+                padding: 60px 24px !important;
+            }
+            
+            section:has(.event-card) h2 {
+                font-size: 28px !important;
+                margin-bottom: 20px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Eventos Section */
+            section:has(.event-card) {
+                padding: 48px 20px !important;
+            }
+            
+            section:has(.event-card) h2 {
+                font-size: 26px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Eventos Section */
+            section:has(.event-card) {
+                padding: 40px 16px !important;
+            }
+            
+            section:has(.event-card) h2 {
+                font-size: 22px !important;
+            }
+        }
+        
+        /* Estilos específicos para Eventos */
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 52, 111, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 520px;
+        }
+        
+        .event-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 52, 111, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #00346f 0%, #004a99 100%);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .event-image .material-icons {
+            font-size: 64px;
+        }
+        
+        .event-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .event-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00346f;
+            margin-bottom: 12px;
+            font-family: Manrope, sans-serif;
+            line-height: 1.3;
+        }
+        
+        .event-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        
+        .event-date {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: auto;
+        }
+        
+        /* Responsivo para tablets */
+        @media (max-width: 1024px) {
+            .event-card {
+                min-height: 500px;
+            }
+            
+            .event-image {
+                height: 260px;
+            }
+            
+            .event-title {
+                font-size: 17px;
+            }
+            
+            .event-description {
+                font-size: 13px;
+            }
+        }
+        
+        /* Responsivo para móviles grandes */
+        @media (max-width: 768px) {
+            .event-card {
+                min-height: 480px;
+            }
+            
+            .event-image {
+                height: 240px;
+            }
+            
+            .event-content {
+                padding: 20px;
+            }
+            
+            .event-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .event-description {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+        }
+        
+        /* Responsivo para móviles medianos */
+        @media (max-width: 640px) {
+            .event-card {
+                min-height: 460px;
+            }
+            
+            .event-image {
+                height: 220px;
+            }
+            
+            .event-content {
+                padding: 18px;
+            }
+            
+            .event-title {
+                font-size: 15px;
+            }
+            
+            .event-description {
+                font-size: 12px;
+            }
+            
+            .event-date {
+                font-size: 12px;
+            }
+        }
+        
+        /* Responsivo para móviles pequeños */
+        @media (max-width: 480px) {
+            .event-card {
+                min-height: 440px;
+            }
+            
+            .event-image {
+                height: 200px;
+            }
+            
+            .event-content {
+                padding: 16px;
+            }
+            
+            .event-title {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .event-description {
+                font-size: 12px;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            
+            .event-date {
+                font-size: 11px;
+            }
+        }
+        
+        /* Responsivo para móviles muy pequeños */
+        @media (max-width: 360px) {
+            .event-card {
+                min-height: 420px;
+            }
+            
+            .event-image {
+                height: 180px;
+            }
+            
+            .event-content {
+                padding: 14px;
+            }
+            
+            .event-title {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            
+            .event-description {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+            
+            .event-date {
+                font-size: 10px;
+            }
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Grid responsivo para eventos */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        @media (max-width: 1024px) {
+            .event-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .event-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 24px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .event-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .event-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -55,304 +543,112 @@
 
     <main>
         <!-- Page Header -->
-        <section class="bg-gradient-to-r from-blue-700 to-blue-800 text-white py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl md:text-5xl font-black mb-4">Próximos Eventos</h1>
-                <p class="text-blue-100 text-lg">Conecta con líderes empresariales y potencia tu red profesional a través de nuestros eventos corporativos y workshops estratégicos.</p>
-            </div>
-        </section>
-
-        <!-- Filters Section -->
-        <section class="bg-white border-b border-gray-100 sticky top-20 z-40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex flex-col md:flex-row gap-4 items-center">
-                    <!-- Search Bar -->
-                    <div class="flex-1 relative w-full">
-                        <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-                        <input 
-                            type="text" 
-                            placeholder="Busca por título, palabra clave o ponente..." 
-                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
-                        />
-                    </div>
-                    <!-- Filter Buttons -->
-                    <div class="flex gap-2 flex-wrap">
-                        <button class="bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors flex items-center gap-2">
-                            <span class="material-icons text-lg">filter_list</span>
-                            Categorías
-                        </button>
-                        <button class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
-                            Este Mes
-                        </button>
-                        <button class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-1">
-                            <span class="material-icons text-lg">videocam</span>
-                            Virtual
-                        </button>
-                    </div>
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/eventos.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-attachment: fixed; min-height: 500px;">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
+                <div class="max-w-3xl">
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Catálogo de Eventos</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Eventos COPARMEX</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Revisa nuestro catálogo de eventos pasados y conoce las actividades que hemos realizado para nuestros afiliados. Un espacio de encuentro y aprendizaje para la comunidad empresarial.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Events Grid -->
-        <section class="bg-white py-12 md:py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <!-- Eventos Grid Section -->
+        <section style="padding: 80px 24px; background-color: #f9f9fc;">
+            <div class="content-wrapper">
+                <div style="margin-bottom: 64px; text-align: center;">
+                    <span style="color: #00346f; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 16px;">Historial</span>
+                    <h2 style="font-size: 36px; font-weight: 800; color: #00346f; margin-bottom: 24px; font-family: Manrope, sans-serif;">Eventos Realizados</h2>
+                    <p style="font-size: 16px; color: #6b7280; max-width: 600px; margin: 0 auto;">Consulta nuestro catálogo de eventos anteriores como referencia de las actividades y oportunidades que ofrecemos a nuestros miembros.</p>
+                </div>
+
+                <!-- Grid de Eventos -->
+                <div class="event-grid">
                     
-                    <!-- Event Card 1 -->
-                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                        <div class="relative h-56 overflow-hidden">
-                            <img 
-                                src="https://lh3.googleusercontent.com/aida/ADBb0uhIpnSnwYMhH58H-EDBv_8JVgwCXLXptalguCWXI-NxSxSm0gPSf3J6pQcV29zBWDAqt2MoinpoFRdr-itNXk0lokcnuAOixPoOwg6UWJauNatjaOmR9kQ9zzlgurJHNQd8Hb7pDxdrbN6iaShDW_6A66p1vSGasuRQqFjj02jrKij3aTh5F8yUXn2oK2Nl41HDs2Me2ubkoL21y_TIctCXul4p7w7IvAfWLnh_HExWL3dhkp2uzMzNJTtQHgb7IGns9lcTAuWb7g" 
-                                alt="Cumbre de Liderazgo Anual 2024" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                                <span class="text-blue-700 font-bold text-sm">24 OCT</span>
-                            </div>
-                            <div class="absolute top-4 right-4 bg-blue-700 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Destacado</div>
+                    <!-- Evento 1: Día de la Marina -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/marina.jpeg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Crecimiento Estratégico</span>
-                                <span class="text-gray-500 text-xs flex items-center gap-1">
-                                    <span class="material-icons text-sm">location_on</span>
-                                    Ciudad de México
-                                </span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Cumbre Anual de Liderazgo 2024</h3>
-                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Únete a los principales CEOs de México para explorar a fondo el futuro del comercio transfronterizo.</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="flex -space-x-2">
-                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-blue-600"></div>
-                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-br from-gray-300 to-gray-400"></div>
-                                    <div class="w-7 h-7 rounded-full border-2 border-white bg-blue-700 text-xs text-white flex items-center justify-center font-bold">+12</div>
-                                </div>
-                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Cumbre Anual de Liderazgo 2024" data-date="24 de Octubre, 2024" data-location="Ciudad de México" data-mode="Presencial" data-icon="event_note" data-category="Crecimiento Estratégico" data-price="$1,200 MXN" data-capacity="300 personas" data-duration="1 día" data-availability="50 Lugares Disponibles">
-                                    Registrarse
-                                </button>
-                            </div>
+                        <div class="event-content">
+                            <div class="event-title">Día de la Marina Nacional</div>
+                            <div class="event-description">En este Día de la Marina Nacional reconocemos a las mujeres y hombres que hacen posible la seguridad marítima, el comercio exterior y la conectividad que fortalece la economía mexicana. Desde #COPARMEXTehuacán, celebramos su compromiso con el desarrollo y la prosperidad de México.</div>
+                            <div class="event-date">🇲🇽 #DíaDeLaMarina #MarinaNacional</div>
                         </div>
                     </div>
 
-                    <!-- Event Card 2 -->
-                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <span class="material-icons text-6xl text-gray-300">corporate_fare</span>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                                <span class="text-blue-700 font-bold text-sm">02 NOV</span>
-                            </div>
+                    <!-- Evento 2: Acuerdo UE -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/empresa.jpeg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-green-100 text-green-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Networking</span>
-                                <span class="text-gray-500 text-xs flex items-center gap-1">
-                                    <span class="material-icons text-sm">videocam</span>
-                                    Virtual
-                                </span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Innovación en Cadena de Suministro</h3>
-                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Explorando la integración de IA en logística regional y centros de manufactura en el corredor norte.</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="text-blue-700 font-bold text-sm">Gratis para Miembros</div>
-                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Innovación en Cadena de Suministro" data-date="02 de Noviembre, 2024" data-location="Virtual" data-mode="En Línea" data-icon="corporate_fare" data-category="Networking" data-price="Gratis para Miembros" data-capacity="Ilimitada" data-duration="2 horas" data-availability="Registro Abierto">
-                                    Registrarse
-                                </button>
-                            </div>
+                        <div class="event-content">
+                            <div class="event-title">Acuerdo Global Modernizado UE</div>
+                            <div class="event-description">La firma del nuevo Acuerdo Global Modernizado con la Unión Europea abre la puerta a una nueva era de inversión, exportaciones, innovación y crecimiento para las empresas mexicanas. Europa representa más de 450 millones de consumidores y una economía de 17 billones de dólares.</div>
+                            <div class="event-date">🇲🇽🫱🏻‍🫲🏼🇪🇺 Oportunidad histórica</div>
                         </div>
                     </div>
 
-                    <!-- Event Card 3 -->
-                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <span class="material-icons text-6xl text-gray-300">school</span>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                                <span class="text-blue-700 font-bold text-sm">15 NOV</span>
-                            </div>
+                    <!-- Evento 3: Día del Psicólogo -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/psicologo.jpeg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-orange-100 text-orange-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Legal y Fiscal</span>
-                                <span class="text-gray-500 text-xs flex items-center gap-1">
-                                    <span class="material-icons text-sm">location_on</span>
-                                    Guadalajara
-                                </span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Taller de Política Fiscal 2025</h3>
-                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Sesión técnica para CFOs sobre cambios regulatorios y estrategias de optimización fiscal.</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="text-gray-500 text-sm font-medium">45 Lugares Disponibles</div>
-                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Taller de Política Fiscal 2025" data-date="15 de Noviembre, 2024" data-location="Guadalajara" data-mode="Presencial" data-icon="school" data-category="Legal y Fiscal" data-price="$800 MXN" data-capacity="80 personas" data-duration="1 día" data-availability="45 Lugares Disponibles">
-                                    Registrarse
-                                </button>
-                            </div>
+                        <div class="event-content">
+                            <div class="event-title">Día del Psicólogo</div>
+                            <div class="event-description">Reconocemos a quienes dedican su vida a escuchar, orientar y fortalecer. Con empatía y compromiso, ayudan a construir comunidades más sanas, humanas y resilientes. Su labor transforma vidas e impulsa la estabilidad emocional.</div>
+                            <div class="event-date">🙌🏼 #DíaDelPsicólogo #SaludMental</div>
                         </div>
                     </div>
 
-                    <!-- Event Card 4 -->
-                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <span class="material-icons text-6xl text-gray-300">handshake</span>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                                <span class="text-blue-700 font-bold text-sm">05 DIC</span>
-                            </div>
+                    <!-- Evento 4: Día del Maestro -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/psicologo.jpeg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-purple-100 text-purple-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Expo B2B</span>
-                                <span class="text-gray-500 text-xs flex items-center gap-1">
-                                    <span class="material-icons text-sm">location_on</span>
-                                    Monterrey
-                                </span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Expo de Negocios: Norte</h3>
-                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Conectando proveedores locales con corporaciones multinacionales a través de nuestra plataforma de matchmaking.</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="text-blue-700 font-bold text-sm">$450 MXN</div>
-                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Expo de Negocios: Norte" data-date="05 de Diciembre, 2024" data-location="Monterrey" data-mode="Presencial" data-icon="handshake" data-category="Expo B2B" data-price="$450 MXN" data-capacity="500 personas" data-duration="2 días" data-availability="200 Lugares Disponibles">
-                                    Registrarse
-                                </button>
-                            </div>
+                        <div class="event-content">
+                            <div class="event-title">Día del Maestro</div>
+                            <div class="event-description">Reconocemos a todas las personas que inspiran, enseñan, orientan y dejan huella en cada paso. Con su ejemplo, experiencia y valores, transforman vidas y construyen el futuro de nuestras comunidades.</div>
+                            <div class="event-date">📚👩🏻‍🏫 #FelizDíaDelMaestro</div>
                         </div>
                     </div>
 
-                    <!-- Event Card 5 -->
-                    <div class="events-card bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                        <div class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <span class="material-icons text-6xl text-gray-300">trending_up</span>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                                <span class="text-blue-700 font-bold text-sm">18 DIC</span>
-                            </div>
+                    <!-- Evento 5: Summit de Grandes Empresas -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/sumit.jpg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-tight">Conferencia</span>
-                                <span class="text-gray-500 text-xs flex items-center gap-1">
-                                    <span class="material-icons text-sm">location_on</span>
-                                    Híbrido
-                                </span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">Tendencias Económicas 2025</h3>
-                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">Análisis de expertos sobre el panorama económico mexicano y oportunidades de inversión.</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="text-gray-500 text-sm font-medium">120 Asistentes</div>
-                                <button class="register-btn bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors" data-title="Tendencias Económicas 2025" data-date="18 de Diciembre, 2024" data-location="Híbrido (Ciudad de México)" data-mode="Híbrido" data-icon="trending_up" data-category="Conferencia" data-price="Gratis" data-capacity="250 personas" data-duration="3 horas" data-availability="Registro Abierto">
-                                    Registrarse
-                                </button>
-                            </div>
+                        <div class="event-content">
+                            <div class="event-title">Summit de Grandes Empresas</div>
+                            <div class="event-description">Espacio de análisis y diálogo estratégico para reflexionar sobre los desafíos económicos, regulatorios y geopolíticos que enfrenta México, en conjunto con Banco Azteca. Se destacó la oportunidad histórica derivada del nearshoring e integración regional.</div>
+                            <div class="event-date">🔵🏢 #Summit #COPARMEX</div>
                         </div>
                     </div>
 
-                    <!-- Proposal Card -->
-                    <div class="events-card bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-dashed border-blue-300 rounded-xl overflow-hidden flex flex-col items-center justify-center p-8 text-center hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
-                            <span class="material-icons text-3xl text-blue-700">lightbulb</span>
+                    <!-- Evento 6: Reforma Judicial -->
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('assets/eventos/corte.jpg'); background-size: contain; background-repeat: no-repeat;">
                         </div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-2">¿Proponer un Evento?</h4>
-                        <p class="text-gray-600 text-sm mb-6 max-w-[200px]">Comparte tu idea para un taller o evento en nuestro próximo encuentro regional.</p>
-                        <button class="text-blue-700 font-bold text-sm hover:underline flex items-center gap-1">
-                            Enviar Propuesta
-                            <span class="material-icons text-lg">arrow_forward</span>
-                        </button>
+                        <div class="event-content">
+                            <div class="event-title">Reforma Judicial - Certeza Jurídica</div>
+                            <div class="event-description">Desde COPARMEX reconocemos la importancia de un sistema judicial con perfiles de capacidad técnica, experiencia profesional e independencia. Esto fortalece el Estado de Derechos, la certeza jurídica y la confianza institucional para impulsar la inversión.</div>
+                            <div class="event-date">⚖️ #COPARMEX #CertezaJurídica</div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
+        <!-- CTA Section -->
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
+            <div class="content-wrapper" style="text-align: center;">
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; font-family: Manrope, sans-serif;">¿Quieres estar informado de nuestros próximos eventos?</h2>
+                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Mantente conectado con COPARMEX y no te pierdas las oportunidades de aprendizaje, networking y desarrollo empresarial que ofrecemos regularmente.</p>
+                <button style="background-color: white; color: #00346f; padding: 16px 40px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease; text-decoration: none;">
+                    Contactar COPARMEX
+                </button>
+            </div>
+        </section>
     </main>
 
-    <!-- Event Details Modal -->
-    <div id="eventModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8">
-            <!-- Modal Header -->
-            <div class="relative h-64 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
-                <button id="closeModal" class="absolute top-4 right-4 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white rounded-full p-2 transition-all z-10">
-                    <span class="material-icons">close</span>
-                </button>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <span id="modalIcon" class="material-icons text-7xl text-white/80">event</span>
-                </div>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-8">
-                <!-- Event Title -->
-                <h2 id="modalTitle" class="text-3xl font-bold text-gray-900 mb-2">Título del Evento</h2>
-
-                <!-- Event Meta -->
-                <div class="flex flex-wrap gap-4 mb-6 pb-6 border-b border-gray-200">
-                    <div class="flex items-center gap-2 text-gray-600">
-                        <span class="material-icons">calendar_today</span>
-                        <span id="modalDate">Fecha</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-gray-600">
-                        <span class="material-icons">location_on</span>
-                        <span id="modalLocation">Ubicación</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-gray-600">
-                        <span class="material-icons" id="modalModeIcon">location_on</span>
-                        <span id="modalMode">Presencial</span>
-                    </div>
-                </div>
-
-                <!-- Event Category & Info -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span id="modalCategory" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold uppercase">Categoría</span>
-                        <span id="modalAvailability" class="text-gray-600 text-sm">Disponibilidad</span>
-                    </div>
-                </div>
-
-                <!-- Event Description -->
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Descripción</h3>
-                    <p id="modalDescription" class="text-gray-600 leading-relaxed">Descripción del evento...</p>
-                </div>
-
-                <!-- Event Details Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 p-6 bg-gray-50 rounded-xl">
-                    <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Duración</p>
-                        <p id="modalDuration" class="text-gray-900 font-semibold">2 horas</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Capacidad</p>
-                        <p id="modalCapacity" class="text-gray-900 font-semibold">150 personas</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Precio</p>
-                        <p id="modalPrice" class="text-gray-900 font-semibold">Gratis</p>
-                    </div>
-                </div>
-
-                <!-- What to Expect -->
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">¿Qué Esperar?</h3>
-                    <ul id="modalExpectations" class="space-y-2 text-gray-600">
-                        <li class="flex items-start gap-2">
-                            <span class="material-icons text-blue-700 text-lg mt-0.5">check_circle</span>
-                            <span>Networking con profesionales del sector</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex gap-4 flex-col sm:flex-row">
-                    <button class="flex-1 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
-                        <span class="material-icons">check_circle</span>
-                        Registrarse Ahora
-                    </button>
-                    <button id="closeModalBtn" class="flex-1 bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2">
-                        <span class="material-icons">close</span>
-                        Cerrar
-                    </button>
-                </div>
-
-                <!-- Note -->
-                <p class="text-center text-gray-500 text-sm mt-6">* Para completar tu registro, serás redirigido a tu panel de usuario</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
+    <script src="js/config-loader.js"></script>
     <script src="js/script.js"></script>
+</body>
+</html>
