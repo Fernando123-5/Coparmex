@@ -1,0 +1,17 @@
+Sugerencias y cambios:
+
+transparencia se quita sustituirla por una de bendeficios ( dentro ira lo de becas coparmex ) 
+
+convenios academicos locales: Lolek (karol v ) uvp, upaep, unid, planet english
+
+susutituir el data coparmex por el de noticias y agregar date en la secciones de data coparmex
+
+comisiones ( 	foto, nombre, comision y contacto )
+
+cambios: el apartado de "Transparencia" se quita a lo cual se debe de sustituir con "Beneficios" en el cual debe de ir contenido de becas y esta información ( Las becas
+Coparmex son un beneficio para nuestros Centros Empresariales, Empresas Socias, sus empleados  y familiares directos, con el objetivo de mejorar la competitividad de los trabajadores  ) a eso se le agregaran logos de los patrocinios pero son diferentes de eso debes de hacerlo o acomodarlo para que igual sea responsivo y sea con una buena visibilidad.
+
+también estará en ese mismo apartado de Beneficios un apratdo o espacio de  "convenios academicos locales" abrevia eso en lo cual debe de tener otro espacios para las escuelas con la que se tienen convenios
+
+
+ahora también se quitara el apartado de agenda y se pondrá el apratdo de Comisiones, la cual el contenido debe de tener un tipo de ficha de presentación en la cual deberá de contener una foto del la persona, nombre del representante, su comisión y su contacto, ya sea numero o correo electrónico o ambos de ser necesario
