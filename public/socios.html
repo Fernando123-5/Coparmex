@@ -112,126 +112,8 @@
             padding-bottom: 8px;
         }
 
-        /* BOTÓN MENÚ MÓVIL */
-        #menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            color: #4b5563;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            height: 44px;
-            width: 44px;
-            border-radius: 8px;
-        }
-
-        #menu-toggle:hover {
-            background-color: #f3f4f6;
-            color: #1e40af;
-        }
-
-        #menu-toggle.active {
-            background-color: #dbeafe;
-            color: #1e40af;
-        }
-
-        @media (min-width: 768px) {
-            #menu-toggle {
-                display: none !important;
-            }
-        }
-
-        /* MENÚ MÓVIL */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 0;
-            padding: 8px 0;
-            background-color: white;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 98;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-            width: 100%;
-            border-bottom: 2px solid #e5e7eb;
-            border-top: 1px solid #f0f0f0;
-            animation: slideDown 0.3s ease-out;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-menu.active {
-            display: flex !important;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu {
-                display: none !important;
-            }
-        }
-
-        .mobile-menu-link {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 14px 16px;
-            font-size: 14px;
-            border-bottom: 1px solid #f3f4f6;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: flex;
-            color: #4b5563;
-            font-weight: 500;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.text-blue-700 {
-            background-color: #f9fafb;
-            color: #1e40af;
-            padding-left: 20px;
-        }
-
-        .mobile-menu-link:active {
-            background-color: #eff6ff;
-        }
-
-        .mobile-menu-link.mobile-menu-link-active {
-            background-color: #dbeafe;
-            color: #1e40af;
-            font-weight: 600;
-            border-left: 4px solid #1e40af;
-            padding-left: 16px;
-        }
-
-        .mobile-menu-link .material-icons {
-            font-size: 20px;
-            color: inherit;
-        }
-
-        .mobile-menu-link:last-child {
-            border-bottom: none;
-        }
-
+        /* Estilos del menú móvil inyectados por navbar-loader.js */
+        
         /* BOTÓN AFÍLIATE */
         button.bg-blue-700 {
             background-color: #1e40af;
@@ -264,405 +146,365 @@
                 background-attachment: scroll !important;
             }
         }
+
+        /* Responsive para nuevas secciones */
+        @media (max-width: 1024px) {
+            div[style*="grid-template-columns: 1.5fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            div[style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 24px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 0 16px !important;
+            }
+
+            div[style*="padding: 80px 24px"] {
+                padding: 48px 16px !important;
+            }
+
+            h2 {
+                font-size: 28px !important;
+            }
+
+            h3 {
+                font-size: 16px !important;
+            }
+
+            p {
+                font-size: 14px !important;
+            }
+
+            div[style*="grid-template-columns: 1.5fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            div[style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Beneficios cards */
+            div[style*="padding: 48px 32px"] {
+                padding: 32px 20px !important;
+            }
+
+            div[style*="width: 80px; height: 80px"] {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            div[style*="width: 80px; height: 80px"] span.material-icons {
+                font-size: 36px !important;
+            }
+
+            /* CTA Section */
+            button {
+                padding: 12px 32px !important;
+                font-size: 14px !important;
+            }
+
+            /* Lista items */
+            div[style*="flex: 1;"] h3 {
+                font-size: 15px !important;
+            }
+
+            div[style*="flex: 1;"] p {
+                font-size: 12px !important;
+            }
+
+            div[style*="padding: 28px 32px"] {
+                padding: 20px 16px !important;
+                gap: 12px !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            div[style*="padding: 80px 24px"] {
+                padding: 40px 16px !important;
+            }
+
+            h1 {
+                font-size: 24px !important;
+            }
+
+            h2 {
+                font-size: 22px !important;
+            }
+
+            h3 {
+                font-size: 14px !important;
+            }
+
+            p {
+                font-size: 13px !important;
+            }
+
+            div[style*="width: 60px; height: 60px"] {
+                width: 48px !important;
+                height: 48px !important;
+            }
+
+            div[style*="width: 80px; height: 80px"] {
+                width: 56px !important;
+                height: 56px !important;
+            }
+
+            div[style*="width: 60px; height: 60px"] span.material-icons {
+                font-size: 28px !important;
+            }
+
+            div[style*="width: 80px; height: 80px"] span.material-icons {
+                font-size: 32px !important;
+            }
+
+            /* Reducir espacios interiores */
+            div[style*="padding: 40px"] {
+                padding: 24px 16px !important;
+            }
+
+            div[style*="padding: 48px 32px"] {
+                padding: 28px 16px !important;
+            }
+
+            div[style*="padding: 60px 40px"] {
+                padding: 32px 20px !important;
+            }
+
+            div[style*="padding: 28px 32px"] {
+                padding: 20px 16px !important;
+                gap: 12px !important;
+            }
+
+            /* Gaps más pequeños */
+            div[style*="gap: 60px"] {
+                gap: 32px !important;
+            }
+
+            div[style*="gap: 40px"] {
+                gap: 20px !important;
+            }
+
+            div[style*="gap: 32px"] {
+                gap: 16px !important;
+            }
+
+            div[style*="gap: 48px"] {
+                gap: 24px !important;
+            }
+
+            button {
+                padding: 12px 24px !important;
+                font-size: 13px !important;
+            }
+
+            /* Lista en móvil - una columna */
+            div[style*="grid-template-columns: repeat(2, 1fr); gap: 24px"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Mensaje motivacional */
+            div[style*="color: #424751; font-size: 20px"] {
+                font-size: 16px !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
     
-    <!-- Cargar navbar -->
-    <script src="js/navbar-loader.js"></script>
-    <script src="js/footer-loader.js"></script>
+
 
     <main>
-        <!-- Page Header -->
+        <!-- Page Header Hero -->
         <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/socios.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
             <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
                 <div class="max-w-3xl">
-                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Nuestro Ecosistema</span>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Nuestros Aliados Estratégicos</h1>
-                    <p class="text-lg md:text-xl text-blue-100">Empresas líderes que conforman nuestra red de socios colaboradores, fortaleciendo juntos el movimiento empresarial mexicano.</p>
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Socios COPARMEX</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Afiliación a COPARMEX</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Únete a la red empresarial más influyente de México y sé parte del cambio que el país necesita.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Partners Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 md:py-28">
-            <div class="mb-8 sm:mb-16">
-                <span class="inline-block bg-blue-100 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-4 rounded-full">Socios Locales</span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-3">Quiénes Somos</h2>
-            </div>
-
-            <!-- Contenido Principal en Columnas -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20">
-                <!-- Primera Columna -->
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">business</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 leading-relaxed">Somos un sindicato patronal apartidista y de afiliación voluntaria que reúne a empresarios en todo el país, somos responsables del 30% del PIB y de 4.8 millones de empleos formales en el territorio nacional, sabemos que el México que anhelamos todos es posible con la participación activa de sus ciudadanos.</p>
+        <!-- Sección: Quiénes Somos los Afiliados -->
+        <section style="padding: 80px 24px; background-color: white;">
+            <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center;">
+                    <!-- Izquierda: Texto -->
+                    <div>
+                        <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Quiénes Somos</span>
+                        <h2 style="color: #00346f; font-size: 42px; font-weight: 900; margin-bottom: 32px; line-height: 1.2;">Afiliados a Coparmex</h2>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(0, 52, 111, 0.08) 0%, rgba(30, 64, 175, 0.08) 100%); border-left: 4px solid #00346f; padding: 32px; border-radius: 8px; margin-bottom: 0;">
+                            <p style="color: #424751; font-size: 16px; line-height: 1.8; margin: 0;">
+                                <span style="font-weight: 700; color: #00346f;">Los empresarios afiliados a Coparmex</span> encontramos un espacio para aportar nuestro tiempo, talento y recursos de manera eficaz y estratégica, para construir <span style="font-weight: 600;">el México que anhelamos, el que queremos, el que todos merecemos.</span>
+                            </p>
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">gavel</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">Representamos</h3>
-                            <p class="text-gray-700 leading-relaxed">Ante autoridades y organismos, nacionales e internacionales.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">school</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">Formamos</h3>
-                            <p class="text-gray-700 leading-relaxed">Desarrollando el profesionalismo de la dirección de las empresas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Segunda Columna -->
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">handshake</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">Servimos</h3>
-                            <p class="text-gray-700 leading-relaxed">Promoviendo la justicia y la armonía en las relaciones sociales.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">public</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">Comunicamos</h3>
-                            <p class="text-gray-700 leading-relaxed">Enalteciendo y dignificando a la persona, la razón de ser y la necesidad de la libre empresa.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                <span class="material-icons text-blue-700">groups</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">Unimos</h3>
-                            <p class="text-gray-700 leading-relaxed">Promoviendo la participación conjunta del empresariado.</p>
+                    <!-- Derecha: Icono/Estadística -->
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 16px; padding: 60px 40px; box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 80px; color: #1e40af; display: block; margin-bottom: 20px;">business_center</span>
+                            <div style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 12px;">36,000+</div>
+                            <p style="color: #00346f; font-size: 16px; font-weight: 600; margin: 0;">Empresarios Afiliados</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Contenido Adicional en Una Columna -->
-            <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 sm:p-12 border border-gray-200 mb-12 sm:mb-20">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                    <span class="material-icons text-blue-700">shield</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-2">Defendemos</h3>
-                                <p class="text-gray-700 leading-relaxed">Construyendo el marco apto para el ejercicio responsable de todas las libertades.</p>
+        <!-- Sección: ¿Cómo Colaboramos? -->
+        <section style="padding: 80px 24px; background-color: #f9fafb;">
+            <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Nuestro Compromiso</span>
+                    <h2 style="color: #00346f; font-size: 42px; font-weight: 900; margin-bottom: 0; line-height: 1.2;">¿Cómo Colaboramos por un Mejor México?</h2>
+                </div>
+
+                <!-- Lista en dos filas -->
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px;">
+                    
+                    <!-- Item 1 -->
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                                <span class="material-icons" style="font-size: 28px; color: #1e40af;">handshake</span>
                             </div>
                         </div>
-
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                    <span class="material-icons text-blue-700">lightbulb</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-2">Proponemos</h3>
-                                <p class="text-gray-700 leading-relaxed">Analizando la realidad económica, política, social y empresarial.</p>
-                            </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 8px;">Actores Activos y Propositivos</h3>
+                            <p style="color: #4b5563; font-size: 13px; line-height: 1.6; margin: 0;">Siendo actores activos y propositivos de la construcción de México, y una voz crítica cuando el País así lo requiere.</p>
                         </div>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
-                                    <span class="material-icons text-blue-700">forum</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-2">Participamos</h3>
-                                <p class="text-gray-700 leading-relaxed">Fortaleciendo los canales de retroalimentación con nuestros socios para canalizar sus inquietudes.</p>
+                    <!-- Item 2 -->
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                                <span class="material-icons" style="font-size: 28px; color: #1e40af;">security</span>
                             </div>
                         </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 8px;">Lucha contra la Corrupción</h3>
+                            <p style="color: #4b5563; font-size: 13px; line-height: 1.6; margin: 0;">Liderando una lucha frontal contra la corrupción y la impunidad que obstruyen el potencial y el crecimiento de México.</p>
+                        </div>
+                    </div>
 
-                        <p class="text-gray-700 leading-relaxed font-semibold text-sm bg-blue-100 p-4 rounded-lg">
-                            Los más de 36,000 empresarios socios en todo el país, responsables del 30% del PIB y de 4.8 millones de empleos formales en el territorio nacional, sabemos que el México que anhelamos todos es posible con la participación activa de sus ciudadanos.
-                        </p>
+                    <!-- Item 3 -->
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                                <span class="material-icons" style="font-size: 28px; color: #1e40af;">school</span>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 8px;">Educación y Derechos</h3>
+                            <p style="color: #4b5563; font-size: 13px; line-height: 1.6; margin: 0;">Exigiendo respeto para los derechos de los mexicanos y de las empresas, comenzando con una educación de calidad para el futuro de la Nación.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                                <span class="material-icons" style="font-size: 28px; color: #1e40af;">trending_up</span>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 8px;">Bienestar Empresarial</h3>
+                            <p style="color: #4b5563; font-size: 13px; line-height: 1.6; margin: 0;">Procurando el bienestar de las empresas, grandes, pequeñas y medianas, que significan el gran motor de crecimiento de México.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Mensaje Final -->
-            <div class="bg-white border-l-4 border-blue-700 p-8 sm:p-12 rounded-lg shadow-sm mb-12 sm:mb-20">
-                <p class="text-lg text-gray-700 leading-relaxed">
-                    <span class="font-bold text-blue-700">Afiliados a Coparmex,</span> los empresarios encontramos un espacio para aportar nuestro tiempo, talento y recursos de manera eficaz y estratégica, para construir el México que anhelamos, el que queremos, el que todos merecemos.
+        <!-- Sección: Mensaje Motivacional -->
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, rgba(0, 52, 111, 0.05) 0%, rgba(30, 64, 175, 0.05) 100%);">
+            <div class="content-wrapper" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+                <p style="color: #424751; font-size: 20px; line-height: 1.9; margin: 0; font-weight: 500;">
+                    <span style="color: #00346f; font-weight: 700; font-size: 21px;">Afiliados a Coparmex,</span> los empresarios encontramos un espacio para aportar nuestro tiempo, talento y recursos de manera eficaz y estratégica, para construir <span style="color: #00346f; font-weight: 700;">el México que anhelamos, el que queremos, el que todos merecemos.</span>
                 </p>
             </div>
+        </section>
 
-            <!-- Benefits Section -->
-            <div class="py-8 sm:py-12 md:py-16">
-                <div class="text-center mb-8 sm:mb-12">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3">Beneficios de Ser Socio COPARMEX</h2>
-                    <div class="w-20 h-1 bg-blue-700 mx-auto"></div>
+        <!-- Sección: Beneficios de Afiliación -->
+        <section style="padding: 80px 24px; background-color: white;">
+            <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Beneficios Exclusivos</span>
+                    <h2 style="color: #00346f; font-size: 42px; font-weight: 900; margin-bottom: 0; line-height: 1.2;">¿Qué Reciben Nuestros Afiliados?</h2>
                 </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                    <div class="flex flex-col items-center text-center">
-                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">business</span>
-                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Representación</h4>
-                        <p class="text-gray-600 text-sm sm:text-base">Voz activa ante los tres niveles de gobierno para defender los intereses empresariales.</p>
+
+                <!-- Grid 3 columnas de beneficios -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                    
+                    <!-- Beneficio 1: Representatividad -->
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 48px; color: #1e40af;">gavel</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 22px; font-weight: 900; margin-bottom: 20px;">Representatividad</h3>
+                        <p style="color: #424751; font-size: 14px; line-height: 1.8; margin: 0;">Impulso y gestión de temas ante autoridades municipales y estatales en beneficio del desarrollo del ecosistema empresarial e impacto político, social y económico para el bien común.</p>
                     </div>
 
-                    <div class="flex flex-col items-center text-center">
-                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">public</span>
-                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Conexiones</h4>
-                        <p class="text-gray-600 text-sm sm:text-base">Acceso a una red nacional de más de 36,000 empresas para generar alianzas estratégicas.</p>
+                    <!-- Beneficio 2: Servicios Directos -->
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 48px; color: #1e40af;">build</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 22px; font-weight: 900; margin-bottom: 20px;">Servicios Directos</h3>
+                        <p style="color: #424751; font-size: 14px; line-height: 1.8; margin: 0;">Servicios concretos con tarifa preferencial: capacitaciones, asesorías, bolsa de trabajo, eventos empresariales, gestión de trámites y más, conforme a las necesidades de cada Centro Empresarial.</p>
                     </div>
 
-                    <div class="flex flex-col items-center text-center">
-                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">group</span>
-                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Participación</h4>
-                        <p class="text-gray-600 text-sm sm:text-base">Involucramiento en comisiones de trabajo especializadas que enfocan en política empresarial.</p>
-                    </div>
-
-                    <div class="flex flex-col items-center text-center">
-                        <span class="material-icons text-blue-700 text-5xl sm:text-6xl mb-4">trending_up</span>
-                        <h4 class="font-black text-base sm:text-lg text-gray-900 mb-3">Información</h4>
-                        <p class="text-gray-600 text-sm sm:text-base">Análisis económicos exclusivos y reportes de coyuntura para la toma de decisiones.</p>
+                    <!-- Beneficio 3: Oportunidad de Vínculo -->
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 48px; color: #1e40af;">public</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 22px; font-weight: 900; margin-bottom: 20px;">Oportunidad de Vínculo</h3>
+                        <p style="color: #424751; font-size: 14px; line-height: 1.8; margin: 0;">Relaciones con otros empresarios y actores locales a través de eventos, participación en Comisiones de Trabajo y oportunidades de aportación en propuestas e iniciativas particulares.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-800 text-white py-12 sm:py-20 md:py-28">
-            <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
-            </div>
-            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-4 sm:mb-6 rounded-full">únete a nosotros</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">¿Interesado en ser Socio COPARMEX?</h2>
-                <p class="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-10 max-w-2xl mx-auto">Sé parte de la red empresarial más influyente de México y accede a oportunidades exclusivas de crecimiento y colaboración.</p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                    <button class="bg-white text-blue-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-black text-sm sm:text-lg hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95">
-                        Solicitar Información
-                    </button>
-                   
-                </div>
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
+            <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <span style="display: inline-block; background: rgba(255, 255, 255, 0.2); color: white; padding: 8px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 24px; margin-bottom: 24px;">Únete Ahora</span>
+                <h2 style="font-size: 42px; font-weight: 900; margin-bottom: 24px; font-family: 'Public Sans', sans-serif; line-height: 1.2;">¿Listo para ser parte de COPARMEX?</h2>
+                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); max-width: 600px; margin-left: auto; margin-right: auto;">Contacta con nosotros y descubre cómo puedes beneficiarte de nuestra red empresarial y servicios exclusivos.</p>
+                <button style="background-color: white; color: #00346f; padding: 16px 48px; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);">
+                    Solicitar Información
+                </button>
             </div>
         </section>
     </main>
 
-    <!-- Partner Details Modal -->
-    <div id="partnerModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md my-8">
-            <!-- Modal Header with Image -->
-            <div class="relative h-64 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center overflow-hidden">
-                <button id="closePartnerModal" class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2 transition-all shadow-md z-10">
-                    <span class="material-icons">close</span>
-                </button>
-                <img id="partnerModalImage" src="" alt="Partner Logo" class="max-h-48 max-w-xs object-contain p-4">
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-8">
-                <!-- Partner Name -->
-                <h2 id="partnerModalTitle" class="text-3xl font-bold text-gray-900 mb-4">Nombre del Socio</h2>
-
-                <!-- Partner Description -->
-                <p id="partnerModalDescription" class="text-gray-600 leading-relaxed mb-8">Descripción del socio...</p>
-
-                <!-- Action Button -->
-                <div class="flex gap-3 flex-col sm:flex-row">
-                    <a id="partnerWebsiteBtn" href="#" target="_blank" class="flex-1 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
-                        <span class="material-icons">open_in_new</span>
-                        Visitar Sitio Web
-                    </a>
-                    <button id="closePartnerModalBtn" class="flex-1 bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2">
-                        <span class="material-icons">close</span>
-                        Cerrar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Cargar configuración primero -->
     <script src="js/config-loader.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- Generar tarjetas de socios dinámicamente -->
-    <script>
-        // Esta función se ejecutará después de que script.js cargue PARTNERS_DATA
-        function renderPartnerCards() {
-            const grid = document.getElementById('partnersGrid');
-            if (!grid) return;
-
-            // Esperar a que PARTNERS_DATA esté disponible
-            if (typeof PARTNERS_DATA === 'undefined') {
-                setTimeout(renderPartnerCards, 100);
-                return;
-            }
-
-            grid.innerHTML = '';
-
-            PARTNERS_DATA.forEach((partner, index) => {
-                const card = document.createElement('div');
-                card.className = 'partner-card';
-                card.style.animationDelay = `${index * 100}ms`;
-
-                // Crear contenedor de imagen
-                const imageContainer = document.createElement('div');
-                imageContainer.className = 'partner-image-container';
-
-                const img = document.createElement('img');
-                img.src = partner.logo;
-                img.alt = partner.name;
-
-                imageContainer.appendChild(img);
-
-                // Crear contenedor de contenido
-                const content = document.createElement('div');
-                content.className = 'partner-content';
-
-                const title = document.createElement('h3');
-                title.className = 'partner-name';
-                title.textContent = partner.name;
-
-                const description = document.createElement('p');
-                description.className = 'partner-description';
-                description.textContent = partner.description;
-
-                const button = document.createElement('button');
-                button.className = 'partner-card-btn';
-                button.dataset.partnerId = partner.id;
-                button.textContent = 'Conocer más';
-
-                content.appendChild(title);
-                content.appendChild(description);
-                content.appendChild(button);
-
-                card.appendChild(imageContainer);
-                card.appendChild(content);
-
-                grid.appendChild(card);
-            });
-
-            console.log('✅ Tarjetas de socios renderizadas');
-
-            // Re-inicializar PartnerModal después de agregar botones
-            if (document.querySelector('.partner-card-btn')) {
-                new PartnerModal();
-            }
-        }
-
-        // Función para renderizar socios federales
-        function renderFederalPartnerCards() {
-            const grid = document.getElementById('federalPartnersGrid');
-            if (!grid) return;
-
-            // Esperar a que FEDERAL_PARTNERS_DATA esté disponible
-            if (typeof FEDERAL_PARTNERS_DATA === 'undefined') {
-                setTimeout(renderFederalPartnerCards, 100);
-                return;
-            }
-
-            grid.innerHTML = '';
-
-            FEDERAL_PARTNERS_DATA.forEach((partner, index) => {
-                const card = document.createElement('div');
-                card.className = 'partner-card';
-                card.style.animationDelay = `${index * 100}ms`;
-
-                // Crear contenedor de imagen
-                const imageContainer = document.createElement('div');
-                imageContainer.className = 'partner-image-container';
-
-                const img = document.createElement('img');
-                img.src = partner.logo;
-                img.alt = partner.name;
-
-                imageContainer.appendChild(img);
-
-                // Crear contenedor de contenido
-                const content = document.createElement('div');
-                content.className = 'partner-content';
-
-                const title = document.createElement('h3');
-                title.className = 'partner-name';
-                title.textContent = partner.name;
-
-                const description = document.createElement('p');
-                description.className = 'partner-description';
-                description.textContent = partner.description;
-
-                const button = document.createElement('button');
-                button.className = 'partner-card-btn';
-                button.dataset.partnerId = partner.id;
-                button.textContent = 'Conocer más';
-
-                content.appendChild(title);
-                content.appendChild(description);
-                content.appendChild(button);
-
-                card.appendChild(imageContainer);
-                card.appendChild(content);
-
-                grid.appendChild(card);
-            });
-
-            console.log('✅ Tarjetas de socios federales renderizadas');
-
-            // Re-inicializar PartnerModal después de agregar botones
-            if (document.querySelector('.partner-card-btn')) {
-                new PartnerModal();
-            }
-        }
-
-        // Renderizar cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                // renderPartnerCards(); // Desactivado - Usar contenido de texto en su lugar
-                // renderFederalPartnerCards(); // Desactivado - Sección eliminada
-            }, 200);
-        });
-    </script>
-    
-    <!-- Prevenir errores de extensiones del navegador -->
-    <script>
-        window.addEventListener('beforeunload', () => {}, false);
-    </script>
-    
+    <script src="js/navbar-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

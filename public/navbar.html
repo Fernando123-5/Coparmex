@@ -13,18 +13,19 @@
 
             <!-- Desktop Navigation (centered) -->
             <nav class="hidden md:flex items-center gap-8 lg:gap-10 flex-1 justify-center">
-                <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="index">Nosotros</a>
-                <a href="beneficios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="beneficios">Beneficios</a>
-                <a href="comisiones.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="comisiones">Comisiones</a>
-                <a href="socios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="socios">Socios</a>
-                <a href="eventos.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="eventos">Eventos</a>
-                <a href="data.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors" data-page="data" style="display: none;">Data COPARMEX</a>
+                <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="index">Inicio</a>
+                <a href="beneficios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="beneficios">Beneficios</a>
+                <a href="comisiones.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="comisiones">Comisiones</a>
+                <a href="socios.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="socios">Socios</a>
+                <a href="eventos.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="eventos">Eventos</a>
+                <a href="data.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="data" style="display: none;">Data COPARMEX</a>
+                <a href="quienes-somos.html" class="text-gray-600 hover:text-blue-700 font-medium text-sm transition-colors nav-link" data-page="quienes-somos">Quiénes Somos</a>
             </nav>
 
             <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button id="menu-toggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Abrir menú" aria-expanded="false">
-                    <span class="material-icons text-2xl text-gray-700">menu</span>
+                <button id="menu-toggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+                    <span class="material-icons text-2xl text-gray-700 hamburger-icon">menu</span>
                 </button>
             </div>
         </div>
@@ -32,27 +33,31 @@
         <!-- Mobile Navigation -->
         <nav id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
             <div class="mobile-menu-container">
-                <a href="index.html" class="mobile-menu-link" data-page="index">
+                <a href="index.html" class="mobile-menu-link nav-link" data-page="index">
                     <span class="material-icons">home</span>
-                    <span>Nosotros</span>
+                    <span>Inicio</span>
                 </a>
-                <a href="beneficios.html" class="mobile-menu-link" data-page="beneficios">
+                <a href="quienes-somos.html" class="mobile-menu-link nav-link" data-page="quienes-somos">
+                    <span class="material-icons">info</span>
+                    <span>Quiénes Somos</span>
+                </a>
+                <a href="beneficios.html" class="mobile-menu-link nav-link" data-page="beneficios">
                     <span class="material-icons">card_giftcard</span>
                     <span>Beneficios</span>
                 </a>
-                <a href="comisiones.html" class="mobile-menu-link" data-page="comisiones">
+                <a href="comisiones.html" class="mobile-menu-link nav-link" data-page="comisiones">
                     <span class="material-icons">groups</span>
                     <span>Comisiones</span>
                 </a>
-                <a href="socios.html" class="mobile-menu-link" data-page="socios">
+                <a href="socios.html" class="mobile-menu-link nav-link" data-page="socios">
                     <span class="material-icons">handshake</span>
                     <span>Socios</span>
                 </a>
-                <a href="eventos.html" class="mobile-menu-link" data-page="eventos">
+                <a href="eventos.html" class="mobile-menu-link nav-link" data-page="eventos">
                     <span class="material-icons">event</span>
                     <span>Eventos</span>
                 </a>
-                <a href="data.html" class="mobile-menu-link" data-page="data" style="display: none;">
+                <a href="data.html" class="mobile-menu-link nav-link" data-page="data" style="display: none;">
                     <span class="material-icons">analytics</span>
                     <span>Data COPARMEX</span>
                 </a>

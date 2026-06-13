@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiénes Somos - COPARMEX - Confederación Patronal de la República Mexicana">
+    <meta name="theme-color" content="#00346f">
+    <title>Quiénes Somos - COPARMEX</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Public Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            font-size: clamp(28px, 8vw, 48px) !important;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: clamp(24px, 6vw, 32px) !important;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        
+        h3 {
+            font-size: clamp(18px, 4vw, 24px) !important;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: clamp(14px, 2.5vw, 16px);
+            line-height: 1.6;
+        }
+        
+        button {
+            min-height: 44px;
+            font-size: clamp(12px, 2vw, 14px);
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+        }
+        
+        header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
+        
+        #main-header {
+            position: relative;
+        }
+        
+        #main-header .max-w-7xl {
+            position: relative;
+            max-width: 100%;
+            padding: 0 24px;
+        }
+        nav.hidden { display: none !important; }
+        @media (min-width: 768px) { nav.hidden.md\:flex { display: flex !important; gap: 16px !important; align-items: center; } }
+        nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
+        nav a:hover { color: #1e40af; }
+        nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
+
+        
+        /* Contenedor responsivo */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Valores Layout */
+        .values-section {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+        
+        .values-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .values-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .value-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        
+        .value-item-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbeafe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e40af;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .value-item-content h3 {
+            color: #00346f;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .value-item-content p {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .values-bottom {
+            background-color: #f3f4f6;
+            padding: 40px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .values-bottom .value-item {
+            gap: 16px;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 52, 111, 0.05) 0%, rgba(0, 74, 153, 0.05) 100%);
+            border-left: 4px solid #00346f;
+            padding: 32px;
+            border-radius: 8px;
+            margin: 48px 0;
+        }
+        
+        .highlight-box p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #00346f;
+            line-height: 1.8;
+        }
+        
+        /* Animación de contadores */
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stat-number {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-number.animate {
+            animation: countUp 0.6s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .values-section {
+                flex-direction: column;
+                gap: 32px;
+            }
+            
+            .values-left {
+                gap: 20px;
+            }
+            
+            .values-right {
+                gap: 20px;
+            }
+            
+            .values-bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Header Section */
+            section[style*="padding: 60px"] {
+                padding: 40px 24px !important;
+            }
+
+            section[style*="padding: 60px"] > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            h1 {
+                font-size: 32px !important;
+            }
+
+            h2 {
+                font-size: 24px !important;
+            }
+
+            /* Grid 3 columnas a 2 columnas */
+            div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 24px !important;
+            }
+
+            /* Fortaleza Institucional */
+            section[style*="padding: 80px"] > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            div[style*="grid-template-columns: 1fr 1fr; gap: 24px"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            div[style*="grid-column: 1 / -1"] {
+                grid-column: 1 !important;
+            }
+
+            button {
+                padding: 12px 32px !important;
+                font-size: 14px !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .values-section {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .value-item {
+                gap: 12px;
+            }
+            
+            .value-item-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .value-item-content h3 {
+                font-size: 14px;
+            }
+            
+            .value-item-content p {
+                font-size: 13px;
+            }
+            
+            .values-bottom {
+                padding: 24px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .highlight-box {
+                padding: 20px 16px;
+            }
+            
+            .highlight-box p {
+                font-size: 13px;
+            }
+
+            /* Grid 3 columnas a 1 columna en móvil */
+            div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Header padding reducido */
+            section[style*="padding: 60px"] {
+                padding: 32px 16px !important;
+            }
+
+            h1 {
+                font-size: 24px !important;
+            }
+
+            h2 {
+                font-size: 20px !important;
+            }
+
+            p {
+                font-size: 13px !important;
+            }
+
+            /* Estadísticas más pequeñas */
+            div[style*="color: #1e40af; font-size: 48px"] {
+                font-size: 32px !important;
+            }
+
+            /* CTA Section */
+            section[style*="background: linear-gradient(135deg, #00346f"] {
+                padding: 40px 16px !important;
+            }
+
+            section[style*="background: linear-gradient(135deg, #00346f"] h2 {
+                font-size: 24px !important;
+            }
+
+            section[style*="background: linear-gradient(135deg, #00346f"] p {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Cargar configuración primero -->
+    <script src="js/config-loader.js"></script>
+    
+    <!-- Cargar navbar -->
+    <script src="js/navbar-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+
+    <main>
+        <!-- Page Header Hero -->
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/quienes.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
+                <div class="max-w-3xl">
+                    <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Quiénes Somos</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">COPARMEX</h1>
+                    <p class="text-lg md:text-xl text-blue-100">Somos un sindicato patronal apartidista y de afiliación voluntaria que reúne a empresarios en todo el país. Responsables de impulsar el crecimiento económico y social a través de la participación ciudadana responsable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Nuestros Pilares Estratégicos -->
+        <section style="padding: 80px 24px; background-color: #f9fafb;">
+            <div class="content-wrapper">
+                <div style="margin-bottom: 56px;">
+                    <h2 style="color: #00346f; font-size: 32px; font-weight: 900; margin-bottom: 8px; font-family: 'Public Sans', sans-serif;">Nuestros Pilares Estratégicos</h2>
+                </div>
+
+                <!-- Grid 3 columnas de pilares -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                    
+                    <!-- Pillar 1: Representamos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">gavel</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Representamos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Ante autoridades y organismos nacionales e internacionales, siendo la voz unificada del sector empresarial.</p>
+                    </div>
+
+                    <!-- Pillar 2: Formamos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">school</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Formamos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Desarrollando el profesionalismo de la dirección de las empresas a través de programas de capacitación.</p>
+                    </div>
+
+                    <!-- Pillar 3: Servimos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">handshake</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Servimos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Promoviendo la justicia y la armonía en las relaciones sociales para un entorno empresarial sostenible.</p>
+                    </div>
+
+                    <!-- Pillar 4: Comunicamos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">chat</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Comunicamos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Enalteciendo y dignificando a la persona y la libre empresa como motor de desarrollo nacional.</p>
+                    </div>
+
+                    <!-- Pillar 5: Unimos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">groups</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Unimos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Promoviendo la participación conjunta del empresariado para fortalecer la economía nacional.</p>
+                    </div>
+
+                    <!-- Pillar 6: Defendemos -->
+                    <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                            <span class="material-icons" style="font-size: 32px; color: #1e40af;">shield</span>
+                        </div>
+                        <h3 style="color: #00346f; font-size: 16px; font-weight: 700; margin-bottom: 12px;">Defendemos</h3>
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">Construyendo el marco apto para el ejercicio responsable de todas las libertades empresariales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Fortaleza Institucional -->
+        <section style="padding: 80px 24px; background-color: white;">
+            <div class="content-wrapper">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    
+                    <!-- Columna Izquierda: Texto -->
+                    <div>
+                        <h2 style="color: #00346f; font-size: 32px; font-weight: 900; margin-bottom: 24px; line-height: 1.2;">Fortaleza Institucional</h2>
+                        <p style="color: #4b5563; font-size: 15px; line-height: 1.8; margin-bottom: 16px;">
+                            Nuestro compromiso es con el desarrollo de México a través de la excelencia empresarial y la responsabilidad social compartida.
+                        </p>
+                        <p style="color: #4b5563; font-size: 15px; line-height: 1.8;">
+                            Los más de 36,000 empresarios socios en todo el país, responsables del 30% del PIB y de 4.8 millones de empleos formales en el territorio nacional, sabemos que el México que anhelamos todos es posible con la participación activa de sus ciudadanos.
+                        </p>
+                    </div>
+
+                    <!-- Columna Derecha: Estadísticas -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                        
+                        <!-- Stat 1 -->
+                        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 32px 24px; border-radius: 12px; text-align: center; border-left: 4px solid #1e40af;">
+                            <div class="stat-number" style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 8px;" data-target="36000" data-suffix="">0</div>
+                            <p style="color: #00346f; font-size: 14px; font-weight: 600;">Empresarios Socios</p>
+                        </div>
+
+                        <!-- Stat 2 -->
+                        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 32px 24px; border-radius: 12px; text-align: center; border-left: 4px solid #1e40af;">
+                            <div class="stat-number" style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 8px;" data-target="30" data-suffix="%">0</div>
+                            <p style="color: #00346f; font-size: 14px; font-weight: 600;">Del PIB Nacional</p>
+                        </div>
+
+                        <!-- Stat 3 (Full Width) -->
+                        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 32px 24px; border-radius: 12px; text-align: center; border-left: 4px solid #1e40af; grid-column: 1 / -1;">
+                            <div class="stat-number" style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 8px;" data-target="4.8" data-suffix="M">0</div>
+                            <p style="color: #00346f; font-size: 14px; font-weight: 600;">Empleos Formales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config-loader.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Animación de contadores en la sección de Fortaleza Institucional
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            let hasAnimated = false;
+            
+            const animateCounters = () => {
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-target'));
+                    const suffix = stat.getAttribute('data-suffix') || '';
+                    const duration = 1.5; // segundos
+                    const frameDuration = 1000 / 60; // 60 FPS
+                    const totalFrames = Math.round((duration * 1000) / frameDuration);
+                    let currentFrame = 0;
+                    
+                    const updateNumber = () => {
+                        currentFrame++;
+                        const progress = currentFrame / totalFrames;
+                        const easeOut = 1 - Math.pow(1 - progress, 3); // Easing function
+                        const currentValue = target * easeOut;
+                        
+                        // Formatear el número
+                        if (target >= 1000) {
+                            stat.textContent = '+' + Math.round(currentValue).toLocaleString('es-MX') + suffix;
+                        } else if (target >= 1 && target < 100) {
+                            stat.textContent = Math.round(currentValue * 10) / 10 + suffix;
+                        } else {
+                            stat.textContent = Math.round(currentValue) + suffix;
+                        }
+                        
+                        if (currentFrame < totalFrames) {
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            // Mostrar el valor final correcto
+                            if (target >= 1000) {
+                                stat.textContent = '+' + Math.round(target).toLocaleString('es-MX') + suffix;
+                            } else if (target >= 1 && target < 100) {
+                                stat.textContent = target + suffix;
+                            } else {
+                                stat.textContent = target + suffix;
+                            }
+                            stat.classList.add('animate');
+                        }
+                    };
+                    
+                    updateNumber();
+                });
+            };
+            
+            // Usar Intersection Observer para detectar cuando la sección es visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+            
+            // Observar el contenedor de estadísticas
+            const statsContainer = document.querySelector('div[style*="grid-template-columns: 1fr 1fr; gap: 24px"]');
+            if (statsContainer) {
+                observer.observe(statsContainer);
+            }
+        });
+    </script>
+</body>
+</html>
