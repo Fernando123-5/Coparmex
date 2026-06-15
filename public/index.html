@@ -216,6 +216,46 @@
                 width: 100% !important;
             }
         }
+
+        /* Scroll Animation Styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation for children */
+        .fade-in > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in.visible > *:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in.visible > *:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in.visible > *:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in.visible > *:nth-child(4) {
+            transition-delay: 0.4s;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900" style="font-family: 'Public Sans', sans-serif;">
@@ -304,7 +344,7 @@
         </section>
 
         <!-- Sección 1: ESTRATEGIA INSTITUCIONAL - Texto Izq + Imagen Der -->
-        <section id="estrategia" style="padding: 80px 24px; background-color: var(--color-surface);">
+        <section id="estrategia" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface);">
             <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
                 <!-- Texto - Lado Izquierdo -->
                 <div>
@@ -324,7 +364,7 @@
         </section>
 
         <!-- Sección 2: COMUNICACIÓN DIGITAL - Imagen Izq + Texto Der -->
-        <section id="comunicacion" style="padding: 80px 24px; background-color: var(--color-surface-container-low);">
+        <section id="comunicacion" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface-container-low);">
             <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
                 <!-- Imagen - Lado Izquierdo -->
                 <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
@@ -342,7 +382,7 @@
         </section>
 
         <!-- Sección 3: TRANSPARENCIA Y DATOS - Texto Izq + Imagen Der -->
-        <section id="transparencia" style="padding: 80px 24px; background-color: var(--color-surface);">
+        <section id="transparencia" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface);">
             <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
                 <!-- Texto - Lado Izquierdo -->
                 <div>
@@ -361,7 +401,7 @@
 
 
         <!-- Sponsors/Socios Section - Carousel Layout -->
-        <section style="background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-top: 1px solid var(--color-outline-variant); padding: 80px 24px;">
+        <section class="fade-in" style="background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-top: 1px solid var(--color-outline-variant); padding: 80px 24px;">
             <div class="max-w-7xl" style="margin: 0 auto;">
                 <div style="text-align: center; margin-bottom: 64px;">
                     <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 16px;">Aliados que Impulsan el Cambio</h2>
@@ -369,7 +409,7 @@
                 </div>
                 
                 <!-- Sponsors Carousel -->
-                <div class="sponsors-wrapper" style="width: 100%; overflow: hidden; background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-radius: 4px; padding: 24px 0; border: 1px solid var(--color-outline-variant); margin-bottom: 64px;">
+                <div class="sponsors-wrapper" style="width: 100%; overflow: hidden; background: linear-gradient(135deg, var(--color-surface-container-lowest) 0%, var(--color-surface-container-low) 100%); border-radius: 4px; padding: 24px 0; margin-bottom: 64px;">
                     <div id="sponsorsCarousel" class="sponsors-carousel" style="display: flex; width: 100%; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0; padding: 0;">
                         <!-- Sponsor items will be generated dynamically here -->
                     </div>
@@ -532,5 +572,28 @@
     </script>
     
     <script src="js/script.js"></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer para animaciones de scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos con la clase fade-in
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
