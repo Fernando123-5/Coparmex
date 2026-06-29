@@ -21,9 +21,12 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
     <style>
-        /* Override de estilos responsivos para navbar */  
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Public Sans', sans-serif; }
+        body { font-family: 'Public Sans', sans-serif; background: #f5f8fc; color: #0f2340; }
+        a { text-decoration: none; }
+        img { display: block; width: 100%; height: auto; }
+        main { overflow-x: hidden; }
+
         header { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-bottom: 1px solid #f3f4f6; }
         header .max-w-7xl { max-width: 100%; padding: 0 16px; }
         .flex.justify-center { display: flex; justify-content: center; align-items: center; height: 80px; }
@@ -32,229 +35,577 @@
         nav a { color: #4b5563; font-weight: 500; font-size: 14px; transition: all 0.3s ease; text-decoration: none; }
         nav a:hover { color: #1e40af; }
         nav a.text-blue-700 { color: #1e40af; font-weight: 700; border-bottom: 2px solid #1e40af; padding-bottom: 8px; }
-        /* Estilos del menú móvil inyectados por navbar-loader.js */
-        
+
         button.bg-blue-700 { background-color: #1e40af; color: white; border: none; cursor: pointer; transition: all 0.3s ease; }
         button.bg-blue-700:hover { background-color: #1e3a8a; }
         @media (max-width: 768px) { a, button { min-height: 44px; min-width: 44px; } }
-        
-        /* Responsive Styles para Móvil y Tablet */
-        @media (max-width: 1024px) {
-            /* Hero Section */
-            #hero {
-                height: 500px !important;
-            }
-            
-            /* Hero Content */
-            #hero h1 {
-                font-size: 32px !important;
-                margin-bottom: 16px !important;
-            }
-            
-            #hero p {
-                font-size: 16px !important;
-                margin-bottom: 24px !important;
-            }
-            
-            #hero button {
-                padding: 12px 24px !important;
-                font-size: 13px !important;
-            }
-            
-            /* Carousel Controls */
-            #prevBtn, #nextBtn {
-                padding: 10px !important;
-            }
-            
-            #prevBtn .material-icons, #nextBtn .material-icons {
-                font-size: 20px !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            /* Hero Section */
-            #hero {
-                height: 400px !important;
-            }
-            
-            /* Hero Content */
-            #hero h1 {
-                font-size: 24px !important;
-                margin-bottom: 12px !important;
-                line-height: 1.3 !important;
-            }
-            
-            #hero p {
-                font-size: 14px !important;
-                margin-bottom: 16px !important;
-                line-height: 1.4 !important;
-            }
-            
-            #hero button {
-                padding: 10px 20px !important;
-                font-size: 12px !important;
-            }
-            
-            /* Carousel Controls */
-            #prevBtn, #nextBtn {
-                display: none !important;
-            }
-            
-            /* Indicators */
-            #hero > div:last-child {
-                bottom: 16px !important;
-                gap: 8px !important;
-            }
-            
-            #hero .carousel-indicator {
-                width: 36px !important;
-                height: 4px !important;
-            }
-            
-            /* Grid Sections - Cambiar a single column */
-            #estrategia > div,
-            #comunicacion > div,
-            #transparencia > div {
-                grid-template-columns: 1fr !important;
-                gap: 32px !important;
-                padding: 0 16px !important;
-            }
-            
-            /* Section Padding */
-            #estrategia, #comunicacion, #transparencia {
-                padding: 48px 24px !important;
-            }
-            
-            /* Headings responsive */
-            #estrategia h2, #comunicacion h2, #transparencia h2 {
-                font-size: 24px !important;
-                line-height: 1.3 !important;
-                margin-bottom: 16px !important;
-            }
-            
-            #estrategia p, #comunicacion p, #transparencia p {
-                font-size: 14px !important;
-                line-height: 1.5 !important;
-                margin-bottom: 16px !important;
-            }
-            
-            #estrategia span, #comunicacion span, #transparencia span {
-                font-size: 11px !important;
-                margin-bottom: 12px !important;
-            }
-            
-            /* Sponsors Section */
-            .sponsors-wrapper {
-                padding: 16px 0 !important;
-            }
-            
-            /* Sponsors Section Heading */
-            section:has(.sponsors-wrapper) h2 {
-                font-size: 24px !important;
-                margin-bottom: 12px !important;
-            }
-            
-            section:has(.sponsors-wrapper) p {
-                font-size: 14px !important;
-                margin-bottom: 24px !important;
-            }
-            
-            /* Socios Button */
-            a[href="socios.html"] {
-                font-size: 12px !important;
-                padding: 12px 24px !important;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            /* Extra small screens */
-            #hero {
-                height: 350px !important;
-            }
-            
-            #hero h1 {
-                font-size: 20px !important;
-            }
-            
-            #hero p {
-                font-size: 13px !important;
-            }
-            
-            #hero button {
-                padding: 8px 16px !important;
-                font-size: 11px !important;
-                min-width: 140px;
-            }
-            
-            /* Section Padding */
-            #estrategia, #comunicacion, #transparencia {
-                padding: 32px 16px !important;
-            }
-            
-            #estrategia > div, #comunicacion > div, #transparencia > div {
-                gap: 24px !important;
-                padding: 0 !important;
-            }
-            
-            /* Headings responsive */
-            #estrategia h2, #comunicacion h2, #transparencia h2 {
-                font-size: 20px !important;
-                margin-bottom: 12px !important;
-            }
-            
-            #estrategia p, #comunicacion p, #transparencia p {
-                font-size: 13px !important;
-            }
-            
-            /* Flex wrap buttons */
-            #hero > div > div > div:last-child {
-                flex-direction: column !important;
-                gap: 12px !important;
-            }
-            
-            #hero button {
-                width: 100% !important;
-            }
+
+        .hero-section {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(120deg, #06203a 0%, #0f4c81 100%);
         }
 
-        /* Scroll Animation Styles */
-        .fade-in {
+        .hero-section video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(4, 24, 46, 0.9) 0%, rgba(4, 24, 46, 0.6) 45%, rgba(4, 24, 46, 0.35) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(1200px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: clamp(32px, 6vw, 80px) 0;
+            display: grid;
+            gap: 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            width: fit-content;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            color: #f2f7ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+            max-width: 760px;
+            font-size: clamp(2.2rem, 4vw, 4.2rem);
+            line-height: 1.06;
+            font-weight: 800;
+            color: white;
+        }
+
+        .hero-copy {
+            max-width: 680px;
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #e8f1ff 100%);
+            color: #0d3b66;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(8px);
+        }
+
+        .section {
+            padding: clamp(64px, 8vw, 96px) 24px;
+        }
+
+        .section-shell {
+            width: min(1200px, 100%);
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, #f4f8fd 0%, #eef5fb 100%);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: #1166b8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            line-height: 1.18;
+            font-weight: 800;
+            color: #0d3b66;
+            margin-bottom: 14px;
+        }
+
+        .section-copy {
+            max-width: 700px;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4f6478;
+            margin-bottom: 0;
+        }
+
+        .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .fade-in.visible {
+        .reveal.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Staggered animation for children */
-        .fade-in > * {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 36px;
         }
 
-        .fade-in.visible > * {
-            opacity: 1;
-            transform: translateY(0);
+        .news-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 16px 45px rgba(15, 35, 64, 0.08);
+            border: 1px solid rgba(17, 102, 184, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .fade-in.visible > *:nth-child(1) {
-            transition-delay: 0.1s;
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 45px rgba(15, 35, 64, 0.14);
         }
 
-        .fade-in.visible > *:nth-child(2) {
-            transition-delay: 0.2s;
+        .news-card.featured {
+            grid-column: span 2;
         }
 
-        .fade-in.visible > *:nth-child(3) {
-            transition-delay: 0.3s;
+        .news-media {
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
         }
 
-        .fade-in.visible > *:nth-child(4) {
-            transition-delay: 0.4s;
+        .news-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-media img {
+            transform: scale(1.03);
+        }
+
+        .news-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .news-meta {
+            color: #1166b8;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #0d3b66;
+            line-height: 1.35;
+        }
+
+        .news-copy {
+            color: #5c6f81;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .news-link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #1166b8;
+            font-weight: 700;
+        }
+
+        .mipymes-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .mipymes-copy, .mipymes-panel {
+            background: white;
+            border-radius: 28px;
+            padding: clamp(24px, 3vw, 32px);
+            box-shadow: 0 18px 45px rgba(15, 35, 64, 0.08);
+            border: 1px solid rgba(17, 102, 184, 0.08);
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 24px 0 28px;
+        }
+
+        .pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1166b8;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+            border: 1px solid rgba(17, 102, 184, 0.12);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.25rem;
+            color: #0d3b66;
+            margin-bottom: 6px;
+        }
+
+        .stat-card span {
+            color: #5c6f81;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .panel-stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .panel-card {
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #0d3b66 0%, #1166b8 100%);
+            color: white;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+        }
+
+        .panel-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .panel-card p {
+            color: rgba(255,255,255,0.86);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .development-shell {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            background: white;
+            padding: clamp(24px, 3vw, 36px);
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(15, 35, 64, 0.08);
+            border: 1px solid rgba(17, 102, 184, 0.08);
+        }
+
+        .development-media {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+
+        .development-media img {
+            height: 100%;
+            min-height: 320px;
+            object-fit: cover;
+        }
+
+        .development-badge {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.9);
+            color: #0d3b66;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+        }
+
+        .development-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .development-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: #4f6478;
+            line-height: 1.6;
+        }
+
+        .development-list li::before {
+            content: '•';
+            color: #1166b8;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .sponsors-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #edf4fb 100%);
+            border-top: 1px solid rgba(17, 102, 184, 0.08);
+        }
+
+        .sponsors-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background: white;
+            border-radius: 22px;
+            padding: 24px 0;
+            margin-top: 36px;
+            box-shadow: 0 18px 45px rgba(15, 35, 64, 0.05);
+            border: 1px solid rgba(17, 102, 184, 0.08);
+        }
+
+        @media (max-width: 1024px) {
+            .news-grid { grid-template-columns: 1fr 1fr; }
+            .news-card.featured { grid-column: span 2; }
+            .mipymes-layout, .development-shell { grid-template-columns: 1fr; }
+            .section { padding: 56px 20px; }
+            .hero-section {
+                min-height: 72svh;
+                padding: 0;
+                align-items: end;
+            }
+            .hero-section video {
+                inset: 0;
+                height: 100%;
+                object-fit: contain;
+                object-position: center center;
+                background: linear-gradient(120deg, #06203a 0%, #0f4c81 100%);
+            }
+            .hero-content {
+                width: min(100%, calc(100% - 24px));
+                gap: 18px;
+                padding: 24px 0 28px;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 4.8vw, 3.2rem);
+                max-width: 680px;
+            }
+            .hero-copy {
+                max-width: 600px;
+                font-size: 1rem;
+            }
+            .news-body {
+                padding: 20px;
+            }
+            .news-title {
+                font-size: 1.1rem;
+            }
+            .development-shell {
+                gap: 24px;
+                padding: 24px;
+            }
+            .development-media img {
+                min-height: 260px;
+            }
+            .section-title {
+                font-size: clamp(1.6rem, 3.4vw, 2.1rem);
+            }
+            .section-copy {
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 48px 16px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .news-card.featured { grid-column: span 1; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-section {
+                min-height: 64svh;
+                padding: 0;
+                align-items: end;
+            }
+            .hero-section video {
+                object-fit: contain;
+                object-position: center top;
+                background: linear-gradient(120deg, #06203a 0%, #0f4c81 100%);
+            }
+            .news-grid,
+            .panel-stack {
+                gap: 16px;
+            }
+            .news-media {
+                aspect-ratio: 16 / 9;
+            }
+            .news-body {
+                padding: 18px;
+            }
+            .news-title {
+                font-size: 1.05rem;
+            }
+            .development-shell {
+                gap: 20px;
+                padding: 20px;
+            }
+            .development-media img {
+                min-height: 220px;
+            }
+            .development-list {
+                margin-top: 16px;
+            }
+            .panel-card {
+                padding: 18px;
+            }
+            .hero-content {
+                width: calc(100% - 20px);
+                padding: 20px 0 22px;
+                gap: 12px;
+            }
+            .hero-badge {
+                font-size: 11px;
+                letter-spacing: 0.12em;
+            }
+            .hero-title {
+                font-size: clamp(1.9rem, 7vw, 2.6rem);
+                line-height: 1.08;
+            }
+            .hero-copy {
+                font-size: 0.98rem;
+                line-height: 1.65;
+            }
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 0.18em;
+            }
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 1.9rem);
+            }
+            .section-copy {
+                font-size: 0.96rem;
+                line-height: 1.65;
+            }
+            .development-list li,
+            .panel-card p,
+            .news-copy {
+                font-size: 0.92rem;
+            }
+            .btn {
+                width: 100%;
+                padding: 13px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section { padding: 40px 14px; }
+            .hero-section {
+                min-height: 58svh;
+                padding: 0;
+                align-items: end;
+            }
+            .hero-section video {
+                object-fit: contain;
+                object-position: center top;
+            }
+            .hero-content {
+                width: calc(100% - 16px);
+                gap: 12px;
+                padding: 16px 0 18px;
+            }
+            .hero-title {
+                font-size: clamp(1.7rem, 8vw, 2.2rem);
+            }
+            .hero-copy {
+                font-size: 0.95rem;
+            }
+            .btn {
+                padding: 12px 18px;
+            }
+            .news-body,
+            .panel-card {
+                padding: 16px;
+            }
+            .development-shell {
+                padding: 16px;
+                gap: 16px;
+            }
+            .development-media img {
+                min-height: 190px;
+            }
+            .development-list li {
+                gap: 8px;
+            }
+            .panel-stack {
+                gap: 12px;
+            }
+            .hero-title { max-width: 100%; }
+            .hero-buttons { flex-direction: column; align-items: flex-start; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -266,135 +617,92 @@
     <script src="js/footer-loader.js"></script>
 
     <main>
-        <!-- Hero Carousel Section -->
-        <section id="hero" style="position: relative; width: 100%; height: 700px; overflow: hidden; background-color: #2d2d2d;">
-            <div class="carousel-hero" id="heroCarousel" style="position: relative; width: 100%; height: 100%;">
-                <!-- Slide 1 -->
-                <div class="carousel-slide" data-index="0" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; transition: opacity 1s ease-in-out;">
-                    <div style="position: relative; width: 100%; height: 100%;">
-                        <img src="assets/images/hero1.png" alt="Foro de Impacto Social" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
-                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
-                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
-                                <div style="max-width: 600px; color: white;">
-                                    <span style="display: inline-block; background-color: rgb(255, 255, 255); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;"></span>
-                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Foro de Impacto Social 2026</h1>
-                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Liderando la transformación del sector empresarial para construir un México más justo y sostenible.</p>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-                                        <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Registrarme Ahora</button>
-                                        <button style="border: 2px solid white; background-color: transparent; color: white; padding: 16px 32px; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Ver Agenda</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-slide" data-index="1" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                    <div style="position: relative; width: 100%; height: 100%;">
-                        <img src="assets/images/hero22.jpg" alt="Encuentro Empresarial" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
-                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
-                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
-                                <div style="max-width: 600px; color: white;">
-                                    <span style="display: inline-block; background-color: rgba(171, 199, 255, 0.3); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Noticias</span>
-                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Encuentro Nacional de Jóvenes Empresarios</h1>
-                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Fomentando la innovación y el emprendimiento en las nuevas generaciones de líderes mexicanos.</p>
-                                    <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Más Información</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-slide" data-index="2" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                    <div style="position: relative; width: 100%; height: 100%;">
-                        <img src="assets/images/hero3.png" alt="Alianzas Estratégicas" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 52, 111, 0.85), transparent);"></div>
-                        <div style="position: absolute; inset: 0; display: flex; align-items: center;">
-                            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;">
-                                <div style="max-width: 600px; color: white;">
-                                    <span style="display: inline-block; background-color: rgba(171, 199, 255, 0.3); color: rgba(255, 255, 255, 0.9); padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Alianzas</span>
-                                    <h1 style="font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; font-family: Manrope, sans-serif; color: white;">Forjando Alianzas Estratégicas</h1>
-                                    <p style="font-size: 18px; margin-bottom: 32px; line-height: 1.5; color: rgba(255, 255, 255, 0.9);">Conectando empresas y creando oportunidades de colaboración en el ecosistema mexicano.</p>
-                                    <button style="background-color: white; color: #00346f; padding: 16px 32px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease;">Explorar Oportunidades</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Controls -->
-            <button id="prevBtn" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 30; background-color: rgba(255, 255, 255, 0.3); color: white; padding: 12px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s ease;" aria-label="Anterior">
-                <span class="material-icons" style="display: block; font-size: 24px;">chevron_left</span>
-            </button>
-            <button id="nextBtn" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 30; background-color: rgba(255, 255, 255, 0.3); color: white; padding: 12px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s ease;" aria-label="Siguiente">
-                <span class="material-icons" style="display: block; font-size: 24px;">chevron_right</span>
-            </button>
-
-            <!-- Indicators -->
-            <div style="position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; gap: 12px;">
-                <div class="carousel-indicator" data-index="0" style="width: 48px; height: 6px; background-color: white; border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
-                <div class="carousel-indicator" data-index="1" style="width: 12px; height: 6px; background-color: rgba(255, 255, 255, 0.4); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
-                <div class="carousel-indicator" data-index="2" style="width: 12px; height: 6px; background-color: rgba(255, 255, 255, 0.4); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;"></div>
+        <section id="hero" class="hero-section" aria-label="Inicio COPARMEX">
+            <video autoplay muted loop playsinline poster="assets/images/hero1.png">
+                <source src="assets/images/video1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                
+                <h1 class="hero-title">Impulsamos a las empresas y a México con una visión de futuro.</h1>
+                <p class="hero-copy">COPARMEX une a empresarios, líderes y comunidades para construir oportunidades, fortalecer la competitividad y promover un país más próspero, justo y sostenible.</p>
+                
             </div>
         </section>
 
-        <!-- Sección 1: ESTRATEGIA INSTITUCIONAL - Texto Izq + Imagen Der -->
-        <section id="estrategia" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface);">
-            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                <!-- Texto - Lado Izquierdo -->
-                <div>
-                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;">¿Quienes somos?</span>
-                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">¿QUÉ ES COPARMEX?</h2>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">Somos un sindicato patronal independiente, apartidista y de afiliación voluntaria que reúne a empresarios de todos tamaños y sectores, unidos por un profundo compromiso con México,</p>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">y a quienes representamos en los ámbitos laboral, económico, social y político, dentro y fuera del país.
-                        No es un partido político
-                        No es una asociación civil.</p>
-               
-                </div>
-                <!-- Imagen - Lado Derecho -->
-                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
-                    <img src="assets/images/hero1.png" alt="Seguridad y Salud" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        <section id="noticias" class="section reveal">
+            <div class="section-shell">
+                <span class="eyebrow">Noticias</span>
+                <h2 class="section-title">Lo más reciente de COPARMEX</h2>
+                <p class="section-copy">Mantente al día con los programas, eventos y acciones que están transformando el entorno empresarial del país.</p>
+
+                <div class="news-grid">
+                    <article class="news-card reveal reveal-delay-1">
+                        <div class="news-media">
+                            <img src="assets/images/hero1.png" alt="Foro de impacto social" loading="lazy">
+                        </div>
+                        <div class="news-body">
+                            <span class="news-meta">12 jun 2026 · Evento</span>
+                            <h3 class="news-title">COPARMEX presenta nuevas alianzas para impulsar el desarrollo regional.</h3>
+                            <p class="news-copy">Una convocatoria abierta para fortalecer la colaboración entre empresas, instituciones y comunidades.</p>
+                            <a class="news-link" href="agenda.html">Leer más <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card reveal reveal-delay-2">
+                        <div class="news-media">
+                            <img src="assets/images/pag2.png" alt="Programa de apoyo a mipymes" loading="lazy">
+                        </div>
+                        <div class="news-body">
+                            <span class="news-meta">08 jun 2026 · Programas</span>
+                            <h3 class="news-title">Nuevos apoyos para micro, pequeñas y medianas empresas.</h3>
+                            <p class="news-copy">Programas orientados a la productividad, la innovación y el fortalecimiento del tejido empresarial.</p>
+                            <a class="news-link" href="agenda.html">Leer más <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Sección 2: COMUNICACIÓN DIGITAL - Imagen Izq + Texto Der -->
-        <section id="comunicacion" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface-container-low);">
-            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                <!-- Imagen - Lado Izquierdo -->
-                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
-                    <img src="assets/images/pag2.png" alt="Comunicación Digital" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                <!-- Texto - Lado Derecho -->
-                <div>
-                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;"></span>
-                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">Construyendo un Mejor Futuro para México</h2>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">El compromiso de COPARMEX con el desarrollo del país se refleja en la participación activa de sus empresarios afiliados en temas fundamentales para el bienestar social y el fortalecimiento de México:</p>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">Promovemos una educación de calidad, la libre competencia con responsabilidad social, la seguridad pública, el fortalecimiento del estado de derecho y la transparencia con rendición de cuentas, impulsando así una sociedad más justa, competitiva y con mayores oportunidades para todos. </p>
-                    
+        <section id="futuro" class="section section-alt reveal">
+            <div class="section-shell">
+                <div class="development-shell">
+                    <div class="reveal reveal-delay-1">
+                        <span class="eyebrow">Construyendo un mejor futuro</span>
+                        <h2 class="section-title">Construyendo un Mejor Futuro para México.</h2>
+                        <p class="section-copy">El compromiso de COPARMEX con el desarrollo del país se refleja en la participación activa de sus empresarios afiliados en temas fundamentales para el bienestar social y el fortalecimiento de México.</p>
+                        <ul class="development-list">
+                            <li>Promovemos una educación de calidad, libre competencia con responsabilidad social y seguridad pública.</li>
+                            <li>Fortalecemos el estado de derecho y la transparencia con rendición de cuentas.</li>
+                            <li>Impulsamos una sociedad más justa, competitiva y con mayores oportunidades para todos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="reveal reveal-delay-2">
+                        <div class="development-media">
+                            <img src="assets/images/pag3.png" alt="Empresarios COPARMEX impulsando el desarrollo de México" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección 3: TRANSPARENCIA Y DATOS - Texto Izq + Imagen Der -->
-        <section id="transparencia" class="fade-in" style="padding: 80px 24px; background-color: var(--color-surface);">
-            <div class="max-w-7xl" style="margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                <!-- Texto - Lado Izquierdo -->
-                <div>
-                    <span style="color: var(--color-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block;">Impulsando desarrollo</span>
-                    <h2 style="font-size: 32px; line-height: 40px; font-weight: 800; font-family: Manrope, sans-serif; color: var(--color-primary); margin-bottom: 24px;">Una Visión de País con Valores y Compromiso</h2>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 20px; line-height: 1.6;">Impulsamos el desarrollo de México a través de principios humanistas, democráticos y de participación ciudadana.</p>
-                    <p style="font-size: 16px; color: var(--color-on-surface-variant); margin-bottom: 32px; line-height: 1.6;">La Confederación trabaja por un país más libre, participativo y solidario, promoviendo valores que fortalecen la democracia, el bienestar social y la colaboración entre ciudadanos, empresas e instituciones para construir un futuro con mayores oportunidades para todos.</p>
-                   
-                </div>
-                <!-- Imagen - Lado Derecho -->
-                <div style="overflow: hidden; border-radius: 4px; box-shadow: var(--shadow-lg);">
-                    <img src="assets/images/pag3.png" alt="Data COPARMEX" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        <section id="desarrollo" class="section reveal">
+            <div class="section-shell">
+                <div class="development-shell">
+                    <div class="reveal reveal-delay-1">
+                        <span class="eyebrow">Impulsando el desarrollo</span>
+                        <h2 class="section-title">Una visión de país con valores y compromiso.</h2>
+                        <p class="section-copy">Impulsamos el desarrollo de México con principios humanistas, democráticos y de participación ciudadana. Nuestra labor combina visión empresarial, responsabilidad social y una apuesta firme por un futuro más libre, solidario y competitivo.</p>
+                        <ul class="development-list">
+                            <li>Promovemos una economía más competitiva, con reglas claras y oportunidades reales.</li>
+                            <li>Fortalecemos la educación, la seguridad y la transparencia como pilares de progreso.</li>
+                            <li>Impulsamos la colaboración entre empresas, instituciones y ciudadanía.</li>
+                        </ul>
+                    </div>
+                    <div class="development-media reveal reveal-delay-2">
+                        <img src="assets/images/pag3.png" alt="Impulsando el desarrollo" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
@@ -433,167 +741,22 @@
     <script src="js/script.js"></script>
     
     <!-- Carousel Script -->
-    <script>
-        class SimpleHeroCarousel {
-            constructor() {
-                this.currentIndex = 0;
-                this.slides = document.querySelectorAll('.carousel-slide');
-                this.indicators = document.querySelectorAll('.carousel-indicator');
-                this.autoPlayInterval = null;
-                
-                if (this.slides.length === 0) {
-                    console.warn('⚠️ No carousel slides found');
-                    return;
-                }
-
-                this.init();
-                console.log('✅ Carousel inicializado con', this.slides.length, 'slides');
-            }
-
-            init() {
-                // Mostrar primer slide
-                this.showSlide(0);
-
-                // Botones
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        this.prevSlide();
-                    });
-                    prevBtn.addEventListener('mouseenter', () => this.stopAutoPlay());
-                    prevBtn.addEventListener('mouseleave', () => this.startAutoPlay());
-                }
-                
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => {
-                        this.nextSlide();
-                    });
-                    nextBtn.addEventListener('mouseenter', () => this.stopAutoPlay());
-                    nextBtn.addEventListener('mouseleave', () => this.startAutoPlay());
-                }
-
-                // Indicadores
-                this.indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        this.showSlide(index);
-                        this.resetAutoPlay();
-                    });
-                });
-
-                // Auto-play
-                this.startAutoPlay();
-
-                // Pausar en hover
-                const hero = document.getElementById('hero');
-                if (hero) {
-                    hero.addEventListener('mouseenter', () => this.stopAutoPlay());
-                    hero.addEventListener('mouseleave', () => this.startAutoPlay());
-                }
-            }
-
-            showSlide(index) {
-                // Validar índice
-                if (index < 0) {
-                    this.currentIndex = this.slides.length - 1;
-                } else if (index >= this.slides.length) {
-                    this.currentIndex = 0;
-                } else {
-                    this.currentIndex = index;
-                }
-
-                // Remover active de todos
-                this.slides.forEach(slide => {
-                    slide.style.opacity = '0';
-                    slide.classList.remove('active');
-                });
-                this.indicators.forEach(ind => ind.classList.remove('active'));
-
-                // Añadir active al actual
-                this.slides[this.currentIndex].style.opacity = '1';
-                this.slides[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].style.width = '48px';
-                this.indicators[this.currentIndex].style.backgroundColor = 'white';
-
-                // Resetear otros indicadores
-                this.indicators.forEach((ind, idx) => {
-                    if (idx !== this.currentIndex) {
-                        ind.style.width = '12px';
-                        ind.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-                    }
-                });
-
-                console.log('📍 Slide:', this.currentIndex + 1);
-            }
-
-            nextSlide() {
-                this.showSlide(this.currentIndex + 1);
-                this.resetAutoPlay();
-            }
-
-            prevSlide() {
-                this.showSlide(this.currentIndex - 1);
-                this.resetAutoPlay();
-            }
-
-            startAutoPlay() {
-                this.autoPlayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 5000);
-            }
-
-            stopAutoPlay() {
-                if (this.autoPlayInterval) {
-                    clearInterval(this.autoPlayInterval);
-                }
-            }
-
-            resetAutoPlay() {
-                this.stopAutoPlay();
-                this.startAutoPlay();
-            }
-        }
-
-        // Inicializar cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            new SimpleHeroCarousel();
-        });
-
-        // O si ya está listo
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new SimpleHeroCarousel();
-            });
-        } else {
-            new SimpleHeroCarousel();
-        }
-    </script>
-    
     <script src="js/script.js"></script>
 
-    <!-- Scroll Animation Script -->
     <script>
-        // Intersection Observer para animaciones de scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
-        // Observar todos los elementos con la clase fade-in
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
+        }, {
+            threshold: 0.14,
+            rootMargin: '0px 0px -40px 0px'
         });
+
+        document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
     </script>
 </body>
 </html>

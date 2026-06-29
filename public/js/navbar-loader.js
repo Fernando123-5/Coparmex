@@ -253,12 +253,149 @@ async function loadNavbar() {
                     background: transparent;
                     position: relative;
                 }
+
+                /* NAVBAR HERO SOLO EN INDEX */
+                body.home-navbar-hero #main-header {
+                    background-color: transparent !important;
+                    background: transparent !important;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    border-bottom-color: transparent !important;
+                    box-shadow: none !important;
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                }
+
+                body.home-navbar-hero #main-header .max-w-7xl {
+                    background: transparent;
+                }
+
+                body.home-navbar-hero {
+                    --home-navbar-offset: 80px;
+                }
+
+                @media (min-width: 768px) {
+                    body.home-navbar-hero {
+                        --home-navbar-offset: 96px;
+                    }
+                }
+
+                body.home-navbar-hero #hero,
+                body.home-navbar-scrolled #hero {
+                    padding-top: var(--home-navbar-offset);
+                }
+
+                body.home-navbar-hero #main-header .flex.items-center,
+                body.home-navbar-hero #main-header .max-w-7xl,
+                body.home-navbar-hero #main-header nav,
+                body.home-navbar-hero #main-header #mobile-menu {
+                    background: transparent !important;
+                }
+
+                body.home-navbar-hero #main-header,
+                body.home-navbar-hero #main-header a,
+                body.home-navbar-hero #main-header button,
+                body.home-navbar-hero #main-header .material-icons,
+                body.home-navbar-hero #main-header img,
+                body.home-navbar-hero #main-header nav a {
+                    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, transform 0.35s ease, backdrop-filter 0.35s ease;
+                }
+
+                body.home-navbar-hero #main-header nav a,
+                body.home-navbar-hero #main-header .hamburger-icon {
+                    color: #ffffff !important;
+                    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.24);
+                }
+
+                body.home-navbar-hero #main-header img[alt="COPARMEX Logo"] {
+                    filter: brightness(0) invert(1);
+                }
+
+                body.home-navbar-hero #main-header nav a:hover {
+                    color: #ffffff;
+                }
+
+                body.home-navbar-hero #main-header nav a.text-blue-700,
+                body.home-navbar-hero #main-header nav a.nav-link-active {
+                    color: #ffffff;
+                    border-bottom-color: rgba(255, 255, 255, 0.95);
+                }
+
+                body.home-navbar-hero #main-header #menu-toggle {
+                    color: #ffffff !important;
+                    background-color: transparent !important;
+                    border: 1px solid rgba(255, 255, 255, 0.35);
+                    box-shadow: none !important;
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                }
+
+                body.home-navbar-hero #main-header #menu-toggle:hover {
+                    background-color: transparent !important;
+                    color: #ffffff;
+                }
+
+                body.home-navbar-hero #main-header .hamburger-btn,
+                body.home-navbar-hero #main-header .hamburger-btn:hover {
+                    background: transparent !important;
+                }
+
+                body.home-navbar-scrolled #main-header {
+                    background-color: rgba(255, 255, 255, 0.96) !important;
+                    background: rgba(255, 255, 255, 0.96) !important;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    border-bottom-color: rgba(194, 198, 211, 0.8);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                }
+
+                body.home-navbar-scrolled #main-header nav a,
+                body.home-navbar-scrolled #main-header .hamburger-icon,
+                body.home-navbar-scrolled #main-header #menu-toggle {
+                    color: #4b5563;
+                    text-shadow: none;
+                }
+
+                body.home-navbar-scrolled #main-header nav a:hover {
+                    color: #1e40af;
+                }
+
+                body.home-navbar-scrolled #main-header nav a.text-blue-700,
+                body.home-navbar-scrolled #main-header nav a.nav-link-active {
+                    color: #1e40af;
+                    border-bottom-color: #1e40af;
+                }
+
+                body.home-navbar-scrolled #main-header #menu-toggle {
+                    background: transparent;
+                    border-color: transparent;
+                }
+
+                body.home-navbar-scrolled #main-header #menu-toggle:hover {
+                    background-color: #f3f4f6;
+                    color: #1e40af;
+                }
+
+                body.home-navbar-scrolled #main-header .hamburger-icon {
+                    color: inherit;
+                }
+
+                body.home-navbar-scrolled #main-header img[alt="COPARMEX Logo"] {
+                    filter: none;
+                }
             `;
             document.head.appendChild(style);
         }
         
         // Detectar página actual y marcar link como activo
         const currentPage = getCurrentPage();
+        setupHomeNavbarState(currentPage);
         highlightCurrentPage(currentPage);
         
         // Inicializar mobile menu toggle
@@ -322,8 +459,160 @@ function setupPageChangeListener() {
     // Escuchar cambios de URL cuando el usuario navega
     window.addEventListener('popstate', () => {
         const currentPage = getCurrentPage();
+        setupHomeNavbarState(currentPage);
         highlightCurrentPage(currentPage);
     });
+}
+
+function setupHomeNavbarState(page) {
+    const body = document.body;
+    body.classList.remove('home-navbar-hero', 'home-navbar-scrolled');
+
+    const applySolidNavbarState = () => {
+        const header = document.getElementById('main-header');
+        const logo = document.querySelector('#main-header img[alt="COPARMEX Logo"]');
+        const menuToggle = document.getElementById('menu-toggle');
+        const desktopLinks = document.querySelectorAll('#main-header nav:not(#mobile-menu) a.nav-link');
+        const mobileLinks = document.querySelectorAll('#main-header .mobile-menu-link');
+
+        if (!header) {
+            return;
+        }
+
+        body.classList.add('home-navbar-scrolled');
+        body.classList.remove('home-navbar-hero');
+
+        header.classList.add('bg-white', 'shadow-sm', 'border-gray-100');
+        header.style.cssText = 'position: sticky; top: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.98) !important; background: rgba(255, 255, 255, 0.98) !important; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important; border-bottom-color: rgba(229, 231, 235, 0.95) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;';
+
+        if (logo) {
+            logo.style.setProperty('filter', 'none', 'important');
+        }
+
+        desktopLinks.forEach((link) => {
+            link.style.setProperty('color', '#111827', 'important');
+            link.style.setProperty('text-shadow', 'none', 'important');
+        });
+
+        mobileLinks.forEach((link) => {
+            link.style.setProperty('color', '#111827', 'important');
+        });
+
+        if (menuToggle) {
+            menuToggle.style.setProperty('background-color', 'transparent', 'important');
+            menuToggle.style.setProperty('border-color', 'transparent', 'important');
+            menuToggle.style.setProperty('box-shadow', 'none', 'important');
+            menuToggle.style.setProperty('backdrop-filter', 'none', 'important');
+            menuToggle.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+            menuToggle.style.setProperty('color', '#111827', 'important');
+        }
+    };
+
+    if (page !== 'index') {
+        applySolidNavbarState();
+        return;
+    }
+
+    const hero = document.getElementById('hero');
+    if (!hero) {
+        return;
+    }
+
+    const isDesktopNavbar = window.matchMedia('(min-width: 768px)').matches;
+
+    if (!isDesktopNavbar) {
+        body.classList.add('home-navbar-scrolled');
+        return;
+    }
+
+    const applyNavbarState = (isHeroState) => {
+        const header = document.getElementById('main-header');
+        const logo = document.querySelector('#main-header img[alt="COPARMEX Logo"]');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        if (!header) {
+            return;
+        }
+
+        if (isHeroState) {
+            body.classList.add('home-navbar-hero');
+            body.classList.remove('home-navbar-scrolled');
+
+            header.classList.remove('bg-white', 'shadow-sm', 'border-gray-100');
+
+            header.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; background-color: transparent !important; background: transparent !important; box-shadow: none !important; border-bottom-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;';
+            header.style.setProperty('box-shadow', 'none', 'important');
+            header.style.setProperty('border-bottom-color', 'transparent', 'important');
+            header.style.setProperty('backdrop-filter', 'none', 'important');
+            header.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+
+            if (logo) {
+                logo.style.setProperty('filter', 'brightness(0) invert(1)', 'important');
+            }
+
+            if (menuToggle) {
+                menuToggle.style.setProperty('background-color', 'transparent', 'important');
+                menuToggle.style.setProperty('border-color', 'rgba(255, 255, 255, 0.35)', 'important');
+                menuToggle.style.setProperty('box-shadow', 'none', 'important');
+                menuToggle.style.setProperty('backdrop-filter', 'none', 'important');
+                menuToggle.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+                menuToggle.style.setProperty('color', '#ffffff', 'important');
+            }
+        } else {
+            body.classList.add('home-navbar-scrolled');
+            body.classList.remove('home-navbar-hero');
+
+            header.classList.add('bg-white', 'shadow-sm', 'border-gray-100');
+
+            header.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.96) !important; background: rgba(255, 255, 255, 0.96) !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important; border-bottom-color: rgba(194, 198, 211, 0.8) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;';
+
+            if (logo) {
+                logo.style.setProperty('filter', 'none', 'important');
+            }
+
+            if (menuToggle) {
+                menuToggle.style.setProperty('background-color', 'transparent', 'important');
+                menuToggle.style.setProperty('border-color', 'transparent', 'important');
+                menuToggle.style.setProperty('box-shadow', 'none', 'important');
+                menuToggle.style.setProperty('backdrop-filter', 'none', 'important');
+                menuToggle.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+                menuToggle.style.setProperty('color', '#4b5563', 'important');
+            }
+        }
+    };
+
+    const syncNavbarState = () => {
+        const heroRect = hero.getBoundingClientRect();
+        const isHeroState = heroRect.top <= 24 && heroRect.bottom > 24;
+        applyNavbarState(isHeroState);
+    };
+
+    syncNavbarState();
+
+    if (window.IntersectionObserver) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            const heroRect = entry.boundingClientRect;
+            applyNavbarState(heroRect.top <= 24 && heroRect.bottom > 24);
+        }, {
+            threshold: 0,
+            rootMargin: '-24px 0px 0px 0px'
+        });
+
+        heroObserver.observe(hero);
+        window.__homeNavbarHeroObserver = heroObserver;
+    }
+
+    if (!window.__homeNavbarScrollHandlerAttached) {
+        window.addEventListener('scroll', () => {
+            if (document.body.classList.contains('home-navbar-hero') || document.body.classList.contains('home-navbar-scrolled')) {
+                syncNavbarState();
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', syncNavbarState, { passive: true });
+        window.__homeNavbarScrollHandlerAttached = true;
+    }
 }
 
 function initMobileMenu() {
