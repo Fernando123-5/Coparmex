@@ -358,6 +358,34 @@ async function loadNavbar() {
                     -webkit-backdrop-filter: none !important;
                 }
 
+                body.home-navbar-hero #main-header #mobile-menu.active {
+                    background: rgba(255, 255, 255, 0.94) !important;
+                    backdrop-filter: blur(18px) !important;
+                    -webkit-backdrop-filter: blur(18px) !important;
+                    border-top-color: rgba(30, 64, 175, 0.22);
+                    box-shadow: 0 16px 40px rgba(2, 12, 27, 0.16);
+                }
+
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link {
+                    color: #111827 !important;
+                    background-color: transparent;
+                }
+
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link:hover,
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link.mobile-menu-link-active {
+                    background-color: rgba(219, 234, 254, 0.8);
+                    color: #1e40af !important;
+                }
+
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link .material-icons {
+                    color: #111827 !important;
+                }
+
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link:hover .material-icons,
+                body.home-navbar-hero #main-header #mobile-menu.active .mobile-menu-link.mobile-menu-link-active .material-icons {
+                    color: #1e40af !important;
+                }
+
                 body.home-navbar-hero #main-header #menu-toggle:hover {
                     background-color: transparent !important;
                     color: #ffffff;
