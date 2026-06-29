@@ -268,6 +268,32 @@ async function loadNavbar() {
                     -webkit-backdrop-filter: none !important;
                 }
 
+                @media (max-width: 767px) {
+                    #main-header {
+                        width: 100%;
+                    }
+
+                    #main-header > .max-w-7xl {
+                        position: relative;
+                    }
+
+                    #main-header #menu-toggle {
+                        display: flex !important;
+                    }
+
+                    #main-header nav:not(#mobile-menu) {
+                        display: none !important;
+                    }
+
+                    #main-header #mobile-menu {
+                        display: none !important;
+                    }
+
+                    #main-header #mobile-menu.active {
+                        display: flex !important;
+                    }
+                }
+
                 body.home-navbar-hero #main-header .max-w-7xl {
                     background: transparent;
                 }
@@ -472,6 +498,7 @@ function setupHomeNavbarState(page) {
         const header = document.getElementById('main-header');
         const logo = document.querySelector('#main-header img[alt="COPARMEX Logo"]');
         const menuToggle = document.getElementById('menu-toggle');
+        const hamburgerIcon = document.querySelector('#main-header .hamburger-icon');
         const desktopLinks = document.querySelectorAll('#main-header nav:not(#mobile-menu) a.nav-link');
         const mobileLinks = document.querySelectorAll('#main-header .mobile-menu-link');
 
@@ -487,6 +514,10 @@ function setupHomeNavbarState(page) {
 
         if (logo) {
             logo.style.setProperty('filter', 'none', 'important');
+        }
+
+        if (hamburgerIcon) {
+            hamburgerIcon.style.setProperty('color', '#111827', 'important');
         }
 
         desktopLinks.forEach((link) => {
@@ -518,17 +549,11 @@ function setupHomeNavbarState(page) {
         return;
     }
 
-    const isDesktopNavbar = window.matchMedia('(min-width: 768px)').matches;
-
-    if (!isDesktopNavbar) {
-        body.classList.add('home-navbar-scrolled');
-        return;
-    }
-
     const applyNavbarState = (isHeroState) => {
         const header = document.getElementById('main-header');
         const logo = document.querySelector('#main-header img[alt="COPARMEX Logo"]');
         const menuToggle = document.getElementById('menu-toggle');
+        const hamburgerIcon = document.querySelector('#main-header .hamburger-icon');
 
         if (!header) {
             return;
@@ -558,6 +583,10 @@ function setupHomeNavbarState(page) {
                 menuToggle.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
                 menuToggle.style.setProperty('color', '#ffffff', 'important');
             }
+
+            if (hamburgerIcon) {
+                hamburgerIcon.style.setProperty('color', '#ffffff', 'important');
+            }
         } else {
             body.classList.add('home-navbar-scrolled');
             body.classList.remove('home-navbar-hero');
@@ -578,30 +607,21 @@ function setupHomeNavbarState(page) {
                 menuToggle.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
                 menuToggle.style.setProperty('color', '#4b5563', 'important');
             }
+
+            if (hamburgerIcon) {
+                hamburgerIcon.style.setProperty('color', '#4b5563', 'important');
+            }
         }
     };
 
     const syncNavbarState = () => {
-        const heroRect = hero.getBoundingClientRect();
-        const isHeroState = heroRect.top <= 24 && heroRect.bottom > 24;
+        const heroHeight = hero.offsetHeight || window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const isHeroState = scrollY < heroHeight - 96;
         applyNavbarState(isHeroState);
     };
 
     syncNavbarState();
-
-    if (window.IntersectionObserver) {
-        const heroObserver = new IntersectionObserver((entries) => {
-            const entry = entries[0];
-            const heroRect = entry.boundingClientRect;
-            applyNavbarState(heroRect.top <= 24 && heroRect.bottom > 24);
-        }, {
-            threshold: 0,
-            rootMargin: '-24px 0px 0px 0px'
-        });
-
-        heroObserver.observe(hero);
-        window.__homeNavbarHeroObserver = heroObserver;
-    }
 
     if (!window.__homeNavbarScrollHandlerAttached) {
         window.addEventListener('scroll', () => {
