@@ -618,8 +618,8 @@
 
     <main>
         <section id="hero" class="hero-section" aria-label="Inicio COPARMEX">
-            <video autoplay muted loop playsinline poster="assets/images/hero1.png">
-                <source src="assets/images/video1.mp4" type="video/mp4">
+            <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata" poster="assets/images/hero1.png" aria-hidden="true">
+                <source data-src="assets/images/video1.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -645,7 +645,6 @@
                             <span class="news-meta">12 jun 2026 · Evento</span>
                             <h3 class="news-title">COPARMEX presenta nuevas alianzas para impulsar el desarrollo regional.</h3>
                             <p class="news-copy">Una convocatoria abierta para fortalecer la colaboración entre empresas, instituciones y comunidades.</p>
-                            <a class="news-link" href="agenda.html">Leer más <span class="material-icons">arrow_forward</span></a>
                         </div>
                     </article>
 
@@ -657,7 +656,6 @@
                             <span class="news-meta">08 jun 2026 · Programas</span>
                             <h3 class="news-title">Nuevos apoyos para micro, pequeñas y medianas empresas.</h3>
                             <p class="news-copy">Programas orientados a la productividad, la innovación y el fortalecimiento del tejido empresarial.</p>
-                            <a class="news-link" href="agenda.html">Leer más <span class="material-icons">arrow_forward</span></a>
                         </div>
                     </article>
                 </div>
@@ -757,6 +755,52 @@
         });
 
         document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+        const heroSection = document.getElementById('hero');
+        const heroVideo = document.getElementById('hero-video');
+        const heroSource = heroVideo?.querySelector('source');
+        const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        const shouldLoadHeroVideo = () => {
+            if (!heroSection || !heroVideo || !heroSource) return false;
+            if (reducedMotionQuery.matches) return false;
+            return window.innerWidth >= 768;
+        };
+
+        const loadHeroVideo = () => {
+            if (!shouldLoadHeroVideo() || heroVideo.dataset.loaded === 'true') return;
+
+            heroSource.src = heroSource.dataset.src;
+            heroVideo.load();
+            heroVideo.dataset.loaded = 'true';
+
+            heroVideo.play().catch(() => {
+                // El navegador puede bloquear la reproducción automática; el poster permanece visible.
+            });
+        };
+
+        if (heroSection && heroVideo && heroSource) {
+            if ('IntersectionObserver' in window) {
+                const heroObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            loadHeroVideo();
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                heroObserver.observe(heroSection);
+            } else {
+                loadHeroVideo();
+            }
+
+            window.addEventListener('resize', () => {
+                if (shouldLoadHeroVideo()) {
+                    loadHeroVideo();
+                }
+            });
+        }
     </script>
 </body>
 </html>
