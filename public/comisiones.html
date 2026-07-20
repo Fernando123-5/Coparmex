@@ -75,74 +75,92 @@
         /* Estilos específicos para Comisiones */
         .commission-card {
             background: white;
-            border-radius: 4px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 52, 111, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(226, 232, 240, 0.9);
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .commission-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 52, 111, 0.12);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
             transform: translateY(-4px);
         }
         
         .commission-photo {
             width: 100%;
-            height: 240px;
-            background: #dde5f4;
+            padding: 32px 0 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .commission-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            background: transparent;
         }
         
         .commission-photo-placeholder {
-            font-size: 120px;
+            width: 94px;
+            height: 94px;
+            border-radius: 999px;
+            background: #e0e7ff;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2d2e63;
+            font-size: 40px;
+            color: #1d4ed8;
+            box-shadow: inset 0 0 0 1px rgba(29, 78, 216, 0.12);
         }
         
         .commission-content {
-            padding: 24px 20px;
-            flex: 1;
+            padding: 24px 20px 32px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
         }
         
         .commission-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #00346f;
-            margin-bottom: 4px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0;
             font-family: 'Public Sans', sans-serif;
         }
         
         .commission-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1d4ed8;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
-            padding-bottom: 0;
-            border-bottom: none;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
         }
         
-        .commission-contact {
-            flex: 1;
-            margin-bottom: 20px;
+        .commission-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 999px;
+            padding: 12px 18px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        
+        .commission-contact-link:hover {
+            background: #dbeafe;
+            transform: translateY(-1px);
+        }
+        
+        .commission-contact-link .material-icons {
+            font-size: 18px;
+            line-height: 1;
         }
         
         .contact-item {
@@ -187,34 +205,10 @@
             color: #00346f;
         }
         
-        .commission-action {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .commission-action button {
-            flex: 1;
-            padding: 14px 16px;
-            border-radius: 4px;
-            border: 1px solid #d1d5db;
-            background: white;
-            color: #00346f;
-            font-weight: 700;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .commission-action button:hover {
-            background: #f5f7fb;
-            border-color: #00346f;
-        }
         
         .commissions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
             margin-bottom: 64px;
         }
@@ -1063,7 +1057,7 @@
 
     <main>
         <!-- Page Header -->
-        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/comision.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/comision.webp'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
             <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
                 <div class="max-w-3xl">
@@ -1081,144 +1075,72 @@
                     <!-- Commission Card 1 -->
                     <div class="commission-card" data-commission="legal" data-name="Carlos Mendoza" data-title="Ventas Corporativas" data-phone="+52 55 1234 5678" data-email="c.mendoza@corporativo.com" data-description="Carlos lidera el área de Ventas Corporativas con más de 15 años de experiencia en el sector empresarial. Se dedica a fortalecer las relaciones comerciales y desarrollar nuevas oportunidades de negocio para COPARMEX.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">👔</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Carlos Mendoza</div>
                             <div class="commission-title">Ventas Corporativas</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 1234 5678</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:c.mendoza@corporativo.com">c.mendoza@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:c.mendoza@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
 
                     <!-- Commission Card 2 -->
                     <div class="commission-card" data-commission="economic" data-name="Elena Rodríguez" data-title="Seguros de Vida" data-phone="+52 55 8765 4321" data-email="e.rodriguez@corporativo.com" data-description="Elena es especialista en Seguros de Vida y protección financiera. Con amplia experiencia en el sector asegurador, trabaja para garantizar soluciones integrales que protejan el patrimonio de las empresas afiliadas a COPARMEX.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">🛡️</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Elena Rodríguez</div>
                             <div class="commission-title">Seguros de Vida</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 8765 4321</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:e.rodriguez@corporativo.com">e.rodriguez@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:e.rodriguez@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
 
                     <!-- Commission Card 3 -->
                     <div class="commission-card" data-commission="social" data-name="Ricardo Silva" data-title="Inversiones Patrimoniales" data-phone="+52 55 5566 7788" data-email="r.silva@corporativo.com" data-description="Ricardo es experto en Inversiones Patrimoniales y gestión de activos. Asesora a las empresas de COPARMEX en estrategias de inversión sostenibles y rentables para el crecimiento empresarial.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">📈</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Ricardo Silva</div>
                             <div class="commission-title">Inversiones Patrimoniales</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 5566 7788</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:r.silva@corporativo.com">r.silva@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:r.silva@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
 
                     <!-- Commission Card 4 -->
                     <div class="commission-card" data-commission="institutional" data-name="Sofía Valdés" data-title="Consultoría Pyme" data-phone="+52 55 9900 1122" data-email="s.valdes@corporativo.com" data-description="Sofía se especializa en Consultoría para Pequeñas y Medianas Empresas. Brinda orientación estratégica y operativa para optimizar procesos y competitividad de las PyMES afiliadas a COPARMEX.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">🧑‍💼</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Sofía Valdés</div>
                             <div class="commission-title">Consultoría Pyme</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 9900 1122</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:s.valdes@corporativo.com">s.valdes@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:s.valdes@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
 
                     <!-- Commission Card 5 -->
                     <div class="commission-card" data-commission="legal" data-name="Javier Ortiz" data-title="Gestión de Riesgos" data-phone="+52 55 3344 5566" data-email="j.ortiz@corporativo.com" data-description="Javier es especialista en Gestión de Riesgos empresariales. Trabaja en identificar, evaluar y mitigar riesgos que puedan afectar a las organizaciones miembros de COPARMEX.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">⚖️</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Javier Ortiz</div>
                             <div class="commission-title">Gestión de Riesgos</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 3344 5566</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:j.ortiz@corporativo.com">j.ortiz@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:j.ortiz@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
 
                     <!-- Commission Card 6 -->
                     <div class="commission-card" data-commission="economic" data-name="Andrés Ruiz" data-title="Finanzas y Tesorería" data-phone="+52 55 2211 3344" data-email="a.ruiz@corporativo.com" data-description="Andrés lidera el área de Finanzas y Tesorería con expertise en gestión financiera corporativa. Asesora a las empresas en optimización de recursos y estrategias de financiamiento.">
                         <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👤</div>
+                            <div class="commission-photo-placeholder">💰</div>
                         </div>
                         <div class="commission-content">
                             <div class="commission-name">Andrés Ruiz</div>
                             <div class="commission-title">Finanzas y Tesorería</div>
-                            <div class="commission-contact">
-                                <div class="contact-item">
-                                    <div class="contact-icon">📞</div>
-                                    <div class="contact-text">+52 55 2211 3344</div>
-                                </div>
-                                <div class="contact-item">
-                                    <div class="contact-icon">✉️</div>
-                                    <div class="contact-text"><a href="mailto:a.ruiz@corporativo.com">a.ruiz@corporativo.com</a></div>
-                                </div>
-                            </div>
-                            <div class="commission-action">
-                                <button type="button" onclick="openModal(this)">Ver Mas Info</button>
-                            </div>
+                            <a href="mailto:a.ruiz@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
                         </div>
                     </div>
                 </div>
@@ -1226,15 +1148,7 @@
         </section>
 
         <!-- CTA Section -->
-        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
-            <div class="content-wrapper" style="text-align: center;">
-                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; font-family: Manrope, sans-serif;">¿Necesitas contactar a una comisión?</h2>
-                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Haz clic en el botón de contacto de cada representante para comunicarte directamente o envía un mensaje a través de nuestro formulario general.</p>
-                <button style="background-color: white; color: #00346f; padding: 16px 40px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease; text-decoration: none;">
-                    Contactar a COPARMEX
-                </button>
-            </div>
-        </section>
+       
     </main>
 
     <!-- Modal -->

@@ -214,11 +214,6 @@
             flex-direction: column;
         }
 
-        .news-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 22px 45px rgba(15, 35, 64, 0.14);
-        }
-
         .news-card.featured {
             grid-column: span 2;
         }
@@ -232,6 +227,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
             transition: transform 0.5s ease;
         }
 
@@ -274,6 +270,10 @@
             color: #1166b8;
             font-weight: 700;
         }
+
+        .news-card-link { display: block; color: inherit; text-decoration: none; }
+        .news-card-link .news-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .news-card-link .news-card:hover { transform: translateY(-6px); box-shadow: 0 22px 45px rgba(15, 35, 64, 0.14); }
 
         .mipymes-layout {
             display: grid;
@@ -618,7 +618,7 @@
 
     <main>
         <section id="hero" class="hero-section" aria-label="Inicio COPARMEX">
-            <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata" poster="assets/images/hero1.png" aria-hidden="true">
+            <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata" poster="assets/images/hero1.webp" aria-hidden="true">
                 <source data-src="assets/images/video1.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
@@ -639,7 +639,7 @@
                 <div class="news-grid">
                     <article class="news-card reveal reveal-delay-1">
                         <div class="news-media">
-                            <img src="assets/images/hero1.png" alt="Foro de impacto social" loading="lazy">
+                            <img src="assets/images/hero1.webp" alt="Foro de impacto social" loading="lazy">
                         </div>
                         <div class="news-body">
                             <span class="news-meta">12 jun 2026 · Evento</span>
@@ -648,16 +648,18 @@
                         </div>
                     </article>
 
+                    <a href="https://www.creceminegocio.ai" target="_blank" rel="noopener noreferrer" class="news-card-link">
                     <article class="news-card reveal reveal-delay-2">
                         <div class="news-media">
-                            <img src="assets/images/pag2.png" alt="Programa de apoyo a mipymes" loading="lazy">
+                            <img src="assets/images/mipy.webp" alt="CreceMiNegocio" loading="lazy">
                         </div>
                         <div class="news-body">
-                            <span class="news-meta">08 jun 2026 · Programas</span>
-                            <h3 class="news-title">Nuevos apoyos para micro, pequeñas y medianas empresas.</h3>
-                            <p class="news-copy">Programas orientados a la productividad, la innovación y el fortalecimiento del tejido empresarial.</p>
+                            <span class="news-meta">🙋🏻‍♂️🌱</span>
+                            <h3 class="news-title">Te invitamos a conocer #CreceMiNegocio</h3>
+                            <p class="news-copy">🙋🏻‍♂️🌱 Te invitamos a conocer #CreceMiNegocio, plataforma diseñada para fortalecer a las empresas con capacitación, herramientas y soluciones que impulsan su crecimiento.<br><br>💡 Descubre todo lo que tu empresa puede lograr en https://www.creceminegocio.ai<br><br>#MiPyMEs #CrecimientoEmpresarial #Networking #EmpresasQueImpulsan #Tehuacan</p>
                         </div>
                     </article>
+                    </a>
                 </div>
             </div>
         </section>
@@ -666,19 +668,16 @@
             <div class="section-shell">
                 <div class="development-shell">
                     <div class="reveal reveal-delay-1">
-                        <span class="eyebrow">Construyendo un mejor futuro</span>
-                        <h2 class="section-title">Construyendo un Mejor Futuro para México.</h2>
-                        <p class="section-copy">El compromiso de COPARMEX con el desarrollo del país se refleja en la participación activa de sus empresarios afiliados en temas fundamentales para el bienestar social y el fortalecimiento de México.</p>
-                        <ul class="development-list">
-                            <li>Promovemos una educación de calidad, libre competencia con responsabilidad social y seguridad pública.</li>
-                            <li>Fortalecemos el estado de derecho y la transparencia con rendición de cuentas.</li>
-                            <li>Impulsamos una sociedad más justa, competitiva y con mayores oportunidades para todos.</li>
-                        </ul>
-                    </div>
+                            <span class="eyebrow"></span>
+                            <h2 class="section-title">La corrupción continúa siendo un freno para México</h2>
+                            <p class="section-copy">La corrupción continúa siendo un freno para la inversión, la competitividad y el desarrollo de México. Además de afectar a millones de ciudadanos, sigue impactando la operación de las empresas y la confianza para invertir.</p>
+                            <p class="section-copy">🤝 Desde COPARMEX consideramos que combatir la corrupción debe ser una prioridad nacional. Fortalecer la transparencia, la certeza jurídica y el Sistema Nacional Anticorrupción es indispensable para fortalecer la confianza y construir un México más competitivo.</p>
+                            <p class="section-copy">#SeñalCoparmex</p>
+                        </div>
 
                     <div class="reveal reveal-delay-2">
                         <div class="development-media">
-                            <img src="assets/images/pag3.png" alt="Empresarios COPARMEX impulsando el desarrollo de México" loading="lazy">
+                            <img src="assets/images/corrupcion.webp" alt="Corrupción" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -687,21 +686,22 @@
 
         <section id="desarrollo" class="section reveal">
             <div class="section-shell">
-                <div class="development-shell">
-                    <div class="reveal reveal-delay-1">
-                        <span class="eyebrow">Impulsando el desarrollo</span>
-                        <h2 class="section-title">Una visión de país con valores y compromiso.</h2>
-                        <p class="section-copy">Impulsamos el desarrollo de México con principios humanistas, democráticos y de participación ciudadana. Nuestra labor combina visión empresarial, responsabilidad social y una apuesta firme por un futuro más libre, solidario y competitivo.</p>
-                        <ul class="development-list">
-                            <li>Promovemos una economía más competitiva, con reglas claras y oportunidades reales.</li>
-                            <li>Fortalecemos la educación, la seguridad y la transparencia como pilares de progreso.</li>
-                            <li>Impulsamos la colaboración entre empresas, instituciones y ciudadanía.</li>
-                        </ul>
+                <a href="eventos.html#video-destacado" class="news-card-link" style="display: block;">
+                    <div class="development-shell">
+                        <div class="reveal reveal-delay-1">
+                            <span class="eyebrow">Eventos</span>
+                            <h2 class="section-title">Foro de Seguridad y Salud en el Trabajo 2026</h2>
+                            <p class="section-copy">Con una destacada participación de representantes del sector público, empresarial y de sanidad, COPARMEX Tehuacán llevó a cabo con éxito el “Foro de Seguridad y Salud en el Trabajo 2026”, un espacio de diálogo y capacitación enfocado en fortalecer la cultura de prevención, bienestar, seguridad laboral y salud empresarial.</p>
+                            <div style="margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; color: #1166b8; font-weight: 700; font-size: 0.95rem;">
+                                <span>Leer más</span>
+                                <span class="material-icons" style="font-size: 18px;">arrow_forward</span>
+                            </div>
+                        </div>
+                        <div class="development-media reveal reveal-delay-2">
+                            <img src="assets/eventos/foro.webp" alt="Foro de Seguridad y Salud en el Trabajo 2026" loading="lazy">
+                        </div>
                     </div>
-                    <div class="development-media reveal reveal-delay-2">
-                        <img src="assets/images/pag3.png" alt="Impulsando el desarrollo" loading="lazy">
-                    </div>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -721,12 +721,6 @@
                     </div>
                 </div>
                 
-                <div style="text-align: center;">
-                    <a href="socios.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--color-primary); color: white; font-weight: 700; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-size: 14px; transition: all 0.3s ease;">
-                        Ver todos nuestros socios
-                        <span class="material-icons" style="font-size: 18px;">arrow_forward</span>
-                    </a>
-                </div>
             </div>
         </section>
     </main>

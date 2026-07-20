@@ -58,6 +58,58 @@
             padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
         }
 
+        /* Animaciones de entrada con transiciones más confiables */
+        .animate-fade-up,
+        .animate-scale-up,
+        .animate-slide-left,
+        .animate-slide-right,
+        .animate-slide-up {
+            opacity: 0;
+            will-change: opacity, transform;
+            transition-property: opacity, transform;
+            transition-duration: 0.9s;
+            transition-timing-function: ease-out;
+            transform: translateY(16px);
+        }
+
+        .animate-scale-up {
+            transform: scale(0.96);
+            transition-duration: 0.8s;
+        }
+
+        .animate-slide-left {
+            transform: translateX(-24px);
+        }
+
+        .animate-slide-right {
+            transform: translateX(24px);
+        }
+
+        .animate-slide-up {
+            transform: translateY(24px);
+        }
+
+        .animation-delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .animation-delay-2 {
+            transition-delay: 0.30s;
+        }
+
+        .animation-delay-3 {
+            transition-delay: 0.45s;
+        }
+
+        .animation-delay-4 {
+            transition-delay: 0.60s;
+        }
+
+        .animated {
+            opacity: 1 !important;
+            transform: translate(0, 0) scale(1) !important;
+        }
+
         /* HEADER RESPONSIVO */
         header {
             position: sticky;
@@ -333,10 +385,10 @@
 
     <main>
         <!-- Page Header Hero -->
-        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/socios.png'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/socios.webp'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 500px;">
             <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
-                <div class="max-w-3xl">
+                <div class="max-w-3xl animate-fade-up animation-delay-1">
                     <span class="inline-block bg-blue-200 text-blue-900 px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6 rounded-full">Socios COPARMEX</span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">Afiliación a COPARMEX</h1>
                     <p class="text-lg md:text-xl text-blue-100">Únete a la red empresarial más influyente de México y sé parte del cambio que el país necesita.</p>
@@ -347,7 +399,7 @@
         <!-- Sección: Quiénes Somos los Afiliados -->
         <section style="padding: 80px 24px; background-color: white;">
             <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center;">
+                <div class="animate-fade-up animation-delay-2" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center;">
                     <!-- Izquierda: Texto -->
                     <div>
                         <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Quiénes Somos</span>
@@ -362,9 +414,9 @@
 
                     <!-- Derecha: Icono/Estadística -->
                     <div style="text-align: center;">
-                        <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 16px; padding: 60px 40px; box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);">
+                        <div class="animate-scale-up animation-delay-1" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 16px; padding: 60px 40px; box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);">
                             <span class="material-icons" style="font-size: 80px; color: #1e40af; display: block; margin-bottom: 20px;">business_center</span>
-                            <div style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 12px;">36,000+</div>
+                            <div id="affiliateCounter" style="color: #1e40af; font-size: 48px; font-weight: 900; margin-bottom: 12px;">0+</div>
                             <p style="color: #00346f; font-size: 16px; font-weight: 600; margin: 0;">Empresarios Afiliados</p>
                         </div>
                     </div>
@@ -375,13 +427,13 @@
         <!-- Sección: ¿Cómo Colaboramos? -->
         <section style="padding: 80px 24px; background-color: #f9fafb;">
             <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
-                <div style="margin-bottom: 60px; text-align: center;">
+                <div class="animate-fade-up animation-delay-2" style="margin-bottom: 60px; text-align: center;">
                     <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Nuestro Compromiso</span>
                     <h2 style="color: #00346f; font-size: 42px; font-weight: 900; margin-bottom: 0; line-height: 1.2;">¿Cómo Colaboramos por un Mejor México?</h2>
                 </div>
 
                 <!-- Lista en dos filas -->
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px;">
+                <div class="animate-fade-up animation-delay-3" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px;">
                     
                     <!-- Item 1 -->
                     <div style="display: flex; gap: 20px;">
@@ -397,7 +449,7 @@
                     </div>
 
                     <!-- Item 2 -->
-                    <div style="display: flex; gap: 20px;">
+                    <div class="animate-slide-right animation-delay-2" style="display: flex; gap: 20px;">
                         <div style="flex-shrink: 0;">
                             <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
                                 <span class="material-icons" style="font-size: 28px; color: #1e40af;">security</span>
@@ -410,7 +462,7 @@
                     </div>
 
                     <!-- Item 3 -->
-                    <div style="display: flex; gap: 20px;">
+                    <div class="animate-slide-left animation-delay-3" style="display: flex; gap: 20px;">
                         <div style="flex-shrink: 0;">
                             <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
                                 <span class="material-icons" style="font-size: 28px; color: #1e40af;">school</span>
@@ -423,7 +475,7 @@
                     </div>
 
                     <!-- Item 4 -->
-                    <div style="display: flex; gap: 20px;">
+                    <div class="animate-slide-right animation-delay-4" style="display: flex; gap: 20px;">
                         <div style="flex-shrink: 0;">
                             <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
                                 <span class="material-icons" style="font-size: 28px; color: #1e40af;">trending_up</span>
@@ -440,7 +492,7 @@
 
         <!-- Sección: Mensaje Motivacional -->
         <section style="padding: 80px 24px; background: linear-gradient(135deg, rgba(0, 52, 111, 0.05) 0%, rgba(30, 64, 175, 0.05) 100%);">
-            <div class="content-wrapper" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <div class="content-wrapper animate-fade-up animation-delay-2" style="max-width: 1000px; margin: 0 auto; text-align: center;">
                 <p style="color: #424751; font-size: 20px; line-height: 1.9; margin: 0; font-weight: 500;">
                     <span style="color: #00346f; font-weight: 700; font-size: 21px;">Afiliados a Coparmex,</span> los empresarios encontramos un espacio para aportar nuestro tiempo, talento y recursos de manera eficaz y estratégica, para construir <span style="color: #00346f; font-weight: 700;">el México que anhelamos, el que queremos, el que todos merecemos.</span>
                 </p>
@@ -450,16 +502,16 @@
         <!-- Sección: Beneficios de Afiliación -->
         <section style="padding: 80px 24px; background-color: white;">
             <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto;">
-                <div style="margin-bottom: 60px; text-align: center;">
+                <div class="animate-fade-up animation-delay-2" style="margin-bottom: 60px; text-align: center;">
                     <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 16px;">Beneficios Exclusivos</span>
                     <h2 style="color: #00346f; font-size: 42px; font-weight: 900; margin-bottom: 0; line-height: 1.2;">¿Qué Reciben Nuestros Afiliados?</h2>
                 </div>
 
                 <!-- Grid 3 columnas de beneficios -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                <div class="animate-fade-up animation-delay-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
                     
                     <!-- Beneficio 1: Representatividad -->
-                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                    <div class="animate-slide-up animation-delay-1" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
                         <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
                             <span class="material-icons" style="font-size: 48px; color: #1e40af;">gavel</span>
                         </div>
@@ -468,7 +520,7 @@
                     </div>
 
                     <!-- Beneficio 2: Servicios Directos -->
-                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                    <div class="animate-slide-up animation-delay-2" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
                         <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
                             <span class="material-icons" style="font-size: 48px; color: #1e40af;">build</span>
                         </div>
@@ -477,7 +529,7 @@
                     </div>
 
                     <!-- Beneficio 3: Oportunidad de Vínculo -->
-                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
+                    <div class="animate-slide-up animation-delay-3" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 48px 32px; border-radius: 16px; border-top: 4px solid #1e40af; text-align: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);">
                         <div style="width: 80px; height: 80px; background: linear-gradient(135deg, white 0%, #dbeafe 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);">
                             <span class="material-icons" style="font-size: 48px; color: #1e40af;">public</span>
                         </div>
@@ -488,17 +540,7 @@
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
-            <div class="content-wrapper" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-                <span style="display: inline-block; background: rgba(255, 255, 255, 0.2); color: white; padding: 8px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 24px; margin-bottom: 24px;">Únete Ahora</span>
-                <h2 style="font-size: 42px; font-weight: 900; margin-bottom: 24px; font-family: 'Public Sans', sans-serif; line-height: 1.2;">¿Listo para ser parte de COPARMEX?</h2>
-                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); max-width: 600px; margin-left: auto; margin-right: auto;">Contacta con nosotros y descubre cómo puedes beneficiarte de nuestra red empresarial y servicios exclusivos.</p>
-                <button style="background-color: white; color: #00346f; padding: 16px 48px; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);">
-                    Solicitar Información
-                </button>
-            </div>
-        </section>
+
     </main>
 
     <!-- Cargar configuración primero -->
@@ -506,5 +548,37 @@
     <script src="js/navbar-loader.js"></script>
     <script src="js/footer-loader.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const counterEl = document.getElementById('affiliateCounter');
+            if (!counterEl) return;
+
+            const target = 36000;
+            const duration = 1800;
+            const formatNumber = value => new Intl.NumberFormat('es-MX').format(value);
+
+            let startTime = null;
+            const animate = time => {
+                if (!startTime) startTime = time;
+                const progress = Math.min((time - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * target);
+                counterEl.textContent = `${formatNumber(currentValue)}+`;
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(animate);
+                } else {
+                    counterEl.textContent = '36,000+';
+                }
+            };
+
+            window.requestAnimationFrame(animate);
+
+            setTimeout(() => {
+                document.querySelectorAll('.animate-fade-up, .animate-scale-up, .animate-slide-left, .animate-slide-right, .animate-slide-up').forEach(el => {
+                    el.classList.add('animated');
+                });
+            }, 60);
+        });
+    </script>
 </body>
 </html>

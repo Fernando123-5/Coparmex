@@ -524,6 +524,157 @@
                 gap: 16px;
             }
         }
+
+        .video-feature-card {
+            background: white;
+            border: 1px solid #dbeafe;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 52, 111, 0.08);
+            overflow: hidden;
+        }
+
+        .video-feature-card video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0f172a;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .video-controls button {
+            min-width: 48px;
+            min-height: 48px;
+            border-radius: 999px;
+            border: 1px solid #bfdbfe;
+            background: #eff6ff;
+            color: #1d4ed8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: all 0.2s ease;
+        }
+
+        .video-controls button:hover {
+            background: #dbeafe;
+            transform: translateY(-1px);
+        }
+
+        .volume-control {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 0 12px;
+            border-radius: 999px;
+            border: 1px solid #bfdbfe;
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .volume-control input {
+            width: 90px;
+            accent-color: #1d4ed8;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .news-card {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            padding: 16px;
+        }
+
+        .news-card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .news-card-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        @media (max-width: 1024px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .video-feature-card > div[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 20px 24px !important;
+            }
+
+            .video-feature-card > div[style*="padding: 32px 32px 20px"] {
+                padding: 24px 20px 16px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-feature-card {
+                border-radius: 20px;
+            }
+
+            .video-controls {
+                gap: 8px;
+            }
+
+            .video-controls button,
+            .volume-control {
+                min-height: 44px;
+            }
+
+            .volume-control input {
+                width: 74px;
+            }
+
+            .news-card img {
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -537,7 +688,7 @@
 
     <main>
         <!-- Page Header -->
-        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/eventos.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-attachment: fixed; min-height: 500px;">
+        <section class="relative overflow-hidden text-white py-20 md:py-32" style="background-image: url('assets/images/eventos.webp'); background-size: contain; background-repeat: no-repeat; background-position: center; background-attachment: fixed; min-height: 500px;">
             <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0, 52, 111, 0.75), rgba(0, 52, 111, 0.5));"></div>
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full" style="min-height: 500px;">
                 <div class="max-w-3xl">
@@ -548,101 +699,172 @@
             </div>
         </section>
 
-        <!-- Eventos Grid Section -->
-        <section style="padding: 80px 24px; background-color: #f9f9fc;">
+        <!-- Video destacado y texto informativo -->
+        <section style="padding: 80px 24px; background: linear-gradient(135deg, #f8fbff 0%, #f9f9fc 100%);">
             <div class="content-wrapper">
-                <div style="margin-bottom: 64px; text-align: center;">
-                    <span style="color: #00346f; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 16px;">Historial</span>
-                    <h2 style="font-size: 36px; font-weight: 800; color: #00346f; margin-bottom: 24px; font-family: Manrope, sans-serif;">Eventos Realizados</h2>
-                    <p style="font-size: 16px; color: #6b7280; max-width: 600px; margin: 0 auto;">Consulta nuestro catálogo de eventos anteriores como referencia de las actividades y oportunidades que ofrecemos a nuestros miembros.</p>
-                </div>
-
-                <!-- Grid de Eventos -->
-                <div class="event-grid">
-                    
-                    <!-- Evento 1: Día de la Marina -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/marina.jpeg'); background-size: contain; background-repeat: no-repeat;">
-                        </div>
-                        <div class="event-content">
-                            <div class="event-title">Día de la Marina Nacional</div>
-                            <div class="event-description">En este Día de la Marina Nacional reconocemos a las mujeres y hombres que hacen posible la seguridad marítima, el comercio exterior y la conectividad que fortalece la economía mexicana. Desde #COPARMEXTehuacán, celebramos su compromiso con el desarrollo y la prosperidad de México.</div>
-                            <div class="event-date">🇲🇽 #DíaDeLaMarina #MarinaNacional</div>
-                        </div>
+                <div class="video-feature-card">
+                    <div style="padding: 32px 32px 20px; text-align: center;">
+                        <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;">Eventos</span>
+                        <h2 style="font-size: clamp(24px, 4vw, 34px); font-weight: 800; color: #00346f; margin-bottom: 8px; font-family: Manrope, sans-serif;">Foro de Seguridad y Salud en el Trabajo 2026</h2>
                     </div>
 
-                    <!-- Evento 2: Acuerdo UE -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/empresa.jpeg'); background-size: contain; background-repeat: no-repeat;">
+                    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; padding: 0 32px 32px; align-items: start;">
+                        <div style="background: #f8fafc; padding: 16px; border-radius: 18px; border: 1px solid #e2e8f0;">
+                            <video id="foro-video" preload="metadata" playsinline controlsList="nodownload noplaybackrate">
+                                <source src="assets/img/foro.mp4" type="video/mp4">
+                                Tu navegador no admite la reproducción de video.
+                            </video>
+                            <div class="video-controls" aria-label="Controles del video">
+                                <button type="button" data-action="rewind" aria-label="Retroceder 10 segundos"><span class="material-icons">replay_10</span></button>
+                                <button type="button" data-action="playpause" aria-label="Reproducir o pausar"><span class="material-icons">play_arrow</span></button>
+                                <button type="button" data-action="stop" aria-label="Detener video"><span class="material-icons">stop</span></button>
+                                <button type="button" data-action="forward" aria-label="Avanzar 10 segundos"><span class="material-icons">forward_10</span></button>
+                                <label class="volume-control" aria-label="Volumen del video">
+                                    <span class="material-icons">volume_up</span>
+                                    <input type="range" min="0" max="1" step="0.1" value="1" aria-label="Control de volumen">
+                                </label>
+                            </div>
                         </div>
-                        <div class="event-content">
-                            <div class="event-title">Acuerdo Global Modernizado UE</div>
-                            <div class="event-description">La firma del nuevo Acuerdo Global Modernizado con la Unión Europea abre la puerta a una nueva era de inversión, exportaciones, innovación y crecimiento para las empresas mexicanas. Europa representa más de 450 millones de consumidores y una economía de 17 billones de dólares.</div>
-                            <div class="event-date">🇲🇽🫱🏻‍🫲🏼🇪🇺 Oportunidad histórica</div>
-                        </div>
-                    </div>
 
-                    <!-- Evento 3: Día del Psicólogo -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/psicologo.jpeg'); background-size: contain; background-repeat: no-repeat;">
-                        </div>
-                        <div class="event-content">
-                            <div class="event-title">Día del Psicólogo</div>
-                            <div class="event-description">Reconocemos a quienes dedican su vida a escuchar, orientar y fortalecer. Con empatía y compromiso, ayudan a construir comunidades más sanas, humanas y resilientes. Su labor transforma vidas e impulsa la estabilidad emocional.</div>
-                            <div class="event-date">🙌🏼 #DíaDelPsicólogo #SaludMental</div>
-                        </div>
-                    </div>
-
-                    <!-- Evento 4: Día del Maestro -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/psicologo.jpeg'); background-size: contain; background-repeat: no-repeat;">
-                        </div>
-                        <div class="event-content">
-                            <div class="event-title">Día del Maestro</div>
-                            <div class="event-description">Reconocemos a todas las personas que inspiran, enseñan, orientan y dejan huella en cada paso. Con su ejemplo, experiencia y valores, transforman vidas y construyen el futuro de nuestras comunidades.</div>
-                            <div class="event-date">📚👩🏻‍🏫 #FelizDíaDelMaestro</div>
-                        </div>
-                    </div>
-
-                    <!-- Evento 5: Summit de Grandes Empresas -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/sumit.jpg'); background-size: contain; background-repeat: no-repeat;">
-                        </div>
-                        <div class="event-content">
-                            <div class="event-title">Summit de Grandes Empresas</div>
-                            <div class="event-description">Espacio de análisis y diálogo estratégico para reflexionar sobre los desafíos económicos, regulatorios y geopolíticos que enfrenta México, en conjunto con Banco Azteca. Se destacó la oportunidad histórica derivada del nearshoring e integración regional.</div>
-                            <div class="event-date">🔵🏢 #Summit #COPARMEX</div>
-                        </div>
-                    </div>
-
-                    <!-- Evento 6: Reforma Judicial -->
-                    <div class="event-card">
-                        <div class="event-image" style="background-image: url('assets/eventos/corte.jpg'); background-size: contain; background-repeat: no-repeat;">
-                        </div>
-                        <div class="event-content">
-                            <div class="event-title">Reforma Judicial - Certeza Jurídica</div>
-                            <div class="event-description">Desde COPARMEX reconocemos la importancia de un sistema judicial con perfiles de capacidad técnica, experiencia profesional e independencia. Esto fortalece el Estado de Derechos, la certeza jurídica y la confianza institucional para impulsar la inversión.</div>
-                            <div class="event-date">⚖️ #COPARMEX #CertezaJurídica</div>
+                        <div style="padding: 6px 4px;">
+                            <p style="font-size: 15px; line-height: 1.8; color: #374151; margin: 0; text-align: justify;">
+                                Con una destacada participación de representantes del sector público, empresarial y de sanidad, COPARMEX Tehuacán llevó a cabo con éxito el “Foro de Seguridad y Salud en el Trabajo 2026”, un espacio de diálogo y capacitación enfocado en fortalecer la cultura de prevención, bienestar, seguridad laboral y salud empresarial.
+                            </p>
+                            <p style="font-size: 15px; line-height: 1.8; color: #374151; margin: 14px 0 0; text-align: justify;">
+                                El evento contó con la presencia de importantes autoridades y representantes institucionales, entre ellos la Mtra. Raquel Medel Valencia, Subsecretaria de Empleo e Inspección de la Secretaría de Desarrollo Económico y Trabajo del Estado de Puebla; la Mtra. Elia Cortés Benítez, Titular de la Oficina de Representación Federal del Trabajo; el Lic. Herminio Flores Govea, en representación del Presidente Constitucional de la Ciudad de Tehuacán; el Ing. Miguel Juárez Sánchez, Superintendente de CFE Distribución Zona Tehuacán; la Ing. Claudia Vargas, Superintendente de la Terminal de Almacenamiento y Despacho de Pemex Miahuatlán; y el Dr. Daniel Melchor Morales, Encargado del Despacho de la Dirección General de Bienestar y Salud del H. Ayuntamiento de Tehuacán.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section style="padding: 80px 24px; background: linear-gradient(135deg, #00346f 0%, #004a99 100%); color: white;">
-            <div class="content-wrapper" style="text-align: center;">
-                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; font-family: Manrope, sans-serif;">¿Quieres estar informado de nuestros próximos eventos?</h2>
-                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-left: auto; margin-right: auto;">Mantente conectado con COPARMEX y no te pierdas las oportunidades de aprendizaje, networking y desarrollo empresarial que ofrecemos regularmente.</p>
-                <button style="background-color: white; color: #00346f; padding: 16px 40px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; font-size: 14px; transition: all 0.3s ease; text-decoration: none;">
-                    Contactar COPARMEX
-                </button>
+        <!-- Noticias -->
+        <section style="padding: 0 24px 80px; background-color: #f9f9fc;">
+            <div class="content-wrapper">
+                <div style="margin-bottom: 32px; text-align: center;">
+                    <span style="color: #00346f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px;">Noticias</span>
+                    <h3 style="font-size: clamp(24px, 3vw, 30px); font-weight: 800; color: #00346f; margin: 0; font-family: Manrope, sans-serif;">Lo más reciente</h3>
+                </div>
+
+                <div class="news-grid">
+                    <article class="news-card">
+                        <img src="assets/eventos/corrupcion.webp" alt="Noticia sobre corrupción y transparencia" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>🚨 Cuando los actos de corrupción no se denuncian ni se investigan, el problema crece, actualmente, 99 de cada 100 casos quedan sin consecuencias, lo que debilita la confianza en las instituciones y afecta el desarrollo del país.</p>
+                            <p>📉 Este impacto también se refleja en la economía, en 2025, la corrupción generó pérdidas por 17 mil millones de pesos.</p>
+                            <p>🔒🏫 Reducir la corrupción y combatir la impunidad es indispensable para fortalecer el Estado de Derecho, atraer inversiones y generar mejores oportunidades para todos.</p>
+                            <p><strong>#NoALaCorrupción #Impunidad #Transparencia #Tehuacan #COPARMEX</strong></p>
+                        </div>
+                    </article>
+
+                    <a class="news-card" href="https://revistamundoempresarial.com/panama-consolida-su-liderazgo-logistico-presidente-jose-raul-mulino-quintero/" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/eventos/panama.webp" alt="Noticia sobre la visita de José Raúl Mulino" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>🙋🏻‍♂️🇵🇦 La visita de José Raúl Mulino presidente de Panamá, dejó un mensaje claro, fortalecer la relación económica entre ambos países y convertir al sector empresarial en el motor de la prosperidad compartida.</p>
+                            <p>🌎🇲🇽 Desde COPARMEX reconocemos la importancia de construir puentes que impulsen el comercio, la inversión y la competitividad regional, en un contexto donde las cadenas de suministro se transforman y el nearshoring gana relevancia.</p>
+                            <p><strong>#COPARMEX #Panamá #Tehuacan #ComercioInternacional #MundoEmpresarial #Nearshoring</strong></p>
+                        </div>
+                    </a>
+
+                    <article class="news-card">
+                        <img src="assets/eventos/corrup.webp" alt="Noticia sobre corrupción y empresas" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>🚨 La corrupción no solo afecta a los ciudadanos, también golpea directamente a las empresas.</p>
+                            <p>📉🏭 Estas prácticas generan incertidumbre, frenan la inversión, ponen en riesgo empleos y afectan el crecimiento económico de nuestras comunidades.</p>
+                            <p>🔶 Construir un México más competitivo requiere combatir la corrupción, fortalecer el Estado de Derecho y brindar seguridad a quienes generan empleo y desarrollo.</p>
+                            <p><strong>#COPARMEX #EstadoDeDerecho #NoALaCorrupción #Seguridad #Tehuacán</strong></p>
+                        </div>
+                    </article>
+
+                    <a class="news-card" href="https://www.creceminegocio.ai" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/eventos/mipym.webp" alt="Plataforma CreceMiNegocio" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>🙋🏻‍♂️🌱 Te invitamos a conocer #CreceMiNegocio, plataforma diseñada para fortalecer a las empresas con capacitación, herramientas y soluciones que impulsan su crecimiento.</p>
+                            <p>💡 Descubre todo lo que tu empresa puede lograr en la plataforma.</p>
+                            <p><strong>#MiPyMEs #CrecimientoEmpresarial #Networking #EmpresasQueImpulsan #Tehuacan</strong></p>
+                        </div>
+                    </a>
+
+                    <article class="news-card">
+                        <img src="assets/eventos/temec.webp" alt="Noticia sobre T-MEC" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>El T-MEC no es solo un acuerdo comercial, es una herramienta clave para el crecimiento económico de México. 🇲🇽🫱🏻‍🫲🏼🇺🇸🇨🇦</p>
+                            <p>📈 Fortalecerlo significa impulsar la competitividad, atraer inversión, generar empleos y consolidar las cadenas de suministro que conectan a México con América del Norte.</p>
+                            <p><strong>#TMEC #Inversión #COPARMEX #Norteamérica #Tehuacan</strong></p>
+                        </div>
+                    </article>
+
+                    <a class="news-card" href="https://revistamundoempresarial.com/la-revision-del-t-mec-la-certidumbre-como-el-verdadero-activo-estrategico-de-mexico/" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/eventos/revision.webp" alt="Noticia sobre la revisión del T-MEC" loading="lazy" decoding="async">
+                        <div class="news-card-content">
+                            <p>🇲🇽🫱🏻‍🫲🏼 La revisión anual del T-MEC marca una nueva etapa para México y sus empresas.</p>
+                            <p>📈 Reiteramos que la confianza, la certeza jurídica, la seguridad y la competitividad son fundamentales para atraer inversión, generar empleos y fortalecer nuestra economía.</p>
+                            <p><strong>#TMEC #COPARMEX #Inversión #Competitividad #Nearshoring</strong></p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
+
     </main>
 
     <!-- Scripts -->
     <script src="js/config-loader.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        const video = document.getElementById('foro-video');
+        const playPauseButton = document.querySelector('[data-action="playpause"]');
+        const rewindButton = document.querySelector('[data-action="rewind"]');
+        const stopButton = document.querySelector('[data-action="stop"]');
+        const forwardButton = document.querySelector('[data-action="forward"]');
+        const volumeControl = document.querySelector('.volume-control input');
+        const volumeIcon = document.querySelector('.volume-control .material-icons');
+
+        function updatePlayIcon() {
+            const icon = playPauseButton?.querySelector('.material-icons');
+            if (icon) {
+                icon.textContent = video.paused ? 'play_arrow' : 'pause';
+            }
+        }
+
+        playPauseButton?.addEventListener('click', () => {
+            if (video.paused) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+
+        rewindButton?.addEventListener('click', () => {
+            video.currentTime = Math.max(0, video.currentTime - 10);
+        });
+
+        stopButton?.addEventListener('click', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+
+        forwardButton?.addEventListener('click', () => {
+            video.currentTime = Math.min(video.duration || 0, video.currentTime + 10);
+        });
+
+        volumeControl?.addEventListener('input', () => {
+            video.volume = parseFloat(volumeControl.value);
+            if (video.volume === 0) {
+                volumeIcon.textContent = 'volume_off';
+            } else if (video.volume < 0.5) {
+                volumeIcon.textContent = 'volume_down';
+            } else {
+                volumeIcon.textContent = 'volume_up';
+            }
+        });
+
+        video?.addEventListener('play', updatePlayIcon);
+        video?.addEventListener('pause', updatePlayIcon);
+        video?.addEventListener('ended', updatePlayIcon);
+
+        updatePlayIcon();
+    </script>
 </body>
 </html>

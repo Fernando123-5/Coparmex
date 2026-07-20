@@ -562,112 +562,91 @@ const PARTNERS_DATA = [
     {
         id: 'espiral',
         name: 'Espiral',
-        logo: 'assets/img/espiral.png',
+        logo: 'assets/img/espiral.webp',
         description: 'Soluciones empresariales innovadoras para el desarrollo y crecimiento sostenible.',
         website: null
     },
     {
         id: 'farmacia',
         name: 'Farmacias del Apoyo',
-        logo: 'assets/img/farmacia.png',
+        logo: 'assets/img/farmacia.webp',
         description: 'Empresa líder en distribución y servicios farmacéuticos de calidad.',
         website: null
     },
     {
         id: 'joa',
         name: 'JOA',
-        logo: 'assets/img/joa.png',
+        logo: 'assets/img/joa.webp',
         description: 'Proveedor especializado en soluciones de negocio y consultoría empresarial.',
         website: null
     },
     {
         id: 'probox',
         name: 'ProBox',
-        logo: 'assets/img/probox.png',
+        logo: 'assets/img/probox.webp',
         description: 'Soluciones logísticas y de almacenamiento para empresas.',
         website: null
     },
     {
         id: 'proicat',
         name: 'PROICAT',
-        logo: 'assets/img/proicat.png',
+        logo: 'assets/img/proicat.webp',
         description: 'Empresa de innovación y transferencia tecnológica para la industria.',
         website: null
     },
     {
         id: 'textuplas',
         name: 'Textuplas',
-        logo: 'assets/img/textuplas.png',
+        logo: 'assets/img/textuplas.webp',
         description: 'Especialista en productos textiles de alta calidad y durabilidad.',
         website: null
     },
     {
         id: 'upaep',
         name: 'UPAEP',
-        logo: 'assets/img/upaep.png',
+        logo: 'assets/img/upaep.webp',
         description: 'Universidad Popular Autónoma del Estado de Puebla. Más de 50 años formando líderes transformadores de la sociedad mexicana con excelencia acreditada.',
         website: 'https://www.upaep.mx'
     },
     {
-        id: 'uvp',
-        name: 'UVP',
-        logo: 'assets/img/uvp.png',
-        description: 'Universidad del Valle de Puebla. Institución educativa comprometida con la excelencia académica y la formación integral.',
-        website: null
-    },
-    {
-        id: 'unid',
-        name: 'UNID',
-        logo: 'assets/img/unid.png',
-        description: 'Universidad Interamericana para el Desarrollo. Educación superior innovadora para profesionales del futuro.',
-        website: null
-    },
-    {
         id: 'prosmet',
         name: 'PROSMET',
-        logo: 'assets/img/prosmet.png',
+        logo: 'assets/img/prosmet.webp',
         description: 'Soluciones metrológicas y de calidad para la industria.',
         website: null
     },
     {
         id: 'radth',
         name: 'RADTH',
-        logo: 'assets/img/radth.png',
+        logo: 'assets/img/radth.webp',
         description: 'Empresa especializada en servicios radiológicos y diagnóstico.',
         website: null
     },
     {
         id: 'planet',
         name: 'Planet',
-        logo: 'assets/img/planet.png',
+        logo: 'assets/img/planet.webp',
         description: 'Soluciones empresariales para el desarrollo sostenible.',
-        website: null
-    },
-    {
-        id: 'lolek',
-        name: 'LOLEK',
-        logo: 'assets/img/lolek.png',
-        description: 'Empresa líder en soluciones de consultoría y servicios empresariales.',
         website: null
     },
     {
         id: 'jym',
         name: 'J&M',
-        logo: 'assets/img/jym.png',
+        logo: 'assets/img/jym.webp',
         description: 'Proveedor integral de soluciones comerciales y de distribución.',
         website: null
     },
     {
         id: 'fit',
         name: 'FIT',
-        logo: 'assets/img/fit.png',
+        logo: 'assets/img/fit.webp',
         description: 'Centro de formación en innovación y tecnología para empresas.',
         website: null
     },
     {
         id: 'amaro',
         name: 'Amaro',
-        logo: 'assets/img/amaro.png',
+        logo: 'assets/img/amaro.webp',
         description: 'Empresa con amplia trayectoria en soluciones empresariales.',
         website: null
     }
@@ -677,35 +656,35 @@ const FEDERAL_PARTNERS_DATA = [
     {
         id: 'cfe',
         name: 'CFE',
-        logo: 'assets/img/CFE.PNG',
+        logo: 'assets/img/CFE.webp',
         description: 'Comisión Federal de Electricidad, proveedor de energía eléctrica a nivel nacional.',
         website: 'https://www.cfe.mx'
     },
     {
         id: 'cargill',
         name: 'Cargill',
-        logo: 'assets/img/CargillLogo.svg.png',
+        logo: 'assets/img/CargillLogo.svg.webp',
         description: 'Empresa líder global en agricultura, alimentos y servicios relacionados con la gestión de riesgos.',
         website: 'https://www.cargill.com.mx'
     },
     {
         id: 'cruzroja',
         name: 'Cruz Roja Mexicana',
-        logo: 'assets/img/cruzroja.png',
+        logo: 'assets/img/cruzroja.webp',
         description: 'Organización humanitaria dedicada a la prestación de servicios de salud, asistencia social y protección civil en México.',
         website: 'https://www.cruzrojamaexicana.org.mx'
     },
     {
         id: 'imss',
         name: 'IMSS',
-        logo: 'assets/img/imss.png',
+        logo: 'assets/img/imss.webp',
         description: 'Instituto Mexicano del Seguro Social, dedicado a proteger a la población mexicana.',
         website: 'https://www.imss.gob.mx'
     },
     {
         id: 'pemex',
         name: 'PEMEX',
-        logo: 'assets/img/PEMEX.PNG',
+        logo: 'assets/img/PEMEX.webp',
         description: 'Petróleos Mexicanos, empresa productora de petróleo y gas natural.',
         website: 'https://www.pemex.gob.mx'
     }
