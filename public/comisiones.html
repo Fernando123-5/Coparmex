@@ -131,34 +131,54 @@
         }
         
         .commission-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             color: #1d4ed8;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
+            text-transform: none;
+            letter-spacing: 0.01em;
             margin-bottom: 16px;
         }
         
-        .commission-contact-link {
+        .commission-contact-link,
+        .commission-whatsapp-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: #eff6ff;
-            color: #1d4ed8;
+            justify-content: center;
+            gap: 6px;
             border-radius: 999px;
-            padding: 12px 18px;
+            padding: 9px 14px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             transition: background 0.2s ease, transform 0.2s ease;
+            min-height: 40px;
+        }
+        
+        .commission-contact-link {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+        
+        .commission-whatsapp-link {
+            background: #25d366;
+            color: white;
+        }
+        
+        .commission-contact-link:hover,
+        .commission-whatsapp-link:hover {
+            transform: translateY(-1px);
         }
         
         .commission-contact-link:hover {
             background: #dbeafe;
-            transform: translateY(-1px);
         }
         
-        .commission-contact-link .material-icons {
+        .commission-whatsapp-link:hover {
+            background: #128c7e;
+        }
+        
+        .commission-contact-link .material-icons,
+        .commission-whatsapp-link .material-icons {
             font-size: 18px;
             line-height: 1;
         }
@@ -223,9 +243,6 @@
         
         /* HERO SECTION RESPONSIVO */
         /* Desktop - Sin cambios */
-        section.relative.overflow-hidden.text-white {
-            /* Mantiene min-height: 500px en desktop */
-        }
         
         /* TABLETS (640px - 1023px) */
         @media (max-width: 1023px) and (min-width: 640px) {
@@ -1071,79 +1088,7 @@
         <!-- Comisiones Grid -->
         <section style="padding: 48px 24px; background: white;">
             <div class="content-wrapper">
-                <div class="commissions-grid" id="commissionsGrid">
-                    <!-- Commission Card 1 -->
-                    <div class="commission-card" data-commission="legal" data-name="Carlos Mendoza" data-title="Ventas Corporativas" data-phone="+52 55 1234 5678" data-email="c.mendoza@corporativo.com" data-description="Carlos lidera el área de Ventas Corporativas con más de 15 años de experiencia en el sector empresarial. Se dedica a fortalecer las relaciones comerciales y desarrollar nuevas oportunidades de negocio para COPARMEX.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">👔</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Carlos Mendoza</div>
-                            <div class="commission-title">Ventas Corporativas</div>
-                            <a href="mailto:c.mendoza@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-
-                    <!-- Commission Card 2 -->
-                    <div class="commission-card" data-commission="economic" data-name="Elena Rodríguez" data-title="Seguros de Vida" data-phone="+52 55 8765 4321" data-email="e.rodriguez@corporativo.com" data-description="Elena es especialista en Seguros de Vida y protección financiera. Con amplia experiencia en el sector asegurador, trabaja para garantizar soluciones integrales que protejan el patrimonio de las empresas afiliadas a COPARMEX.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">🛡️</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Elena Rodríguez</div>
-                            <div class="commission-title">Seguros de Vida</div>
-                            <a href="mailto:e.rodriguez@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-
-                    <!-- Commission Card 3 -->
-                    <div class="commission-card" data-commission="social" data-name="Ricardo Silva" data-title="Inversiones Patrimoniales" data-phone="+52 55 5566 7788" data-email="r.silva@corporativo.com" data-description="Ricardo es experto en Inversiones Patrimoniales y gestión de activos. Asesora a las empresas de COPARMEX en estrategias de inversión sostenibles y rentables para el crecimiento empresarial.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">📈</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Ricardo Silva</div>
-                            <div class="commission-title">Inversiones Patrimoniales</div>
-                            <a href="mailto:r.silva@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-
-                    <!-- Commission Card 4 -->
-                    <div class="commission-card" data-commission="institutional" data-name="Sofía Valdés" data-title="Consultoría Pyme" data-phone="+52 55 9900 1122" data-email="s.valdes@corporativo.com" data-description="Sofía se especializa en Consultoría para Pequeñas y Medianas Empresas. Brinda orientación estratégica y operativa para optimizar procesos y competitividad de las PyMES afiliadas a COPARMEX.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">🧑‍💼</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Sofía Valdés</div>
-                            <div class="commission-title">Consultoría Pyme</div>
-                            <a href="mailto:s.valdes@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-
-                    <!-- Commission Card 5 -->
-                    <div class="commission-card" data-commission="legal" data-name="Javier Ortiz" data-title="Gestión de Riesgos" data-phone="+52 55 3344 5566" data-email="j.ortiz@corporativo.com" data-description="Javier es especialista en Gestión de Riesgos empresariales. Trabaja en identificar, evaluar y mitigar riesgos que puedan afectar a las organizaciones miembros de COPARMEX.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">⚖️</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Javier Ortiz</div>
-                            <div class="commission-title">Gestión de Riesgos</div>
-                            <a href="mailto:j.ortiz@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-
-                    <!-- Commission Card 6 -->
-                    <div class="commission-card" data-commission="economic" data-name="Andrés Ruiz" data-title="Finanzas y Tesorería" data-phone="+52 55 2211 3344" data-email="a.ruiz@corporativo.com" data-description="Andrés lidera el área de Finanzas y Tesorería con expertise en gestión financiera corporativa. Asesora a las empresas en optimización de recursos y estrategias de financiamiento.">
-                        <div class="commission-photo">
-                            <div class="commission-photo-placeholder">💰</div>
-                        </div>
-                        <div class="commission-content">
-                            <div class="commission-name">Andrés Ruiz</div>
-                            <div class="commission-title">Finanzas y Tesorería</div>
-                            <a href="mailto:a.ruiz@corporativo.com" class="commission-contact-link"><span class="material-icons">mail_outline</span>Contactar</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="commissions-grid" id="commissionsGrid"></div>
             </div>
         </section>
 
@@ -1191,71 +1136,54 @@
     <script src="js/script.js"></script>
 
     <script>
-        function openModal(button) {
-            const card = button.closest('.commission-card');
-            const name = card.dataset.name;
-            const title = card.dataset.title;
-            const phone = card.dataset.phone;
-            const email = card.dataset.email;
-            const description = card.dataset.description;
-            const commission = card.dataset.commission;
+        const commissioners = [
+            { name: 'Rosalía Osorio Sánchez', role: 'Vicepresidenta', icon: '👩‍💼' },
+            { name: 'José Alberto de la Fuente Vázquez Mellado', role: 'Vicepresidente', icon: '🤝' },
+            { name: 'José Mauricio Tort González', role: 'Tesorero', icon: '💰' },
+            { name: 'Ma. Del Carmen Pacheco Aguilar', role: 'Secretaria', icon: '📝' },
+            { name: 'Rafael Gerardo Hernández Moguel', role: 'Revisor', icon: '✅' },
+            { name: 'Melisa Mendoza Díaz', role: 'Comisión de Mujeres Empresarias', icon: '👩‍💼' },
+            { name: 'Gerardo Barroso Pérez', role: 'Comisión de Vivienda', icon: '🏠' },
+            { name: 'Fernando Juárez Mendoza', role: 'Comisión Fiscal', icon: '📊' },
+            { name: 'Felipe de Jesús Díaz González', role: 'Comisión de Justicia', icon: '⚖️' },
+            { name: 'Juan Pablo Hermida Paredes', role: 'Comisión de Empresarios Jóvenes', icon: '🚀' },
+            { name: 'Guadalupe Otmara Trujillo Zarate', role: 'Comisión de Energía', icon: '⚡' },
+            { name: 'Cintia León Tapia', role: 'Comisión de Negocios y Financiamiento', icon: '💼' },
+            { name: 'Lino Vargas Martínez', role: 'Comisión de Capacitación', icon: '🎓' },
+            { name: 'Erica Velásquez Jiménez', role: 'Comisión Laboral y de Capital Humano', icon: '🤝' },
+            { name: 'Francisco Javier Díaz Fernández', role: 'Comisión de Salud', icon: '🩺' },
+            { name: 'José Antonio Vieyra Gutiérrez', role: 'Comisión de Educación', icon: '📚' },
+            { name: 'Juan Nicolás Parés', role: 'Comisión de Innovación Empresarial', icon: '💡' },
+            { name: 'Patricia Gómez Gómez', role: 'Comisión de Desarrollo Humano', icon: '🌱' },
+            { name: 'Catalina María Aguilar Delgado', role: 'Comisión del Medio Ambiente y Ecología', icon: '🌿' },
+            { name: 'Juan José López Cruz', role: 'Comisión de Bienestar Social', icon: '🤲' },
+            { name: 'Mauricio García de la Sierra', role: 'Comisión de Turismo', icon: '🧳' },
+            { name: 'Claudia Elizabeth Bustamante Méndez', role: 'Consejera', icon: '🏛️' },
+            { name: 'Israel Alejandro Jiménez Ascención', role: 'Consejero', icon: '🏛️' },
+            { name: 'Elvira Medina Rodríguez', role: 'Consejera', icon: '🏛️' }
+        ];
 
-            document.getElementById('modalName').textContent = name;
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalPhone').textContent = phone;
-            document.getElementById('modalEmail').innerHTML = `<a href="mailto:${email}">${email}</a>`;
-            document.getElementById('modalDescription').textContent = description;
-            
-            // Mapeo de comisiones
-            const commissionMap = {
-                legal: 'Comisión Legal',
-                economic: 'Comisión Económica',
-                social: 'Comisión Social',
-                institutional: 'Comisión Institucional'
-            };
-            
-            document.getElementById('modalCompanyInfo').textContent = commissionMap[commission] || 'COPARMEX';
+        const grid = document.getElementById('commissionsGrid');
+        if (grid) {
+            grid.innerHTML = commissioners.map(({ name, role, icon }) => {
+                const message = `Hola, soy ${name}, ${role}. Quiero comunicarme con COPARMEX.`;
+                const whatsappUrl = `https://wa.me/522382184334?text=${encodeURIComponent(message)}`;
 
-            document.getElementById('detailsModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('detailsModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            const modal = document.getElementById('detailsModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-        
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        function filterByCommission(commission) {
-            const cards = document.querySelectorAll('.commission-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Actualizar botones activos
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filtrar tarjetas
-            cards.forEach(card => {
-                if (commission === 'all' || card.dataset.commission === commission) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+                return `
+                    <article class="commission-card">
+                        <div class="commission-photo">
+                            <div class="commission-photo-placeholder" aria-hidden="true">${icon}</div>
+                        </div>
+                        <div class="commission-content">
+                            <div class="commission-name">${name}</div>
+                            <div class="commission-title">${role}</div>
+                            <a class="commission-whatsapp-link" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">
+                                <span class="material-icons">whatsapp</span> Contactar
+                            </a>
+                        </div>
+                    </article>
+                `;
+            }).join('');
         }
     </script>
 </body>
