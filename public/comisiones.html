@@ -1148,7 +1148,8 @@
             { name: 'Felipe de Jesús Díaz González', role: 'Comisión de Justicia', icon: '⚖️' },
             { name: 'Juan Pablo Hermida Paredes', role: 'Comisión de Empresarios Jóvenes', icon: '🚀' },
             { name: 'Guadalupe Otmara Trujillo Zarate', role: 'Comisión de Energía', icon: '⚡' },
-            { name: 'Cintia León Tapia', role: 'Comisión de Negocios y Financiamiento', icon: '💼' },
+            { name: 'Juan José', role: 'Presidente de la Comisión de la Industria de Calzado', icon: '👞' },
+            { name: 'Cynthia León Tapia', role: 'Comisión de Negocios y Financiamiento', icon: '💼' },
             { name: 'Lino Vargas Martínez', role: 'Comisión de Capacitación', icon: '🎓' },
             { name: 'Erica Velásquez Jiménez', role: 'Comisión Laboral y de Capital Humano', icon: '🤝' },
             { name: 'Francisco Javier Díaz Fernández', role: 'Comisión de Salud', icon: '🩺' },
@@ -1159,14 +1160,13 @@
             { name: 'Juan José López Cruz', role: 'Comisión de Bienestar Social', icon: '🤲' },
             { name: 'Mauricio García de la Sierra', role: 'Comisión de Turismo', icon: '🧳' },
             { name: 'Claudia Elizabeth Bustamante Méndez', role: 'Consejera', icon: '🏛️' },
-            { name: 'Israel Alejandro Jiménez Ascención', role: 'Consejero', icon: '🏛️' },
             { name: 'Elvira Medina Rodríguez', role: 'Consejera', icon: '🏛️' }
         ];
 
         const grid = document.getElementById('commissionsGrid');
         if (grid) {
             grid.innerHTML = commissioners.map(({ name, role, icon }) => {
-                const message = `Hola, soy ${name}, ${role}. Quiero comunicarme con COPARMEX.`;
+                const message = 'Hola, quiero comunicarme con COPARMEX.';
                 const whatsappUrl = `https://wa.me/522382184334?text=${encodeURIComponent(message)}`;
 
                 return `
